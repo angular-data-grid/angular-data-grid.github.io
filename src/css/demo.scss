@@ -1,0 +1,35 @@
+.sortable {
+  &:after {
+    font-family: 'Material Icons';
+    font-feature-settings: "liga" 1;
+    line-height: 1;
+    content: "compare_arrows";
+    display: inline-block;
+    font-size: 18px;
+    transition: opacity 0.35s, -webkit-transform 0.25s;
+    transition: opacity 0.35s, transform 0.25s;
+    opacity: 0;
+    -webkit-transform: rotate(270deg) translateX(25%);
+    transform: rotate(270deg) translateY(15%);
+  }
+
+  &:hover:after {
+    opacity: 1;
+  }
+
+  &.sort-ascent:after {
+    opacity: 1;
+    content: "arrow_upward";
+    vertical-align: top;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+
+  &.sort-descent:after {
+    opacity: 1;
+    content: "arrow_upward";
+    vertical-align: bottom;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}

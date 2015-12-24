@@ -1,0 +1,6 @@
+<div pagination ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
+     total-items="paginationOptions.totalItems"
+     ng-model="paginationOptions.currentPage"
+     ng-change="reloadGrid()"
+     items-per-page="paginationOptions.itemsPerPage">
+</div>
