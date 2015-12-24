@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Flat JSON format for data tables</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container" ng-app="myApp" ng-controller="myAppController" ng-cloak>
+    <h1>Flat JSON format for data tables</h1>
+
+    <div class="row">
+        <table class="table table-hover">
+            <th>
+                First Name
+            </th>
+            <th>
+                Second Name
+            </th>
+            <tr ng-repeat="item in items">
+                <td>{{item.id}}</td>
+                <td>{{item.title}}</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+</body>
+
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+<script type="text/javascript" src="https://s7.landsend.com/s7viewers/html5/js/BasicZoomViewer.js"></script>
+<script>
+
+    angular.module('myApp', [])
+            .controller('myAppController', ['$scope', 'myAppFactory', function ($scope, myAppFactory) {
+                $scope.getData = function () {
+                    myAppFactory.getData()
+                            .success(function (response) {
+                                $scope.items = response;
+                            }).error(function () {
+                    });
+                };
+                $scope.getData();
+            }])
+            .factory('myAppFactory', function ($http) {
+                var root = 'http://jsonplaceholder.typicode.com';
+                return {
+                    getData: function () {
+                        return $http.get(root + '/posts', {});
+                    },
+                    postData: function (data) {
+                        return $http.post(contextPath + '/stores/' + storeId + '/rest/payment-method', data);
+                    }
+                }
+            });
+</script>
+</html>
