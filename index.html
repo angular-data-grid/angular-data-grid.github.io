@@ -35,7 +35,7 @@
                                        class="form-control"
                                        is-open="dateFromOpened"
                                        ng-click="dateFromOpened = true"
-                                       uib-datepicker-popup="shortDate"
+                                       datepicker-popup="shortDate"
                                        filter-by="placed"
                                        filter-type="dateFrom"
                                        ng-model="dateFrom"
@@ -61,7 +61,7 @@
                                        is-open="dateToOpened"
                                        ng-click="dateToOpened = true"
                                        min-date="dateFrom"
-                                       uib-datepicker-popup="shortDate"
+                                       datepicker-popup="shortDate"
                                        filter-by="placed"
                                        filter-type="dateTo"
                                        ng-model="dateTo"
@@ -88,14 +88,14 @@
                         </strong>
 
                     </div>
-                    <uib-pagination max-size="5"
+                    <pagination max-size="5"
                                     boundary-links="true"
                                     class="pagination-sm"
                                     ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
                                     total-items="paginationOptions.totalItems"
                                     ng-model="paginationOptions.currentPage"
                                     ng-change="reloadGrid()"
-                                    items-per-page="paginationOptions.itemsPerPage"></uib-pagination>
+                                    items-per-page="paginationOptions.itemsPerPage"></pagination>
                     <table class="table table-hover table-leo table-condensed table-bordered table-striped">
                         <thead>
                         <tr>
@@ -144,14 +144,14 @@
                     </table>
                     <div class="row">
                         <div class="col-md-6 col-xs-12">
-                            <uib-pagination max-size="5"
+                            <pagination max-size="5"
                                             boundary-links="true"
                                             class="pagination-sm"
                                             ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
                                             total-items="paginationOptions.totalItems"
                                             ng-model="paginationOptions.currentPage"
                                             ng-change="reloadGrid()"
-                                            items-per-page="paginationOptions.itemsPerPage"></uib-pagination>
+                                            items-per-page="paginationOptions.itemsPerPage"></pagination>
                         </div>
                         <div class="col-md-6 col-xs-12">
                             <div grid-item-per-page="10, 25, 50, 75" class="pagination-sm"></div>
