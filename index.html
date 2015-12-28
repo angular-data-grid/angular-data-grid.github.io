@@ -3,8 +3,8 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Flat JSON format for data tables</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <!--<link rel="stylesheet" href="demo/demo.css">-->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="demo/demo.css">
 </head>
 <body>
 <div class="container" ng-app="myApp" ng-controller="myAppController" ng-cloak>
@@ -88,14 +88,14 @@
                         </strong>
 
                     </div>
-                    <uib-pagination max-size="5"
-                                    boundary-links="true"
-                                    class="pagination-sm"
-                                    ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
-                                    total-items="paginationOptions.totalItems"
-                                    ng-model="paginationOptions.currentPage"
-                                    ng-change="reloadGrid()"
-                                    items-per-page="paginationOptions.itemsPerPage"></uib-pagination>
+                    <pagination max-size="5"
+                                boundary-links="true"
+                                class="pagination-sm"
+                                ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
+                                total-items="paginationOptions.totalItems"
+                                ng-model="paginationOptions.currentPage"
+                                ng-change="reloadGrid()"
+                                items-per-page="paginationOptions.itemsPerPage"></pagination>
                     <table class="table table-hover table-leo table-condensed table-bordered table-striped">
                         <thead>
                         <tr>
@@ -144,14 +144,14 @@
                     </table>
                     <div class="row">
                         <div class="col-md-6 col-xs-12">
-                            <uib-pagination max-size="5"
-                                            boundary-links="true"
-                                            class="pagination-sm"
-                                            ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
-                                            total-items="paginationOptions.totalItems"
-                                            ng-model="paginationOptions.currentPage"
-                                            ng-change="reloadGrid()"
-                                            items-per-page="paginationOptions.itemsPerPage"></uib-pagination>
+                            <pagination max-size="5"
+                                        boundary-links="true"
+                                        class="pagination-sm"
+                                        ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
+                                        total-items="paginationOptions.totalItems"
+                                        ng-model="paginationOptions.currentPage"
+                                        ng-change="reloadGrid()"
+                                        items-per-page="paginationOptions.itemsPerPage"></pagination>
                         </div>
                         <div class="col-md-6 col-xs-12">
                             <div grid-item-per-page="10, 25, 50, 75" class="pagination-sm"></div>

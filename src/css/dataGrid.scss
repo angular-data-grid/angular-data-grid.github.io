@@ -1,3 +1,8 @@
+@import 'variables';
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
 :focus {
   outline: none;
 }
@@ -15,7 +20,7 @@
   box-sizing: border-box;
 }
 .pagination a {
-  color: #444;
+  color: $textColor;
   font-size: 16px;
   padding: 0 10px;
   line-height: 30px;
@@ -24,18 +29,6 @@
   box-sizing: border-box;
   .md-ripple-container {
     border-radius: 2px;
-  }
-}
-.pagination-prev,
-.pagination-next,
-.pagination-first,
-.pagination-last {
-  a {
-    padding: 3px 5px;
-  }
-  svg {
-    width: 24px;
-    height: 24px;
   }
 }
 .pagination-none-svg {
@@ -56,28 +49,28 @@
 .pagination-page {
   transition: background .1s ease-out, color .1s ease-out;
   &.active {
-    background: rgb(16,108,200);
+    background: $activeBg;
     a {
-      color: #fff;
+      color: $activeText;
     }
   }
 }
 .pagination {
   transition: background .1s ease-out, color .1s ease-out;
   .active {
-    background: rgb(16,108,200);
+    background: $activeBg;
     a {
-      color: #fff;
+      color: $activeText;
     }
   }
 }
-.grid-data-table {
+.table {
   td {
     border-bottom: 1px rgba(0,0,0,.12) solid;
     padding: 12px;
   }
   th {
-    padding: 0 12px;
+    padding: 12px;
     border-bottom: 1px rgba(0,0,0,.12) solid;
   }
 }
@@ -111,9 +104,9 @@ th.sortable {
 
 .items-per-page {
   .active {
-    background: rgb(16,108,200);
+    background: $activeBg;
     a {
-      color: #fff;
+      color: $activeText;
     }
   }
   a {

@@ -1,4 +1,5 @@
-angular.module('dataGrid', [])
+angular
+    .module('dataGrid', [])
     .filter('startFrom', function () {
         return function (input, start) {
             if (input) {
@@ -402,7 +403,6 @@ angular.module('dataGrid', [])
             }
         }
     });
-
 
 function deepFind(obj, path) {
     var paths = path.split('.'),
