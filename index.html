@@ -33,7 +33,7 @@
                                        class="form-control"
                                        is-open="dateFromOpened"
                                        ng-click="dateFromOpened = true"
-                                       datepicker-popup="shortDate"
+                                       uib-datepicker-popup="shortDate"
                                        filter-by="placed"
                                        filter-type="dateFrom"
                                        ng-model="dateFrom"
@@ -59,7 +59,7 @@
                                        is-open="dateToOpened"
                                        ng-click="dateToOpened = true"
                                        min-date="dateFrom"
-                                       datepicker-popup="shortDate"
+                                       uib-datepicker-popup="shortDate"
                                        filter-by="placed"
                                        filter-type="dateTo"
                                        ng-model="dateTo"
@@ -86,7 +86,7 @@
                         </strong>
 
                     </div>
-                    <!--<div grid-pagination max-size="5" boundary-links="true" class="pagination-sm"></div>-->
+                    <div grid-pagination max-size="5" boundary-links="true" class="pagination-sm"></div>
                     <table class="table table-hover table-leo table-condensed table-bordered table-striped">
                         <thead>
                         <tr>
@@ -145,30 +145,14 @@
             </div>
         </div>
     </div>
-
-    <h1>Flat JSON format for data tables</h1>
-
-    <div class="row">
-        <table class="table table-hover">
-            <th>
-                First Name
-            </th>
-            <th>
-                Second Name
-            </th>
-            <tr ng-repeat="item in items">
-                <td>{{item.id}}</td>
-                <td>{{item.title}}</td>
-            </tr>
-        </table>
-    </div>
-
 </div>
 </body>
 
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js"></script>-->
+<script src="src/js/paging.js"></script>
+<script src="src/js/pagination.js"></script>
 <script src="src/js/dataGrid.js"></script>
 <script src="demo/app.js"></script>
 

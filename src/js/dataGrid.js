@@ -322,13 +322,13 @@ angular.module('dataGrid', [])
             }
         }
     }])
-    //.directive('gridPagination', function () {
-    //    return {
-    //        replace: true,
-    //        scope: true,
-    //        templateUrl: 'src/html/gridPaginator.html'
-    //    };
-    //})
+    .directive('gridPagination', function () {
+        return {
+            replace: true,
+            scope: true,
+            templateUrl: 'src/html/gridPaginator.html'
+        };
+    })
     .directive('gridItemPerPage', ['$compile', function ($compile) {
         return {
             replace: true,
@@ -430,7 +430,7 @@ angular.module('dataGrid').run(['$templateCache', function ($templateCache) {
     'use strict';
 
     $templateCache.put('src/js/directives/modules/dataGrid/gridPaginator.html',
-        "<div pagination ng-if=\"paginationOptions.totalItems  > paginationOptions.itemsPerPage\" total-items=\"paginationOptions.totalItems\" ng-model=\"paginationOptions.currentPage\" ng-change=\"reloadGrid()\" items-per-page=\"paginationOptions.itemsPerPage\"></div>"
+        "<div uib-pagination ng-if=\"paginationOptions.totalItems  > paginationOptions.itemsPerPage\" total-items=\"paginationOptions.totalItems\" ng-model=\"paginationOptions.currentPage\" ng-change=\"reloadGrid()\" items-per-page=\"paginationOptions.itemsPerPage\"></div>"
     );
 
 }]);
