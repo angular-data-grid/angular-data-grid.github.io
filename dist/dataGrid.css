@@ -1,0 +1,102 @@
+:focus {
+  outline: none; }
+
+.pagination {
+  display: inline-block;
+  box-sizing: border-box; }
+
+.pagination > li {
+  display: inline-block;
+  vertical-align: middle;
+  width: auto;
+  height: 30px;
+  position: relative;
+  border-radius: 2px;
+  box-sizing: border-box; }
+
+.pagination a {
+  color: #444;
+  font-size: 16px;
+  padding: 0 10px;
+  line-height: 30px;
+  display: inline-block;
+  text-decoration: none;
+  box-sizing: border-box; }
+  .pagination a .md-ripple-container {
+    border-radius: 2px; }
+
+.pagination-prev a,
+.pagination-next a,
+.pagination-first a,
+.pagination-last a {
+  padding: 3px 5px; }
+
+.pagination-prev svg,
+.pagination-next svg,
+.pagination-first svg,
+.pagination-last svg {
+  width: 24px;
+  height: 24px; }
+
+.pagination-none-svg svg {
+  display: none !important; }
+
+.pagination-none-svg .pagination-prev a,
+.pagination-none-svg .pagination-next a,
+.pagination-none-svg .pagination-first a,
+.pagination-none-svg .pagination-last a {
+  width: 30px;
+  text-align: center;
+  line-height: 24px; }
+
+.pagination-page {
+  transition: background .1s ease-out, color .1s ease-out; }
+  .pagination-page.active {
+    background: #106cc8; }
+    .pagination-page.active a {
+      color: #fff; }
+
+.pagination {
+  transition: background .1s ease-out, color .1s ease-out; }
+  .pagination .active {
+    background: #106cc8; }
+    .pagination .active a {
+      color: #fff; }
+
+.grid-data-table td {
+  border-bottom: 1px rgba(0, 0, 0, 0.12) solid;
+  padding: 12px; }
+
+.grid-data-table th {
+  padding: 0 12px;
+  border-bottom: 1px rgba(0, 0, 0, 0.12) solid; }
+
+th.sortable {
+  line-height: 24px;
+  padding-right: 31px; }
+  th.sortable svg {
+    height: 18px;
+    width: 18px;
+    margin: 0 4px;
+    transition: fill .25s,-webkit-transform .25s;
+    transition: fill .25s,transform .25s;
+    vertical-align: middle;
+    display: none !important; }
+  th.sortable.sort-descent {
+    padding-right: 0; }
+    th.sortable.sort-descent svg {
+      display: inline-block !important; }
+  th.sortable.sort-ascent {
+    padding-right: 0; }
+    th.sortable.sort-ascent svg {
+      display: inline-block !important;
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg); }
+
+.items-per-page .active {
+  background: #106cc8; }
+  .items-per-page .active a {
+    color: #fff; }
+
+.items-per-page a {
+  cursor: pointer; }
