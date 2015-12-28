@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Flat JSON format for data tables</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="demo/demo.css">-->
 </head>
 <body>
 <div class="container" ng-app="myApp" ng-controller="myAppController" ng-cloak>
@@ -86,7 +87,14 @@
                         </strong>
 
                     </div>
-                    <div grid-pagination max-size="5" boundary-links="true" class="pagination-sm"></div>
+                    <uib-pagination max-size="5"
+                                    boundary-links="true"
+                                    class="pagination-sm"
+                                    ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
+                                    total-items="paginationOptions.totalItems"
+                                    ng-model="paginationOptions.currentPage"
+                                    ng-change="reloadGrid()"
+                                    items-per-page="paginationOptions.itemsPerPage"></uib-pagination>
                     <table class="table table-hover table-leo table-condensed table-bordered table-striped">
                         <thead>
                         <tr>
@@ -134,10 +142,17 @@
                         </tbody>
                     </table>
                     <div class="row">
-                        <div class="col-xs-6">
-                            <!--<div grid-pagination max-size="5" boundary-links="true" class="pagination-sm"></div>-->
+                        <div class="col-md-6 col-xs-12">
+                            <uib-pagination max-size="5"
+                                            boundary-links="true"
+                                            class="pagination-sm"
+                                            ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
+                                            total-items="paginationOptions.totalItems"
+                                            ng-model="paginationOptions.currentPage"
+                                            ng-change="reloadGrid()"
+                                            items-per-page="paginationOptions.itemsPerPage"></uib-pagination>
                         </div>
-                        <div class="col-xs-6">
+                        <div class="col-md-6 col-xs-12">
                             <div grid-item-per-page="10, 25, 50, 75" class="pagination-sm"></div>
                         </div>
                     </div>
@@ -148,12 +163,10 @@
 </div>
 </body>
 
-<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<!--<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js"></script>-->
-<script src="src/js/paging.js"></script>
-<script src="src/js/pagination.js"></script>
-<script src="src/js/dataGrid.js"></script>
-<script src="demo/app.js"></script>
+<script src="dist/pagination.min.js"></script>
+<script src="dist/dataGrid.min.js"></script>
+<script src="demo/demoApp.js"></script>
 
 </html>
