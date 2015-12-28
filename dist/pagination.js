@@ -1,9 +1,6 @@
-angular.module('ui.bootstrap.paging', [])
-    /**
-     * Helper internal service for generating common controller code between the
-     * pager and pagination components
-     */
-    .factory('uibPaging', ['$parse', function ($parse) {
+angular
+    .module('paging', [])
+    .factory('paging', ['$parse', function ($parse) {
         return {
             create: function (ctrl, $scope, $attrs) {
                 ctrl.setNumPages = $attrs.numPages ? $parse($attrs.numPages).assign : angular.noop;
@@ -84,18 +81,19 @@ angular.module('ui.bootstrap.paging', [])
         };
     }]);
 
-angular.module('ui.bootstrap.pagination', ['ui.bootstrap.paging'])
-    .controller('UibPaginationController', ['$scope', '$attrs', '$parse', 'uibPaging', 'uibPaginationConfig', function ($scope, $attrs, $parse, uibPaging, uibPaginationConfig) {
+angular
+    .module('pagination', ['paging'])
+    .controller('PaginationController', ['$scope', '$attrs', '$parse', 'paging', 'paginationConfig', function ($scope, $attrs, $parse, paging, paginationConfig) {
         var ctrl = this;
         // Setup configuration parameters
-        var maxSize = angular.isDefined($attrs.maxSize) ? $scope.$parent.$eval($attrs.maxSize) : uibPaginationConfig.maxSize,
-            rotate = angular.isDefined($attrs.rotate) ? $scope.$parent.$eval($attrs.rotate) : uibPaginationConfig.rotate,
-            forceEllipses = angular.isDefined($attrs.forceEllipses) ? $scope.$parent.$eval($attrs.forceEllipses) : uibPaginationConfig.forceEllipses,
-            boundaryLinkNumbers = angular.isDefined($attrs.boundaryLinkNumbers) ? $scope.$parent.$eval($attrs.boundaryLinkNumbers) : uibPaginationConfig.boundaryLinkNumbers;
-        $scope.boundaryLinks = angular.isDefined($attrs.boundaryLinks) ? $scope.$parent.$eval($attrs.boundaryLinks) : uibPaginationConfig.boundaryLinks;
-        $scope.directionLinks = angular.isDefined($attrs.directionLinks) ? $scope.$parent.$eval($attrs.directionLinks) : uibPaginationConfig.directionLinks;
+        var maxSize = angular.isDefined($attrs.maxSize) ? $scope.$parent.$eval($attrs.maxSize) : paginationConfig.maxSize,
+            rotate = angular.isDefined($attrs.rotate) ? $scope.$parent.$eval($attrs.rotate) : paginationConfig.rotate,
+            forceEllipses = angular.isDefined($attrs.forceEllipses) ? $scope.$parent.$eval($attrs.forceEllipses) : paginationConfig.forceEllipses,
+            boundaryLinkNumbers = angular.isDefined($attrs.boundaryLinkNumbers) ? $scope.$parent.$eval($attrs.boundaryLinkNumbers) : paginationConfig.boundaryLinkNumbers;
+        $scope.boundaryLinks = angular.isDefined($attrs.boundaryLinks) ? $scope.$parent.$eval($attrs.boundaryLinks) : paginationConfig.boundaryLinks;
+        $scope.directionLinks = angular.isDefined($attrs.directionLinks) ? $scope.$parent.$eval($attrs.directionLinks) : paginationConfig.directionLinks;
 
-        uibPaging.create(this, $scope, $attrs);
+        paging.create(this, $scope, $attrs);
 
         if ($attrs.maxSize) {
             $scope.$parent.$watch($parse($attrs.maxSize), function (value) {
@@ -193,7 +191,7 @@ angular.module('ui.bootstrap.pagination', ['ui.bootstrap.paging'])
         };
     }])
 
-    .constant('uibPaginationConfig', {
+    .constant('paginationConfig', {
         itemsPerPage: 10,
         boundaryLinks: false,
         boundaryLinkNumbers: false,
@@ -206,7 +204,7 @@ angular.module('ui.bootstrap.pagination', ['ui.bootstrap.paging'])
         forceEllipses: false
     })
 
-    .directive('uibPagination', ['$parse', 'uibPaginationConfig', function ($parse, uibPaginationConfig) {
+    .directive('pagination', ['$parse', 'paginationConfig', function ($parse, paginationConfig) {
         return {
             scope: {
                 totalItems: '=',
@@ -216,8 +214,8 @@ angular.module('ui.bootstrap.pagination', ['ui.bootstrap.paging'])
                 lastText: '@',
                 ngDisabled: '='
             },
-            require: ['uibPagination', '?ngModel'],
-            controller: 'UibPaginationController',
+            require: ['pagination', '?ngModel'],
+            controller: 'PaginationController',
             controllerAs: 'pagination',
             templateUrl: function (element, attrs) {
                 return attrs.templateUrl || 'src/template/pagination/pagination.html';
@@ -230,15 +228,13 @@ angular.module('ui.bootstrap.pagination', ['ui.bootstrap.paging'])
                     return; // do nothing if no ng-model
                 }
 
-                paginationCtrl.init(ngModelCtrl, uibPaginationConfig);
+                paginationCtrl.init(ngModelCtrl, paginationConfig);
             }
         };
     }])
 
     .run(['$templateCache', function ($templateCache) {
-
         $templateCache.put('src/template/pagination/pagination.html',
             "<ul class='pagination'><li ng-if='::boundaryLinks' ng-class='{disabled: noPrevious()||ngDisabled}' class='pagination-first'><a href ng-click='selectPage(1, $event)'>{{::getText('first')}}</a></li> <li ng-if='::directionLinks' ng-class='{disabled: noPrevious()||ngDisabled}' class='pagination-prev'><a href ng-click='selectPage(page - 1, $event)'>{{::getText('previous')}}</a></li> <li ng-repeat='page in pages track by $index' ng-class='{active: page.active,disabled: ngDisabled&&!page.active}' class='pagination-page'><a href ng-click='selectPage(page.number, $event)'>{{page.text}}</a></li> <li ng-if='::directionLinks' ng-class='{disabled: noNext()||ngDisabled}' class='pagination-next'><a href ng-click='selectPage(page + 1, $event)'>{{::getText('next')}}</a></li> <li ng-if='::boundaryLinks' ng-class='{disabled: noNext()||ngDisabled}' class='pagination-last'><a href ng-click='selectPage(totalPages, $event)'>{{::getText('last')}}</a></li> </ul>"
         );
-
     }]);

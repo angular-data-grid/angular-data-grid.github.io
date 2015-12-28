@@ -1,4 +1,4 @@
-angular.module('myApp', ['dataGrid', 'ui.bootstrap.pagination'])
+angular.module('myApp', ['dataGrid', 'pagination'])
     .controller('myAppController', ['$scope', 'myAppFactory', function ($scope, myAppFactory) {
 
         $scope.getData = function () {

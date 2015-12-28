@@ -1,3 +1,7 @@
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
 :focus {
   outline: none; }
 
@@ -25,19 +29,6 @@
   .pagination a .md-ripple-container {
     border-radius: 2px; }
 
-.pagination-prev a,
-.pagination-next a,
-.pagination-first a,
-.pagination-last a {
-  padding: 3px 5px; }
-
-.pagination-prev svg,
-.pagination-next svg,
-.pagination-first svg,
-.pagination-last svg {
-  width: 24px;
-  height: 24px; }
-
 .pagination-none-svg svg {
   display: none !important; }
 
@@ -63,12 +54,12 @@
     .pagination .active a {
       color: #fff; }
 
-.grid-data-table td {
+.table td {
   border-bottom: 1px rgba(0, 0, 0, 0.12) solid;
   padding: 12px; }
 
-.grid-data-table th {
-  padding: 0 12px;
+.table th {
+  padding: 12px;
   border-bottom: 1px rgba(0, 0, 0, 0.12) solid; }
 
 th.sortable {
