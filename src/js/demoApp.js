@@ -13,15 +13,8 @@ angular.module('myApp', ['dataGrid', 'pagination'])
 
         $scope.gridOptions = {
             data: $scope.items,
-            urlSync: true
+            urlSync: false
         };
-
-        //$scope.items = [
-        //    {"firstName": "John", "lastName": "Doe"},
-        //    {"firstName": "Anna", "lastName": "Smith"},
-        //    {"firstName": "Peter", "lastName": "Jones"}
-        //];
-
 
     }])
     .factory('myAppFactory', function ($http) {
