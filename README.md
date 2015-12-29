@@ -7,7 +7,7 @@ Samples: http://angular-data-grid.github.io/
 
 ### Features
 
- - Does not have any hard-coded template so you can choose any mark-up you need, from basic ```javascript <table>``` layout to any ```javascript <div>``` structure.
+ - Does not have any hard-coded template so you can choose any mark-up you need, from basic ```<table>``` layout to any ```<div>``` structure.
  - Easily switch between the most popular Bootstrap and Google Material theming, or apply your own CSS theme just by changing several CSS classes.
  - Built-in sync with browser address bar (URL), so you copy-n-paste sorting/filtering/pagination results URL and open it in other browser / send to anyone - even if pagination / filtering are done on a client-side. 
  - Unlike most part of other Angular DataGrids, we intentionally use non-isolated scope of the directive, so it can be easily synchronized with any data changes inside your controller. !With great power comes great responsibility, so be careful to use non-isolated API correctly.
