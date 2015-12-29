@@ -38,7 +38,7 @@
         gulp.src('./src/css/demo.scss')
             .pipe(sass().on('error', sass.logError))
             .pipe(gulp.dest('./demo'));
-        gulp.src('./src/css/dataGrid.scss')
+        gulp.src('./src/css/material.scss')
             .pipe(sass().on('error', sass.logError))
             .pipe(gulp.dest('./dist'));
     });

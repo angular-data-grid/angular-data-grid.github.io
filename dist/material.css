@@ -1,6 +1,8 @@
 table {
   border-collapse: collapse;
-  border-spacing: 0; }
+  border-spacing: 0;
+  margin: 8px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12); }
 
 :focus {
   outline: none; }
@@ -55,12 +57,12 @@ table {
       color: #fff; }
 
 .table td {
-  border-bottom: 1px rgba(0, 0, 0, 0.12) solid;
-  padding: 12px; }
+  border-top: 1px rgba(0, 0, 0, 0.12) solid;
+  padding: 12px 24px; }
 
 .table th {
-  padding: 12px;
-  border-bottom: 1px rgba(0, 0, 0, 0.12) solid; }
+  padding: 12px 24px;
+  border-top: 1px rgba(0, 0, 0, 0.12) solid; }
 
 th.sortable {
   line-height: 24px;

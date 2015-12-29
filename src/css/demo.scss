@@ -1,1 +1,66 @@
-@import 'dataGrid';
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+h1 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit;
+  font-size: 36px;
+}
+.container {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.b-change-theme {
+  padding: 20px;
+  &__link {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #000;
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none;
+    &+& {
+      margin-left: 30px;
+    }
+    &:before {
+      width: 20px;
+      height: 20px;
+      content: '';
+      border-radius: 2px;
+      border: 1px solid #999;
+      margin-right: 8px;
+      vertical-align: bottom;
+      display: inline-block;
+    }
+    &:hover {
+      text-decoration: underline;
+      color: #000;
+    }
+    &._active{
+      text-decoration: none;
+      position: relative;
+      &:after {
+        content: '';
+        width: 12px;
+        height: 6px;
+        border-left: 2px solid #444;
+        border-bottom: 2px solid #444;
+        transform-origin: center;
+        transform: rotate(-45deg);
+        left: 4px;
+        top: 5px;
+        position: absolute;
+      }
+    }
+  }
+}
