@@ -20,7 +20,8 @@ h1 {
   padding-left: 15px; }
 
 .b-change-theme {
-  padding: 20px; }
+  padding: 20px;
+  margin-bottom: 20px; }
   .b-change-theme__link {
     font-size: 16px;
     line-height: 20px;
@@ -107,3 +108,17 @@ th.sortable {
     top: 0;
     bottom: 6px;
     margin: auto 0; }
+
+.col-wrap {
+  font-size: 0;
+  padding: 25px 0; }
+  .col-wrap .col2 {
+    vertical-align: top;
+    display: inline-block;
+    width: 50%;
+    padding: 0 15px; }
+  .col-wrap .col3 {
+    vertical-align: top;
+    display: inline-block;
+    width: 33.33%;
+    padding: 0 15px; }

@@ -21,6 +21,7 @@ h1 {
 }
 .b-change-theme {
   padding: 20px;
+  margin-bottom: 20px;
   &__link {
     font-size: 16px;
     line-height: 20px;
@@ -122,5 +123,21 @@ th.sortable {
       bottom: 6px;
       margin: auto 0;
     }
+  }
+}
+.col-wrap {
+  font-size: 0;
+  padding: 25px 0;
+  .col2 {
+    vertical-align: top;
+    display: inline-block;
+    width: 50%;
+    padding: 0 15px;
+  }
+  .col3 {
+    vertical-align: top;
+    display: inline-block;
+    width: 33.33%;
+    padding: 0 15px;
   }
 }

@@ -1,6 +1,8 @@
 table {
   border-collapse: collapse;
   border-spacing: 0;
+  width: 100%;
+  font-size: 16px;
   margin: 8px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12); }
 
@@ -93,3 +95,139 @@ th.sortable {
 
 .items-per-page a {
   cursor: pointer; }
+
+.pagination-prev a {
+  font-size: 0;
+  width: 30px;
+  position: relative; }
+  .pagination-prev a:before {
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    position: absolute;
+    display: block;
+    width: 10px;
+    height: 10px;
+    content: '';
+    transform-origin: center;
+    border-left: 2px solid #333;
+    border-bottom: 2px solid #333;
+    transform: rotate(45deg); }
+
+.pagination-next a {
+  font-size: 0;
+  width: 30px;
+  position: relative; }
+  .pagination-next a:before {
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    position: absolute;
+    display: block;
+    width: 10px;
+    height: 10px;
+    content: '';
+    transform-origin: center;
+    border-left: 2px solid #333;
+    border-bottom: 2px solid #333;
+    transform: rotate(-135deg); }
+
+.pagination-first a {
+  font-size: 0;
+  width: 30px;
+  position: relative; }
+  .pagination-first a:before {
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    position: absolute;
+    display: block;
+    width: 10px;
+    height: 10px;
+    content: '';
+    transform-origin: center;
+    border-left: 2px solid #333;
+    border-bottom: 2px solid #333;
+    transform: rotate(45deg); }
+  .pagination-first a:after {
+    left: 4px;
+    width: 2px;
+    height: 14px;
+    content: '';
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    margin: auto 0;
+    background: #333; }
+
+.pagination-last a {
+  font-size: 0;
+  width: 30px;
+  position: relative; }
+  .pagination-last a:before {
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    position: absolute;
+    display: block;
+    width: 10px;
+    height: 10px;
+    content: '';
+    transform-origin: center;
+    border-left: 2px solid #333;
+    border-bottom: 2px solid #333;
+    transform: rotate(-135deg); }
+  .pagination-last a:after {
+    right: 4px;
+    width: 2px;
+    height: 14px;
+    content: '';
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    margin: auto 0;
+    background: #333; }
+
+.form-group {
+  position: relative; }
+
+input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #444;
+  border-radius: 0;
+  outline: none;
+  height: 3rem;
+  width: 100%;
+  font-size: 1rem;
+  margin: 0 0 15px 0;
+  padding: 0;
+  box-shadow: none;
+  box-sizing: content-box;
+  transition: all .2s; }
+  input:not([type]):focus, input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=url]:focus, input[type=time]:focus, input[type=date]:focus, input[type=datetime-local]:focus, input[type=tel]:focus, input[type=number]:focus, input[type=search]:focus, textarea.materialize-textarea:focus {
+    border-bottom: 1px solid #106cc8;
+    box-shadow: 0 1px 0 0 #106cc8; }
+    input:not([type]):focus ~ .input-label, input[type=text]:focus ~ .input-label, input[type=password]:focus ~ .input-label, input[type=email]:focus ~ .input-label, input[type=url]:focus ~ .input-label, input[type=time]:focus ~ .input-label, input[type=date]:focus ~ .input-label, input[type=datetime-local]:focus ~ .input-label, input[type=tel]:focus ~ .input-label, input[type=number]:focus ~ .input-label, input[type=search]:focus ~ .input-label, textarea.materialize-textarea:focus ~ .input-label {
+      -webkit-transform: translateY(-140%) scale(1);
+      transform: translateY(-140%) scale(1);
+      color: #106cc8; }
+
+.input-label {
+  color: #444;
+  position: absolute;
+  top: 0.8rem;
+  left: 0;
+  font-size: 1rem;
+  cursor: text;
+  transition: all .2s;
+  transform: scale(1.25);
+  transform-origin: left bottom; }
