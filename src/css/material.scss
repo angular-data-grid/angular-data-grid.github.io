@@ -2,116 +2,55 @@
 table {
   border-collapse: collapse;
   border-spacing: 0;
-
   width: 100%;
   font-size: 16px;
   margin: 8px;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
 }
-:focus {
-  outline: none;
-}
 .pagination {
-  display: inline-block;
-  box-sizing: border-box;
-}
-.pagination > li{
-  display: inline-block;
-  vertical-align: middle;
-  width: auto;
-  height: 30px;
-  position: relative;
-  border-radius: 2px;
-  box-sizing: border-box;
-}
-.pagination a {
-  color: $textColor;
-  font-size: 16px;
-  padding: 0 10px;
-  line-height: 30px;
-  display: inline-block;
-  text-decoration: none;
-  box-sizing: border-box;
-  .md-ripple-container {
+  transition: background .1s ease-out, color .1s ease-out;
+  & > li{
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    position: relative;
     border-radius: 2px;
   }
-}
-.pagination-none-svg {
-  svg {
-    display: none !important;
+  a {
+    color: $foregroundDefault;
+    font-size: 16px;
+    padding: 0 10px;
+    line-height: 30px;
+    display: inline-block;
+    text-decoration: none;
   }
-  .pagination-prev,
-  .pagination-next,
-  .pagination-first,
-  .pagination-last {
-    a {
-      width: 30px;
-      text-align: center;
-      line-height: 24px;
-    }
-  }
-}
-.pagination-page {
-  transition: background .1s ease-out, color .1s ease-out;
-  &.active {
-    background: $activeColor;
-    a {
-      color: $activeText;
-    }
-  }
-}
-.pagination {
-  transition: background .1s ease-out, color .1s ease-out;
   .active {
-    background: $activeColor;
+    background: $backgroundActive;
     a {
-      color: $activeText;
+      color: $foregroundActive;
+    }
+  }
+  &-page {
+    transition: background .1s ease-out, color .1s ease-out;
+    &.active {
+      background: $backgroundActive;
+      a {
+        color: $foregroundActive;
+      }
     }
   }
 }
 .table {
-  td {
+  td, th {
     border-top: 1px rgba(0,0,0,.12) solid;
     padding: 12px 24px;
   }
-  th {
-    padding: 12px 24px;
-    border-top: 1px rgba(0,0,0,.12) solid;
-  }
 }
-th.sortable {
-  line-height: 24px;
-  svg {
-    height: 18px;
-    width: 18px;
-    margin: 0 4px;
-    transition: fill .25s,-webkit-transform .25s;
-    transition: fill .25s,transform .25s;
-    vertical-align: middle;
-    display: none !important;
-  }
-  padding-right: 31px;
-  &.sort-descent {
-    padding-right: 0;
-    svg {
-      display: inline-block !important;
-    }
-  }
-  &.sort-ascent {
-    padding-right: 0;
-    svg {
-      display: inline-block !important;
-      -webkit-transform: rotate(180deg);
-      transform: rotate(180deg);
-    }
-  }
-}
-
 .items-per-page {
   .active {
-    background: $activeColor;
+    background: $backgroundActive;
     a {
-      color: $activeText;
+      color: $foregroundActive;
     }
   }
   a {
@@ -119,148 +58,68 @@ th.sortable {
   }
 }
 
-.pagination-prev a {
-  font-size: 0;
-  width: 30px;
-  position: relative;
-  &:before {
-    left: 0;
+.pagination-prev,
+.pagination-next,
+.pagination-first,
+.pagination-last {
+  a {
+    font-size: 0;
+    width: 30px;
+    position: relative;
+    &:before {
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+      position: absolute;
+      content: '';
+      display: block;
+      width: 10px;
+      height: 10px;
+      transform-origin:center;
+      border-left: 2px solid $backgroundIcons;
+      border-bottom: 2px solid $backgroundIcons;
+    }
+  }
+}
+.pagination-first,
+.pagination-last {
+  a:after {
+    content: '';
     top: 0;
     bottom: 0;
-    right: 0;
-    margin: auto;
     position: absolute;
-    display: block;
-    width: 10px;
-    height: 10px;
-    content: '';
-    transform-origin:center;
-    border-left: 2px solid $iconsColor;
-    border-bottom: 2px solid $iconsColor;
+    margin: auto 0;
+    width: 2px;
+    height: 14px;
+    background: $backgroundIcons;
+  }
+}
+
+.pagination-prev a {
+  &:before {
     transform: rotate(45deg);
   }
 }
 .pagination-next a {
-  font-size: 0;
-  width: 30px;
-  position: relative;
   &:before {
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    margin: auto;
-    position: absolute;
-    display: block;
-    width: 10px;
-    height: 10px;
-    content: '';
-    transform-origin:center;
-    border-left: 2px solid $iconsColor;
-    border-bottom: 2px solid $iconsColor;
     transform: rotate(-135deg);
   }
 }
 .pagination-first a {
-  font-size: 0;
-  width: 30px;
-  position: relative;
   &:before {
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    margin: auto;
-    position: absolute;
-    display: block;
-    width: 10px;
-    height: 10px;
-    content: '';
-    transform-origin:center;
-    border-left: 2px solid $iconsColor;
-    border-bottom: 2px solid $iconsColor;
     transform: rotate(45deg);
   }
   &:after {
     left: 4px;
-    width: 2px;
-    height: 14px;
-    content: '';
-    top: 0;
-    bottom: 0;
-    position: absolute;
-    margin: auto 0;
-    background: $iconsColor;
   }
 }
 .pagination-last a {
-  font-size: 0;
-  width: 30px;
-  position: relative;
   &:before {
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    margin: auto;
-    position: absolute;
-    display: block;
-    width: 10px;
-    height: 10px;
-    content: '';
-    transform-origin:center;
-    border-left: 2px solid $iconsColor;
-    border-bottom: 2px solid $iconsColor;
     transform: rotate(-135deg);
   }
   &:after {
     right: 4px;
-    width: 2px;
-    height: 14px;
-    content: '';
-    top: 0;
-    bottom: 0;
-    position: absolute;
-    margin: auto 0;
-    background: $iconsColor;
   }
-}
-
-.form-group {
-  position: relative;
-}
-input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea {
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid $textColor;
-  border-radius: 0;
-  outline: none;
-  height: 3rem;
-  width: 100%;
-  font-size: 1rem;
-  margin: 0 0 15px 0;
-  padding: 0;
-  box-shadow: none;
-  box-sizing: content-box;
-  transition: all .2s;
-  &:focus {
-    border-bottom: 1px solid $activeColor;
-    box-shadow: 0 1px 0 0 $activeColor;
-    &~.input-label{
-      -webkit-transform: translateY(-140%) scale(1);
-      transform: translateY(-140%) scale(1);
-      color: $activeColor;
-    }
-  }
-}
-.input-label {
-  color: $textColor;
-  position: absolute;
-  top: 0.8rem;
-  left: 0;
-  font-size: 1rem;
-  cursor: text;
-  transition: all .2s;
-  transform: scale(1.25);
-  transform-origin: left bottom;
 }
