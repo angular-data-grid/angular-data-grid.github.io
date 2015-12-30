@@ -118,6 +118,8 @@
                                         ng-model="status"
                                         ng-change="filter()">
                                     <option value="">All Statuses</option>
+                                    <option ng-repeat="option in statusOptions track by option.value"
+                                            value="{{option.value}}">{{option.text}}</option>
                                 </select>
                             </th>
                             <th sortable='total.value' class="sortable">
@@ -128,18 +130,6 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <!--<tr grid-item>-->
-                            <!--<td>-->
-                                <!--<a ng-bind="item.code"></a>-->
-                            <!--</td>-->
-                            <!--<td ng-bind="item.placed | date:'MM/dd/yyyy'"></td>-->
-                            <!--<td ng-bind="item.purchaseOrderNumber"></td>-->
-                            <!--<td ng-bind="item.statusDisplay"></td>-->
-                            <!--<td ng-bind="item.total.formattedValue"></td>-->
-                            <!--<td>-->
-                                <!--View Order-->
-                            <!--</td>-->
-                        <!--</tr>-->
                         <tr grid-item>
                             <td>
                                 <a ng-bind="item.code"></a>
@@ -178,8 +168,11 @@
 </div>
 </body>
 
-<!--<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
 <script src="dist/pagination.min.js"></script>
 <script src="dist/dataGrid.min.js"></script>
 <script src="demo/demoApp.js"></script>

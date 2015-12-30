@@ -1,6 +1,9 @@
 *, *:before, *:after {
   box-sizing: border-box; }
 
+:focus {
+  outline: none; }
+
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 
@@ -20,7 +23,8 @@ h1 {
   padding-left: 15px; }
 
 .b-change-theme {
-  padding: 20px; }
+  padding: 20px;
+  margin-bottom: 20px; }
   .b-change-theme__link {
     font-size: 16px;
     line-height: 20px;
@@ -61,49 +65,33 @@ h1 {
 th.sortable {
   line-height: 24px;
   position: relative; }
+  th.sortable.sort-descent:before, th.sortable.sort-descent:after, th.sortable.sort-ascent:before, th.sortable.sort-ascent:after {
+    content: '';
+    position: absolute;
+    margin: auto 0; }
+  th.sortable.sort-descent:before, th.sortable.sort-ascent:before {
+    left: 12px;
+    width: 2px;
+    background: #333;
+    height: 12px; }
+  th.sortable.sort-descent:after, th.sortable.sort-ascent:after {
+    left: 9px;
+    border-top: 2px solid #333;
+    border-left: 2px solid #333;
+    transform-origin: center;
+    height: 8px;
+    width: 8px; }
+  th.sortable.sort-descent:before, th.sortable.sort-descent:after {
+    bottom: 0; }
   th.sortable.sort-descent:before {
-    content: '';
-    position: absolute;
-    left: 12px;
-    width: 2px;
-    background: #333;
-    height: 12px;
-    top: 0;
-    bottom: 0;
-    margin: auto 0; }
+    top: 0; }
   th.sortable.sort-descent:after {
-    content: '';
-    position: absolute;
-    left: 9px;
-    border-top: 2px solid #333;
-    border-left: 2px solid #333;
-    transform-origin: center;
     transform: rotate(-135deg);
-    height: 8px;
-    width: 8px;
-    top: 6px;
-    bottom: 0;
-    margin: auto 0; }
+    top: 6px; }
+  th.sortable.sort-ascent:before, th.sortable.sort-ascent:after {
+    top: 0; }
   th.sortable.sort-ascent:before {
-    content: '';
-    position: absolute;
-    left: 12px;
-    width: 2px;
-    background: #333;
-    height: 12px;
-    top: 0;
-    bottom: 0;
-    margin: auto 0; }
+    bottom: 0; }
   th.sortable.sort-ascent:after {
-    content: '';
-    position: absolute;
-    left: 9px;
-    border-top: 2px solid #333;
-    border-left: 2px solid #333;
-    transform-origin: center;
     transform: rotate(45deg);
-    height: 8px;
-    width: 8px;
-    top: 0;
-    bottom: 6px;
-    margin: auto 0; }
+    bottom: 6px; }

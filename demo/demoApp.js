@@ -1,4 +1,5 @@
-angular.module('myApp', ['dataGrid', 'pagination'])
+angular
+    .module('myApp', ['dataGrid', 'pagination', 'ngMaterial'])
     .controller('myAppController', ['$scope', 'myAppFactory', function ($scope, myAppFactory) {
 
         $scope.gridOptions = {
@@ -10,7 +11,6 @@ angular.module('myApp', ['dataGrid', 'pagination'])
     .factory('myAppFactory', function () {
         return {
             getData: function () {
-                //return $http.get(root + '/posts', {});
                 return [{
                     "total": {
                         "currencyIso": "USD",
