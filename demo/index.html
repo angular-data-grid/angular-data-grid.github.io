@@ -3,6 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Flat JSON format for data tables</title>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
     <link rel="stylesheet" href="demo.css">
     <link rel="stylesheet" href="../dist/material.css">
 </head>
@@ -11,140 +12,124 @@
     <div class="container">
         <h1>Angular Data Grid</h1>
         <div class="b-change-theme">
-            <span class="b-change-theme__link _active">Material Design</span>
             <a href="../index.html" class="b-change-theme__link">Bootstrap</a>
+            <span class="b-change-theme__link _active">Material Design</span>
         </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <input type="text" class="form-control order-search-box"
-                               placeholder="Search By Order #"
-                               ng-change="gridActions.filter()"
-                               ng-model="code"
-                               filter-by="code"
-                               filter-type="text">
-                    </div>
+        <div>
+            <div layout-gt-sm="row" class="layout-gt-sm-row">
+                <md-input-container class="md-block flex-gt-sm md-input-has-value" flex-gt-sm="">
+                    <label for="order">Search By Order #</label>
+                    <input ng-model="code"
+                           class="md-input"
+                           ng-change="gridActions.filter()"
+                           id="order"
+                           filter-by="code"
+                           filter-type="text"
+                           aria-invalid="false">
+                </md-input-container>
+                <md-input-container class="md-block flex-gt-sm md-input-has-value" flex-gt-sm="">
+                    <label for="dateFrom">From</label>
+                    <input ng-model="dateFrom"
+                           datepicker-popup="shortDate"
+                           is-open="dateFromOpened"
+                           ng-click="dateFromOpened = true"
+                           class="md-input"
+                           filter-by="placed"
+                           filter-type="dateFrom"
+                           ng-model="dateFrom"
+                           id="dateFrom"
+                           ng-blur="gridActions.filter()"
+                           ng-focus="gridActions.filter()"
+                           max-date="dateTo"
+                           show-weeks="false"
+                           close-text="Close">
+                </md-input-container>
+                <md-input-container class="md-block flex-gt-sm md-input-has-value" flex-gt-sm="">
+                    <label for="dateTo">To</label>
+                    <input type="text"
+                           id="dateTo"
+                           class="md-input"
+                           is-open="dateToOpened"
+                           ng-click="dateToOpened = true"
+                           min-date="dateFrom"
+                           datepicker-popup="shortDate"
+                           filter-by="placed"
+                           filter-type="dateTo"
+                           ng-model="dateTo"
+                           ng-blur="gridActions.filter()"
+                           ng-focus="gridActions.filter()"
+                           show-weeks="false"
+                           close-text="Close"/>
+                </md-input-container>
+            </div>
+            <div grid-data id='test' grid-options="gridOptions" grid-actions="gridActions">
+                <div>
+                    <strong>
+                        found : {{filtered.length}} items
+                    </strong>
                 </div>
-                <div class="col-md-9 buttons-right">
-                    <div class="form-inline margin-bottom-small">
-                        <div class="form-group">
-                            <label class="control-label">From: </label>
+                <pagination max-size="5"
+                            boundary-links="true"
+                            class="pagination-sm"
+                            ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
+                            total-items="paginationOptions.totalItems"
+                            ng-model="paginationOptions.currentPage"
+                            ng-change="reloadGrid()"
+                            items-per-page="paginationOptions.itemsPerPage"></pagination>
+                <table class="table table-hover table-leo table-condensed table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th sortable="code" class="sortable">
+                            Order #
+                        </th>
+                        <th sortable="placed" class="sortable">
+                            Date Placed
+                        </th>
+                        <th sortable="purchaseOrderNumber" class="sortable">
+                            Purchase Order #
+                        </th>
+                        <th class="st-sort-disable th-dropdown">
 
-                            <div class="input-group datepicker">
-                                <input type="text"
-                                       id="dateFrom"
-                                       class="form-control"
-                                       is-open="dateFromOpened"
-                                       ng-click="dateFromOpened = true"
-                                       datepicker-popup="shortDate"
-                                       filter-by="placed"
-                                       filter-type="dateFrom"
-                                       ng-model="dateFrom"
-                                       ng-blur="gridActions.filter()"
-                                       ng-focus="gridActions.filter()"
-                                       max-date="dateTo"
-                                       show-weeks="false"
-                                       close-text="Close"
-                                       placeholder="MM/DD/YY"/>
-                            <span class="input-group-btn">
-                            <label for="dateFrom" class="btn btn-default form-control">
-                                <i class="fa fa-calendar"></i></label>
-                            </span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">To: </label>
-
-                            <div class="input-group datepicker">
-                                <input type="text"
-                                       id="dateTo"
-                                       class="form-control"
-                                       is-open="dateToOpened"
-                                       ng-click="dateToOpened = true"
-                                       min-date="dateFrom"
-                                       datepicker-popup="shortDate"
-                                       filter-by="placed"
-                                       filter-type="dateTo"
-                                       ng-model="dateTo"
-                                       ng-blur="gridActions.filter()"
-                                       ng-focus="gridActions.filter()"
-                                       show-weeks="false"
-                                       close-text="Close"
-                                       placeholder="MM/DD/YY"/>
-                                <span class="input-group-btn">
-                                <label for="dateTo" class="btn btn-default form-control">
-                                    <i class="fa fa-calendar"></i></label>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div ng-show="dateTo || dateFrom" class="buttons-right">
-                        <a href="" ng-click="dateTo = ''; dateFrom = ''; reloadGrid();">Clear Dates</a>
-                    </div>
-                </div>
-                <div grid-data id='test' grid-options="gridOptions" grid-actions="gridActions">
-                    <div class="row margin-bottom-big">
-                        <strong class="col-md-12">
-                            found : {{filtered.length}} items
-                        </strong>
-
-                    </div>
-                    <pagination max-size="5"
-                                boundary-links="true"
-                                class="pagination-sm"
-                                ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
-                                total-items="paginationOptions.totalItems"
-                                ng-model="paginationOptions.currentPage"
-                                ng-change="reloadGrid()"
-                                items-per-page="paginationOptions.itemsPerPage"></pagination>
-                    <table class="table table-hover table-leo table-condensed table-bordered table-striped">
-                        <thead>
-                        <tr>
-                            <th sortable="code" class="sortable">
-                                Order #
-                            </th>
-                            <th sortable="placed" class="sortable">
-                                Date Placed
-                            </th>
-                            <th sortable="purchaseOrderNumber" class="sortable">
-                                Purchase Order #
-                            </th>
-                            <th class="st-sort-disable th-dropdown">
-                                <select class="form-control width-15"
-                                        filter-by="statusDisplay"
-                                        filter-type="select"
-                                        ng-model="status"
-                                        ng-change="filter()">
-                                    <option value="">All Statuses</option>
-                                </select>
-                            </th>
-                            <th sortable='total.value' class="sortable">
-                                Total
-                            </th>
-                            <th class="st-sort-disable">
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr grid-item>
-                            <td>
-                                <a href="{{globalData.contextPath + '/my-account/order/' + item.code}}"
-                                   ng-bind="item.id"></a>
-                            </td>
-                            <td ng-bind="item.placed | date:'MM/dd/yyyy'"></td>
-                            <td ng-bind="item.purchaseOrderNumber"></td>
-                            <td ng-bind="item.statusDisplay"></td>
-                            <td ng-bind="item.total.formattedValue"></td>
-                            <td>
-                                <a class="btn btn-secondary btn-sm"
-                                   href="{{globalData.contextPath + '/my-account/order/' + item.code}}">View
-                                    Order</a>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <div class="row">
+                            <md-input-container>
+                                <label>State</label>
+                                <md-select filter-by="statusDisplay"
+                                           filter-type="select"
+                                           ng-model="status"
+                                           ng-change="filter()">
+                                    <md-option value="">All Statuses</md-option>
+                                    <md-option ng-repeat="option in statusOptions track by option.value"
+                                               value="{{option.value}}">
+                                        {{option.text}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+                        </th>
+                        <th sortable='total.value' class="sortable">
+                            Total
+                        </th>
+                        <th class="st-sort-disable">
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr grid-item>
+                        <td>
+                            <a ng-bind="item.code"></a>
+                        </td>
+                        <td ng-bind="item.placed | date:'MM/dd/yyyy'"></td>
+                        <td ng-bind="item.purchaseOrderNumber"></td>
+                        <td ng-bind="item.statusDisplay"></td>
+                        <td ng-bind="item.total.formattedValue"></td>
+                        <td>
+                            <a class="btn btn-secondary btn-sm"
+                               href="{{globalData.contextPath + '/my-account/order/' + item.code}}">View
+                                Order</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div layout-gt-sm="row" class="layout-gt-sm-row">
+                    <md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
                         <pagination max-size="5"
                                     boundary-links="true"
                                     class="pagination-sm"
@@ -153,17 +138,23 @@
                                     ng-model="paginationOptions.currentPage"
                                     ng-change="reloadGrid()"
                                     items-per-page="paginationOptions.itemsPerPage"></pagination>
+                    </md-input-container>
+                    <md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
                         <div grid-item-per-page="10, 25, 50, 75" class="pagination-sm"></div>
-                    </div>
+                    </md-input-container>
                 </div>
             </div>
         </div>
     </div>
 </div>
+</div>
 </body>
 
-<!--<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
 <script src="../dist/pagination.min.js"></script>
 <script src="../dist/dataGrid.min.js"></script>
 <script src="demoApp.js"></script>
