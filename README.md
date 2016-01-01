@@ -1,14 +1,8 @@
 #Angular Data Grid
 
-
 Light and flexible Data Grid for AngularJS applications. 
 
-```
-var s = "JavaScript syntax highlighting";
-alert(s);
-```
-
-You can use ```data-trigger``` Data Grid module to easily display data in grids with built-in sorting, outer filters and url-synchronization. To use it, you must add grid-data directive to element and pass 2 required parameters grid-options and grid-actions.
+You can use Data Grid module to easily display data in grids with built-in sorting, outer filters and url-synchronization. To use it, you must add grid-data directive to element and pass 2 required parameters grid-options and grid-actions.
 
 grid-options : Name of object in your controller with start options for grid. You must create this object with at least 1 required parameter - data
 
