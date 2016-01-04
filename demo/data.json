@@ -1,0 +1,1157 @@
+[{
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 6100.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$6,100.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Valid",
+  "code": "3747453",
+  "placed": 1417402800000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1100.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,100.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747092",
+  "placed": 1398049200000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1125.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,125.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747116",
+  "placed": 1398135600000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1025.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,025.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747118",
+  "placed": 1398135600000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1080.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,080.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747093",
+  "placed": 1398049200000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1050.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,050.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747099",
+  "placed": 1398049200000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1080.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,080.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747090",
+  "placed": 1397790000000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1135.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,135.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747094",
+  "placed": 1398049200000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 975.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$975.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747119",
+  "placed": 1398135600000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 150.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$150.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747095",
+  "placed": 1398049200000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 975.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$975.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747102",
+  "placed": 1398049200000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1067.85,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,067.85"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747170",
+  "placed": 1400727600000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1067.85,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,067.85"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747174",
+  "placed": 1401073200000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 980.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$980.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747104",
+  "placed": 1398049200000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1091.90,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,091.90"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747260",
+  "placed": 1404788400000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1067.85,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,067.85"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747171",
+  "placed": 1400727600000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1100.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,100.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747086",
+  "placed": 1397790000000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1092.85,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,092.85"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747173",
+  "placed": 1401073200000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1125.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,125.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747084",
+  "placed": 1397790000000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 975.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$975.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747106",
+  "placed": 1398049200000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 950.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$950.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747122",
+  "placed": 1398135600000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1025.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,025.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747100",
+  "placed": 1398049200000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 75.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$75.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Complete",
+  "code": "3747070",
+  "placed": 1394766000000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1122.85,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,122.85"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747164",
+  "placed": 1400727600000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 975.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$975.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747107",
+  "placed": 1398049200000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 50.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$50.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747083",
+  "placed": 1396580400000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 0.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$0.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747081",
+  "placed": 1395975600000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1075.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,075.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747088",
+  "placed": 1397790000000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1100.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,100.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747091",
+  "placed": 1398049200000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1315.45,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,315.45"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747176",
+  "placed": 1401073200000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1050.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,050.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747103",
+  "placed": 1398049200000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1136.90,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,136.90"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747087",
+  "placed": 1397790000000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1005.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,005.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747101",
+  "placed": 1398049200000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1050.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,050.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747098",
+  "placed": 1398049200000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 975.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$975.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747105",
+  "placed": 1398049200000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1073.80,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,073.80"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747165",
+  "placed": 1400727600000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1067.85,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,067.85"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747167",
+  "placed": 1400727600000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1035.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,035.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747125",
+  "placed": 1398135600000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 0.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$0.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747082",
+  "placed": 1395975600000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1125.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,125.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747085",
+  "placed": 1397790000000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1179.75,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,179.75"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747168",
+  "placed": 1400727600000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1067.85,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,067.85"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747172",
+  "placed": 1401073200000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 950.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$950.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747123",
+  "placed": 1398135600000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 950.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$950.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747108",
+  "placed": 1398049200000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1050.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,050.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747117",
+  "placed": 1398135600000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1030.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,030.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747124",
+  "placed": 1398135600000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1475.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,475.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747121",
+  "placed": 1398135600000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 975.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$975.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747120",
+  "placed": 1398135600000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1067.85,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,067.85"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747169",
+  "placed": 1400727600000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1067.85,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,067.85"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747175",
+  "placed": 1401073200000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1067.85,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,067.85"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747166",
+  "placed": 1400727600000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 5.95,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$5.95"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Complete",
+  "code": "3747349",
+  "placed": 1410145200000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 59.50,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$59.50"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Complete",
+  "code": "3747352",
+  "placed": 1410145200000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1125.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,125.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Complete",
+  "code": "3746995",
+  "placed": 1392260400000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 50.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$50.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Complete",
+  "code": "3746996",
+  "placed": 1392260400000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 0.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$0.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747016",
+  "placed": 1392606000000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 61.90,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$61.90"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Valid",
+  "code": "3746998",
+  "placed": 1392260400000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 3125.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$3,125.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3746993",
+  "placed": 1391569200000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 130.95,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$130.95"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3746994",
+  "placed": 1392174000000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 0.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$0.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747015",
+  "placed": 1392606000000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 0.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$0.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747043",
+  "placed": 1392606000000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 0.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$0.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Complete",
+  "code": "3747044",
+  "placed": 1392692400000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 0.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$0.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747014",
+  "placed": 1392606000000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 20.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$20.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747017",
+  "placed": 1392606000000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 50.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$50.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Complete",
+  "code": "3747045",
+  "placed": 1392692400000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 75.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$75.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Complete",
+  "code": "3747046",
+  "placed": 1392692400000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 50.00,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$50.00"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3747054",
+  "placed": 1393470000000
+}, {
+  "total": {
+    "currencyIso": "USD",
+    "priceType": "BUY",
+    "value": 1541.09,
+    "maxQuantity": null,
+    "minQuantity": null,
+    "formattedValue": "$1,541.09"
+  },
+  "guid": null,
+  "managers": null,
+  "purchaseOrderNumber": null,
+  "status": null,
+  "b2bPermissionResults": null,
+  "statusDisplay": "Hold",
+  "code": "3746952",
+  "placed": 1384484400000
+}]
