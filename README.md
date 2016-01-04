@@ -1,20 +1,17 @@
 ##Angular Data Grid
-
 Light and flexible Data Grid for AngularJS apps, with built-in sorting, pagination and filtering options, unified API for client-side and server-side data fetching, 
-seamless synchronization with browser address bar and total freedom in choosing mark-up and styling suitable for your application.
+seamless synchronization with browser address bar and total freedom in mark-up and styling suitable for your application.
 
-Demo Material Design: http://angular-data-grid.github.io/demo/
+Demo Material Design: http://angular-data-grid.github.io/demo/material.html
 Demo Bootstrap: http://angular-data-grid.github.io/
 
 ### Features
-
  - Does not have any hard-coded template so you can choose any mark-up you need, from basic ```<table>``` layout to any ```<div>``` structure.
  - Easily switch between the most popular Bootstrap and Google Material theming, or apply your own CSS theme just by changing several CSS classes.
  - Built-in sync with browser address bar (URL), so you can copy-n-paste sorting/filtering/pagination results URL and open it in other browser / send to anyone - even if pagination / filtering are done on a client-side. 
  - Unlike most part of other Angular DataGrids, we intentionally use non-isolated scope of the directive to maximize flexibility, so it can be easily synchronized with any data changes inside your controller. !With great power comes great responsibility, so be careful to use non-isolated API correctly.
 
 ### Installation
-
  - Using Bower
 
 ```
@@ -23,11 +20,10 @@ bower install angular-data-grid
 
  - Download ZIP archive [from here](https://github.com/angular-data-grid/angular-data-grid.github.io/archive/master.zip)
  
- Then use files from ```dist``` folder.
+> Then use files from ```dist``` folder (see below).
 
 ### Setup
-
-1. Include scripts in you application: dataGrid.min.js and pagination.min.js (include the second one only if you need pagination), like: 
+1. Include scripts in you application: ```dataGrid.min.js``` and ```pagination.min.js``` (include the second one only if you need pagination), like: 
  
  ```javascript
  <script src="components/angular-data-grid/pagination.min.js"></script>
@@ -40,9 +36,15 @@ bower install angular-data-grid
 angular.module('myApp', ['dataGrid', 'pagination'])
  ```
  
-3. Initialize grid with additional options in your controller
+3. Initialize grid with additional options in your controller. To do that, add ```grid-data``` directive to element and pass 2 required parameters ```grid-options``` and ```grid-actions```:
 
-JS:
+```HTML
+
+ <div grid-data id='test' grid-options="gridOptions" grid-actions="gridActions">
+ /// grid mark-up goes here
+ </div>
+ 
+ ```
 
  ```javascript
  $scope.gridOptions = {
@@ -64,19 +66,8 @@ JS:
                 urlSync: true
                 };
 ```
-
-And HTML:
-
-```HTML
-
- <div grid-data id='test' grid-options="gridOptions" grid-actions="gridActions">
- /// grid mark-up goes here
- </div>
- 
- ```
  
 ### Fetch Data
-
  - For client-side pagination/filtering to fetch all data at once: just assign ```gridOptions.data``` to any JSON array object.
  
  - For server side pagination/filtering to fetch data by page: assign ```getData``` method to some function with URL params as 1st parameter and data itself as 2d parameter:
@@ -94,21 +85,55 @@ And HTML:
 ```
        
 ### Sorting
-You can use the sortable directive to have a built in sort feature. You add the attribute sortable to your table headers. This will specify the property name you want to sort by. Also if you add class sortable to your element, sort arrows will be displayed for acs/decs sort directions.
+To enable sorting, just add attribute ```sortable``` to your table headers. This will specify the property name you want to sort by. Also you can add class ```sortable``` to display acs/decs arrows.
 
-You can use  Data Grid module to easily display data in grids with built-in sorting, outer filters and url-synchronization. To use it, you must add grid-data directive to element and pass 2 required parameters ```grid-options``` and ```grid-actions```.
+```HTML
+<th sortable="code" class="sortable">
+    Order #
+</th>
+<th sortable="placed" class="sortable">
+    Date Placed
+</th>
+```
 
+### Basic API
 ```grid-options``` : Name of object in your controller with start options for grid. You must create this object with at least 1 required parameter - data.
 
 ```grid-actions```: Name of object in your controller with functions for updating grid. You can can just pass string or create empty object in controller. Use this object for calling methods of directive: sort, filter, refresh.
 
-Inside the ```grid-data``` directive you can use grid-pagination directive. It's just wrapper of angular-ui pagination directive. You can pass any parameters from pagination directive. Also you can use grid-item-per-page directive and pass into it array of value (f.e. "10, 25, 50"). If you need get size of current displayed items you can use filtered variable.
+Inside the ```grid-data``` directive you can use grid-pagination directive. You can pass any parameters from pagination directive. Also you can use grid-item-per-page directive and pass into it array of value (e.g. "10, 25, 50"). If you need get size of current displayed items you can use filtered variable.
 
 ### Filters
-Data Grid module has 4 types built in filters. To use it, you must add attribute filter-by to any element and pass property name, which you want filtering. Also you need add attribute filter-type with type of filter (text, select, dateFrom, dateTo). After that you need call filter() method in ng-change for text or select inputs and in ng-blur/ng-focus for datepickers. Filters synchronize with URL by ng-model value.
+Data Grid supports 4 built-in types of filters: ```text```, ```select```, ```dateFrom``` and ```dateTo```. To use it, add attribute ```filter-by``` to any element and pass property name, which you want filtering. Also you need add attribute ```filter-type``` with type of filter. After that you need call ```filter()``` method in ```ng-change``` for text or select inputs and in ```ng-blur/ng-focus``` for datepickers. Filters synchronize with URL by ```ng-model``` value.
+
+```HTML
+
+ <input type="text" class="form-control order-search-box"
+                                placeholder="Search By Order #"
+                                ng-change="gridActions.filter()"
+                                ng-model="code"
+                                filter-by="code"
+                                filter-type="text">
+
+```
 
 ### Custom Filters
 If you need use some custom filters (f.e. filter by first letter), you must add filter-by to specify property name, which you want filtering and add ng-model property. Then create in gridOptions.customFilters variable named as it ng-model value and contain filtering function. Filtering function accept items, value, predicate arguments and must return filtered array.
+
+```javascript
+
+ $scope.gridOptions = {
+                data: [],
+                customFilters: {
+                    startFrom: function (items, value, predicate) {
+                        return items.filter(function (item) {
+                            return value && item[predicate] ? !item[predicate].toLowerCase().indexOf(value.toLowerCase()) : true;
+                        });
+                    }
+                }
+                };
+
+```
 
 ### Others
 All filters has parameter disable-url. If you set it as true value - URL-synchronization for this filter will be disabled. If you need use 2 or more grids on page, you must add id to grids, and use grid-id attribute on filters to specify their grid.
