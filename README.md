@@ -10,7 +10,8 @@ Demo Bootstrap: http://angular-data-grid.github.io/
  - Does not have any hard-coded template so you can choose any mark-up you need, from basic ```<table>``` layout to any ```<div>``` structure.
  - Easily switch between the most popular Bootstrap and Google Material theming, or apply your own CSS theme just by changing several CSS classes.
  - Built-in sync with browser address bar (URL), so you can copy-n-paste sorting/filtering/pagination results URL and open it in other browser / send to anyone - even if pagination / filtering are done on a client-side. 
- - Unlike most part of other Angular DataGrids, we intentionally use non-isolated scope of the directive to maximize flexibility, so it can be easily synchronized with any data changes inside your controller. !With great power comes great responsibility, so be careful to use non-isolated API correctly.
+ - Unlike most part of other Angular DataGrids, we intentionally use non-isolated scope of the directive to maximize flexibility, so it can be easily synchronized with any data changes inside your controller. 
+ NOTE! With great power comes great responsibility, so use non-isolated API carefully.
 
 ### Installation
 
@@ -130,12 +131,15 @@ You can optionally use ```pagination``` directive to display paging with previou
 Directive is built on a base of excellent [Angular UI](https://angular-ui.github.io/bootstrap/) component and share extensive API: 
 
 ```HTML
-<pagination max-size="5" boundary-links="true" ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage" total-items="paginationOptions.totalItems"
-ng-model="paginationOptions.currentPage" ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage">
+<pagination max-size="5" boundary-links="true" 
+    ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage" 
+    total-items="paginationOptions.totalItems"
+    ng-model="paginationOptions.currentPage" 
+    ng-change="reloadGrid()" 
+    items-per-page="paginationOptions.itemsPerPage">
 </pagination>
 ```
 
-**Pagination Setting**
 Settings can be provided as attributes in the <pagination> or globally configured through the paginationConfig.
 
  ```ng-change``` : ng-change can be used together with ng-model to call a function whenever the page changes.
@@ -183,7 +187,7 @@ Data Grid supports 4 built-in types of filters: ```text```, ```select```, ```dat
 ```
 
 ### Custom Filters
-If you need use some custom filters (f.e. filter by first letter), you must add filter-by to specify property name, which you want filtering and add ng-model property. Then create in gridOptions.customFilters variable named as it ng-model value and contain filtering function. Filtering function accept items, value, predicate arguments and must return filtered array.
+If you need use some custom filters (f.e. filter by first letter), you must add `filter-by` to specify property name, which you want filtering and add `ng-model` property. Then create in `gridOptions.customFilters` variable named as `ng-model` value and contain filtering function. Filtering function accept items, value, predicate arguments and must return filtered array.
 
 ```javascript
 
