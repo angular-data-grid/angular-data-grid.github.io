@@ -1,0 +1,53 @@
+th:focus,
+a:focus {
+  outline: none; }
+
+table {
+  margin: 0 auto 30px; }
+
+.max-width {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box; }
+
+th md-select {
+  margin: 0; }
+
+.md-datepicker-input {
+  width: 300px; }
+
+.pagination {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  padding: 0;
+  font-size: 0;
+  margin: 10px; }
+  .pagination > li {
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    border: 1px solid #ddd;
+    border-left: 0; }
+    .pagination > li:first-child {
+      border-left: 1px solid #ddd;
+      border-radius: 2px 0 0 2px; }
+    .pagination > li:last-child {
+      border-radius: 0 2px 2px 0; }
+  .pagination a {
+    color: #444;
+    font-size: 13px;
+    padding: 0 10px;
+    line-height: 30px;
+    display: inline-block;
+    text-decoration: none; }
+  .pagination .active {
+    background: #3f51b5;
+    border-color: #3f51b5; }
+    .pagination .active a {
+      color: #fff; }
+  .pagination-page {
+    transition: background .1s ease-out, color .1s ease-out; }
+    .pagination-page.active {
+      background: #3f51b5; }
+      .pagination-page.active a {
+        color: #fff; }
