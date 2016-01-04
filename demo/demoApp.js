@@ -1,6 +1,3 @@
-// TO DO
-// fully separate bootstrap and material related files: css and html
-
 angular.module('myApp', ['ui.bootstrap', 'dataGrid', 'pagination', 'ngMaterial'])
     .controller('myAppController', ['$scope', 'myAppFactory', function ($scope, myAppFactory) {
 

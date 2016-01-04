@@ -33,12 +33,12 @@
     });
 
     gulp.task('sass', function () {
-        gulp.src('./demo/demo.scss')
-            .pipe(sass().on('error', sass.logError))
-            .pipe(gulp.dest('./demo'));
         gulp.src('./demo/material/scss/angular-data-grid.material.scss')
             .pipe(sass().on('error', sass.logError))
             .pipe(gulp.dest('./demo/material/css/'));
+        gulp.src('./demo/bootstrap/scss/angular-data-grid.bootstrap.scss')
+            .pipe(sass().on('error', sass.logError))
+            .pipe(gulp.dest('./demo/bootstrap/css/'));
     });
 
     gulp.task('build', ['js', 'sass']);

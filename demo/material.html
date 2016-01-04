@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>Angular Data Grid</title>
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-blue.min.css">
-    <!--<link rel="stylesheet" href="demo.css">-->
     <link rel="stylesheet" href="material/css/angular-data-grid.material.css">
 </head>
 <body ng-app="myApp" ng-controller="myAppController" ng-cloak>
@@ -77,12 +77,17 @@
                 </div>
             </div>
             <div grid-data id='test' grid-options="gridOptions" grid-actions="gridActions">
-                <div>
-                    <strong>
-                        found : {{filtered.length}} items
-                    </strong>
+                <div class="controls-wrap">
+                    <strong class="items">Found: {{filtered.length}} items</strong>
+                    <grid-pagination max-size="5"
+                                     boundary-links="true"
+                                     class="pagination-sm"
+                                     ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
+                                     total-items="paginationOptions.totalItems"
+                                     ng-model="paginationOptions.currentPage"
+                                     ng-change="reloadGrid()"
+                                     items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
                 </div>
-
                 <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
                     <thead>
                     <tr>
@@ -121,17 +126,7 @@
                     </tr>
                     </tbody>
                 </table>
-                <div layout="row" layout-align="center">
-                    <grid-pagination max-size="5"
-                                boundary-links="true"
-                                class="pagination-sm"
-                                ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
-                                total-items="paginationOptions.totalItems"
-                                ng-model="paginationOptions.currentPage"
-                                ng-change="reloadGrid()"
-                                items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
-                </div>
-                <div layout="row" layout-align="center">
+                <div class="controls-wrap">
                     <grid-pagination max-size="5"
                                 boundary-links="true"
                                 class="pagination-sm"
@@ -142,7 +137,7 @@
                                 previous-text="‹" next-text="›" first-text="«" last-text="»"
                                 items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
                 </div>
-                <div layout="row" layout-align="center">
+                <div class="controls-wrap">
                     <div grid-item-per-page="10, 25, 50, 75"></div>
                 </div>
             </div>
