@@ -1,6 +1,9 @@
 .nopadding {
   padding: 0;
 }
+.table>thead>tr>th {
+  vertical-align: middle;
+}
 .items {
   float: left;
   line-height: 30px;

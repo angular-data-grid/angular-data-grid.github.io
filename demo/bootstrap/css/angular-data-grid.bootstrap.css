@@ -1,0 +1,24 @@
+.nopadding {
+  padding: 0; }
+
+.table > thead > tr > th {
+  vertical-align: middle; }
+
+.items {
+  float: left;
+  line-height: 30px; }
+
+.pagination {
+  margin: 0 auto 20px; }
+
+.sortable:after {
+  font: 14px/1 FontAwesome;
+  content: "\f0dc"; }
+
+.sortable.sort-ascent:after {
+  content: '\f0de';
+  vertical-align: bottom; }
+
+.sortable.sort-descent:after {
+  content: "\f0dd";
+  vertical-align: top; }
