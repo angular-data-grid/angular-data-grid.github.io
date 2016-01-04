@@ -43,8 +43,34 @@ angular.module('myApp', ['dataGrid', 'pagination'])
 
 ```HTML
 
- <div grid-data id='test' grid-options="gridOptions" grid-actions="gridActions">
- /// grid mark-up goes here
+ <div grid-data grid-id='test' grid-options="gridOptions" grid-actions="gridActions">
+                 ///sample table layout goes below, but remember that you can you any mark-up here!
+                 <table class="table">
+                     <thead>
+                     <tr>
+                         <th sortable="code" class="sortable">
+                             Order #
+                         </th>
+                         <th sortable="placed" class="sortable">
+                             Date Placed
+                         </th>
+                         <th sortable="purchaseOrderNumber" class="sortable">
+                             Purchase Order #
+                         </th>
+                         <th sortable='total.value' class="sortable">
+                             Total
+                         </th>
+                     </tr>
+                     </thead>
+                     <tbody>
+                     <tr grid-item>
+                         <td ng-bind="item.code"></td>
+                         <td ng-bind="item.placed | date:'MM/dd/yyyy'"></td>
+                         <td ng-bind="item.purchaseOrderNumber"></td>
+                         <td ng-bind="item.total.formattedValue"></td>
+                     </tr>
+                     </tbody>
+                 </table>
  </div>
  
  ```
