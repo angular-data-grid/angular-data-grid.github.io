@@ -1,0 +1,65 @@
+@import 'angular-data-grid.variables';
+
+th:focus,
+a:focus {
+  outline: none;
+}
+table {
+  margin: 0 auto 30px;
+}
+.max-width {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+th md-select {
+  margin: 0;
+}
+.md-datepicker-input {
+  width: 300px;
+}
+.pagination {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+  padding: 0;
+  font-size: 0;
+  margin: 10px;
+  & > li{
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    border: 1px solid #ddd;
+    border-left: 0;
+    &:first-child {
+      border-left: 1px solid #ddd;
+      border-radius: 2px 0 0 2px;
+    }
+    &:last-child {
+      border-radius: 0 2px 2px 0;
+    }
+  }
+  a {
+    color: $foregroundDefault;
+    font-size: 13px;
+    padding: 0 10px;
+    line-height: 30px;
+    display: inline-block;
+    text-decoration: none;
+  }
+  .active {
+    background: $backgroundActive;
+    border-color: $backgroundActive;
+    a {
+      color: $foregroundActive;
+    }
+  }
+  &-page {
+    transition: background .1s ease-out, color .1s ease-out;
+    &.active {
+      background: $backgroundActive;
+      a {
+        color: $foregroundActive;
+      }
+    }
+  }
+}

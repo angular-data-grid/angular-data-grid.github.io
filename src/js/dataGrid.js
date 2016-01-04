@@ -342,7 +342,7 @@ angular
                             return;
                         }
                         var li = angular.element('<li></li>');
-                        var button = angular.element('<a>' + value + '</a>');
+                        var button = angular.element('<a href>' + value + '</a>');
                         button.attr('ng-click', 'paginationOptions.itemsPerPage = ' + value + '; reloadGrid()');
                         li.attr('ng-class', '{"active" : paginationOptions.itemsPerPage == ' + value + '}');
                         li.append(button);

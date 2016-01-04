@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Angular Data Grid</title>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-blue.min.css">
+    <!--<link rel="stylesheet" href="demo.css">-->
+    <link rel="stylesheet" href="material/css/angular-data-grid.material.css">
+</head>
+<body ng-app="myApp" ng-controller="myAppController" ng-cloak>
+<div layout="column" layout-fill>
+    <md-toolbar>
+        <div class="md-toolbar-tools max-width">
+            <span>Angular Data Grid &mdash; Material Design</span>
+            <span flex></span>
+            <md-menu>
+                <md-button ng-click="$mdOpenMenu($event)">
+                    Change theme
+                </md-button>
+                <md-menu-content>
+                    <md-menu-item>
+                        <a href="../index.html">Bootstrap</a>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <a href="material.html">Material Design</a>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </div>
+    </md-toolbar>
+    <md-content class="layout-padding">
+        <div class="max-width">
+            <div layout-gt-sm="row" class="layout-gt-sm-row">
+                <div class="flex-gt-sm">
+                    <md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
+                        <label for="order">Search By Order #</label>
+                        <input ng-model="code"
+                               class="md-input"
+                               ng-change="gridActions.filter()"
+                               id="order"
+                               filter-by="code"
+                               filter-type="text"
+                               aria-invalid="false">
+                    </md-input-container>
+                </div>
+                <div class="flex-gt-sm" style="padding: 18px 0;">
+                    <md-datepicker ng-model="dateFrom"
+                                   md-placeholder="From"
+                                   is-open="dateFromOpened"
+                                   ng-click="dateFromOpened = true"
+                                   filter-by="placed"
+                                   filter-type="dateFrom"
+                                   md-min-date="minDate"
+                                   id="dateFrom"
+                                   ng-blur="gridActions.filter()"
+                                   ng-focus="gridActions.filter()"
+                                   max-date="dateTo"
+                                   show-weeks="false"
+                                   close-text="Close"></md-datepicker>
+                </div>
+                <div class="flex-gt-sm" style="padding: 18px 0;">
+                    <md-datepicker class="flex-gt-sm"
+                                   ng-model="dateTo"
+                                   md-placeholder="To"
+                                   is-open="dateToOpened"
+                                   ng-click="dateToOpened = true"
+                                   filter-by="placed"
+                                   filter-type="dateTo"
+                                   min-date="dateFrom"
+                                   md-max-date="maxDate"
+                                   id="dateTo"
+                                   ng-blur="gridActions.filter()"
+                                   ng-focus="gridActions.filter()"
+                                   show-weeks="false"
+                                   close-text="Close"></md-datepicker>
+                </div>
+            </div>
+            <div grid-data id='test' grid-options="gridOptions" grid-actions="gridActions">
+                <div>
+                    <strong>
+                        found : {{filtered.length}} items
+                    </strong>
+                </div>
+
+                <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+                    <thead>
+                    <tr>
+                        <th sortable="code" class="sortable">
+                            Order #
+                        </th>
+                        <th class="st-sort-disable th-dropdown">
+                            <md-select filter-by="statusDisplay"
+                                       filter-type="select"
+                                       ng-model="status"
+                                       placeholder="Status"
+                                       ng-change="filter()">
+                                <md-option value="">All Statuses</md-option>
+                                <md-option ng-repeat="option in statusOptions track by option.value"
+                                           value="{{option.value}}">
+                                    {{option.text}}
+                                </md-option>
+                            </md-select>
+                        </th>
+                        <th sortable="placed" class="sortable">
+                            Date Placed
+                        </th>
+                        <th sortable='total.value' class="sortable">
+                            Total
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr grid-item>
+                        <td>
+                            <span ng-bind="item.code"></span>
+                        </td>
+                        <td ng-bind="item.statusDisplay" class="mdl-data-table__cell--non-numeric"></td>
+                        <td ng-bind="item.placed | date:'MM/dd/yyyy'"></td>
+                        <td ng-bind="item.total.formattedValue"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div layout="row" layout-align="center">
+                    <pagination max-size="5"
+                                boundary-links="true"
+                                class="pagination-sm"
+                                ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
+                                total-items="paginationOptions.totalItems"
+                                ng-model="paginationOptions.currentPage"
+                                ng-change="reloadGrid()"
+                                items-per-page="paginationOptions.itemsPerPage"></pagination>
+                </div>
+                <div layout="row" layout-align="center">
+                    <pagination max-size="5"
+                                boundary-links="true"
+                                class="pagination-sm"
+                                ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
+                                total-items="paginationOptions.totalItems"
+                                ng-model="paginationOptions.currentPage"
+                                ng-change="reloadGrid()"
+                                previous-text="‹" next-text="›" first-text="«" last-text="»"
+                                items-per-page="paginationOptions.itemsPerPage"></pagination>
+                </div>
+                <div layout="row" layout-align="center">
+                    <div grid-item-per-page="10, 25, 50, 75"></div>
+                </div>
+            </div>
+        </div>
+    </md-content>
+</div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+<script src="../dist/pagination.min.js"></script>
+<script src="../dist/dataGrid.min.js"></script>
+<script src="demoApp.js"></script>
+
+</html>

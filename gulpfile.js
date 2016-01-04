@@ -22,7 +22,7 @@
     }
 
     gulp.task('js', function () {
-        gulp.src(['./src/**/*.js', '!./src/js/demoApp.js'])
+        gulp.src(['./src/**/*.js'])
             .pipe(rename({dirname: ''}))
             .pipe(gulp.dest('./dist'))
             .pipe(uglify())
@@ -30,17 +30,15 @@
                 suffix: ".min"
             }))
             .pipe(gulp.dest('./dist'));
-        gulp.src('./src/js/demoApp.js')
-            .pipe(gulp.dest('./demo'));
     });
 
     gulp.task('sass', function () {
-        gulp.src('./src/css/demo.scss')
+        gulp.src('./demo/demo.scss')
             .pipe(sass().on('error', sass.logError))
             .pipe(gulp.dest('./demo'));
-        gulp.src('./src/css/material.scss')
+        gulp.src('./demo/material/scss/angular-data-grid.material.scss')
             .pipe(sass().on('error', sass.logError))
-            .pipe(gulp.dest('./dist'));
+            .pipe(gulp.dest('./demo/material/css/'));
     });
 
     gulp.task('build', ['js', 'sass']);
@@ -52,7 +50,7 @@
             browserSync.reload(event.path);
         });
 
-        gulp.watch(['./src/**/*.scss'], function (event) {
+        gulp.watch(['./**/*.scss'], function (event) {
             gulp.start('sass');
             browserSync.reload(event.path);
         });
