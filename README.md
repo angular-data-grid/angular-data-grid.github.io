@@ -129,18 +129,13 @@ $scope.gridOptions = {
 You can optionally use ```pagination``` directive to display paging with previous/next and first/last controls. 
 Directive is built on a base of excellent [Angular UI](https://angular-ui.github.io/bootstrap/) component and share extensive API: 
 
-```HTML 
-
-  <pagination max-size="5"
-                                    boundary-links="true"
-                                    ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
-                                    total-items="paginationOptions.totalItems"
-                                    ng-model="paginationOptions.currentPage"
-                                    ng-change="reloadGrid()"
-                                    items-per-page="paginationOptions.itemsPerPage"></pagination>
+```HTML
+<pagination max-size="5" boundary-links="true" ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage" total-items="paginationOptions.totalItems"
+ng-model="paginationOptions.currentPage" ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage">
+</pagination>
 ```
 
-*Pagination Settings*
+**Pagination Setting**
 Settings can be provided as attributes in the <pagination> or globally configured through the paginationConfig.
 
  ```ng-change``` : ng-change can be used together with ng-model to call a function whenever the page changes.
