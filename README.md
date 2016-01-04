@@ -1,16 +1,29 @@
 ##Angular Data Grid
 
-Light and flexible Data Grid for AngularJS, with built-in sorting, pagination and filtering options, unified API for client-side and server-side data fetching, 
+Light and flexible Data Grid for AngularJS apps, with built-in sorting, pagination and filtering options, unified API for client-side and server-side data fetching, 
 seamless synchronization with browser address bar and total freedom in choosing mark-up and styling suitable for your application.
 
-Samples: http://angular-data-grid.github.io/
+Demo Material Design: http://angular-data-grid.github.io/demo/
+Demo Bootstrap: http://angular-data-grid.github.io/
 
 ### Features
 
  - Does not have any hard-coded template so you can choose any mark-up you need, from basic ```<table>``` layout to any ```<div>``` structure.
  - Easily switch between the most popular Bootstrap and Google Material theming, or apply your own CSS theme just by changing several CSS classes.
- - Built-in sync with browser address bar (URL), so you copy-n-paste sorting/filtering/pagination results URL and open it in other browser / send to anyone - even if pagination / filtering are done on a client-side. 
- - Unlike most part of other Angular DataGrids, we intentionally use non-isolated scope of the directive, so it can be easily synchronized with any data changes inside your controller. !With great power comes great responsibility, so be careful to use non-isolated API correctly.
+ - Built-in sync with browser address bar (URL), so you can copy-n-paste sorting/filtering/pagination results URL and open it in other browser / send to anyone - even if pagination / filtering are done on a client-side. 
+ - Unlike most part of other Angular DataGrids, we intentionally use non-isolated scope of the directive to maximize flexibility, so it can be easily synchronized with any data changes inside your controller. !With great power comes great responsibility, so be careful to use non-isolated API correctly.
+
+### Installation
+
+ - Using Bower
+
+```
+bower install angular-data-grid
+```
+
+ - Download ZIP archive [from here](https://github.com/angular-data-grid/angular-data-grid.github.io/archive/master.zip)
+ 
+ Then use files from ```dist``` folder.
 
 ### Setup
 
@@ -27,7 +40,9 @@ Samples: http://angular-data-grid.github.io/
 angular.module('myApp', ['dataGrid', 'pagination'])
  ```
  
-3. Initialize grid with additional options in your controller, like:
+3. Initialize grid with additional options in your controller
+
+JS:
 
  ```javascript
  $scope.gridOptions = {
@@ -48,6 +63,34 @@ angular.module('myApp', ['dataGrid', 'pagination'])
                 //optional parameter - URL synchronization
                 urlSync: true
                 };
+```
+
+And HTML:
+
+```
+
+ <div grid-data id='test' grid-options="gridOptions" grid-actions="gridActions">
+ /// grid mark-up goes here
+ </div>
+ 
+ ```
+ 
+### Fetch Data
+
+ - For client-side pagination/filtering to fetch all data at once: just assign ```gridOptions.data``` to any JSON array object.
+ 
+ - For server side pagination/filtering to fetch data by page: assign ```getData``` method to some function with URL params as 1st parameter and data itself as 2d parameter:
+ 
+ ```javascript
+    $scope.gridOptions = {
+             getData: getServerData,
+         };
+    function getServerData(params, callback) {
+           $http.get(contextPath + '/some/list' + params).then(function (response) {
+           var data = response.data.some,
+           totalItems = response.data.someCount;
+           callback(data, totalItems);
+           };       
 ```
        
 ### Sorting
