@@ -204,7 +204,7 @@ angular
         forceEllipses: false
     })
 
-    .directive('pagination', ['$parse', 'paginationConfig', function ($parse, paginationConfig) {
+    .directive('gridPagination', ['$parse', 'paginationConfig', function ($parse, paginationConfig) {
         return {
             scope: {
                 totalItems: '=',
@@ -214,7 +214,7 @@ angular
                 lastText: '@',
                 ngDisabled: '='
             },
-            require: ['pagination', '?ngModel'],
+            require: ['gridPagination', '?ngModel'],
             controller: 'PaginationController',
             controllerAs: 'pagination',
             templateUrl: function (element, attrs) {

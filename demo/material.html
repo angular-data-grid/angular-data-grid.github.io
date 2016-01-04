@@ -122,17 +122,17 @@
                     </tbody>
                 </table>
                 <div layout="row" layout-align="center">
-                    <pagination max-size="5"
+                    <grid-pagination max-size="5"
                                 boundary-links="true"
                                 class="pagination-sm"
                                 ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
                                 total-items="paginationOptions.totalItems"
                                 ng-model="paginationOptions.currentPage"
                                 ng-change="reloadGrid()"
-                                items-per-page="paginationOptions.itemsPerPage"></pagination>
+                                items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
                 </div>
                 <div layout="row" layout-align="center">
-                    <pagination max-size="5"
+                    <grid-pagination max-size="5"
                                 boundary-links="true"
                                 class="pagination-sm"
                                 ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
@@ -140,7 +140,7 @@
                                 ng-model="paginationOptions.currentPage"
                                 ng-change="reloadGrid()"
                                 previous-text="‹" next-text="›" first-text="«" last-text="»"
-                                items-per-page="paginationOptions.itemsPerPage"></pagination>
+                                items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
                 </div>
                 <div layout="row" layout-align="center">
                     <div grid-item-per-page="10, 25, 50, 75"></div>
@@ -152,6 +152,7 @@
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
