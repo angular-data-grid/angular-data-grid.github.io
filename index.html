@@ -8,16 +8,16 @@
     <link rel="stylesheet" href="demo/bootstrap/css/angular-data-grid.bootstrap.css">
 </head>
 <body ng-app="myApp" ng-controller="myAppController" ng-cloak>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
     <div class="container">
-        <span class="navbar-brand">Angular Data Grid &mdash; Bootstrap</span>
+        <span class="navbar-brand">Angular Data Grid &mdash; Bootstrap Design</span>
         <ul class="nav navbar-nav pull-right">
             <li class="dropdown" style="position: relative;">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                   aria-expanded="false">Change theme <span class="caret"></span></a>
+                   aria-expanded="false">Change Theme <span class="caret"></span></a>
                 <ul class="dropdown-menu dropdown-menu-right">
                     <li>
-                        <a href="index.html">Bootstrap</a>
+                        <a href="index.html">Bootstrap Design</a>
                     </li>
                     <li>
                         <a href="demo/material.html">Material Design</a>
@@ -28,8 +28,9 @@
     </div>
 </nav>
 <div class="container">
+    <h2>External Filters</h2>
     <div class="row">
-        <div class="col-md-8 col-md-offset-2  nopadding">
+        <div>
             <div class="col-md-4">
                 <input type="text" class="form-control order-search-box"
                        placeholder="Search By Order #"
@@ -94,8 +95,9 @@
             </div>
         </div>
     </div>
+    <hr>
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12">
             <div grid-data id='test' grid-options="gridOptions" grid-actions="gridActions">
                 <div class="text-right">
                     <strong class="items">Found: {{filtered.length}} items</strong>
@@ -108,7 +110,7 @@
                                      ng-change="reloadGrid()"
                                      items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
                 </div>
-                <table class="table table-hover table-leo table-condensed table-bordered table-striped">
+                <table class="table table-bordered table-striped">
                     <thead>
                     <tr>
                         <th sortable="code" class="sortable">
@@ -136,10 +138,8 @@
                     </thead>
                     <tbody>
                     <tr grid-item>
-                        <td>
-                            <span ng-bind="item.code"></span>
-                        </td>
-                        <td ng-bind="item.placed | date:'MM/dd/yyyy'"></td>
+                        <td width="30%" ng-bind="item.code"></td>
+                        <td width="30%" ng-bind="item.placed | date:'MM/dd/yyyy'"></td>
                         <td ng-bind="item.statusDisplay"></td>
                         <td ng-bind="item.total.formattedValue"></td>
                     </tr>
