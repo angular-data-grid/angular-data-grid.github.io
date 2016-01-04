@@ -3,6 +3,7 @@ Light and flexible Data Grid for AngularJS apps, with built-in sorting, paginati
 seamless synchronization with browser address bar and total freedom in mark-up and styling suitable for your application.
 
 Demo Material Design: http://angular-data-grid.github.io/demo/material.html
+
 Demo Bootstrap: http://angular-data-grid.github.io/
 
 ### Features
@@ -12,15 +13,16 @@ Demo Bootstrap: http://angular-data-grid.github.io/
  - Unlike most part of other Angular DataGrids, we intentionally use non-isolated scope of the directive to maximize flexibility, so it can be easily synchronized with any data changes inside your controller. !With great power comes great responsibility, so be careful to use non-isolated API correctly.
 
 ### Installation
- - Using Bower
+
+Using Bower:
 
 ```
 bower install angular-data-grid
 ```
 
- - Download ZIP archive [from here](https://github.com/angular-data-grid/angular-data-grid.github.io/archive/master.zip)
+Using direct download: get ZIP archive [from here](https://github.com/angular-data-grid/angular-data-grid.github.io/archive/master.zip)
  
-> Then use files from ```dist``` folder (see below).
+Then use files from ```dist``` folder (see below).
 
 ### Setup
 1. Include scripts in you application: ```dataGrid.min.js``` and ```pagination.min.js``` (include the second one only if you need pagination), like: 
@@ -61,14 +63,29 @@ angular.module('myApp', ['dataGrid', 'pagination'])
                             return value && item[predicate] ? !item[predicate].toLowerCase().indexOf(value.toLowerCase()) : true;
                         });
                     }
-                },
-                //optional parameter - URL synchronization
-                urlSync: true
+                }
                 };
 ```
+
+### Basic API
+
+1. ```grid-options```: object in your controller with start options for grid. You must create this object with at least 1 required parameter - data.
+2. ```grid-actions```:  object in your controller with functions for updating grid. You can  pass string or create empty object in controller. 
+Use this object for calling methods of directive: ```sort()```, ```filter()```, ```refresh()```.
+3. Inside ```grid-data``` directive you can use ```pagination``` directive.
+4. Also you can use ```grid-item-per-page``` directive and pass into it array of values (e.g. 10, 25, 50). 
+5. If you need get size of current displayed items you can use ```{{filtered.length}}``` value.
  
 ### Fetch Data
  - For client-side pagination/filtering to fetch all data at once: just assign ```gridOptions.data``` to any JSON array object.
+ 
+ ```javascript 
+ 
+ $scope.gridOptions = {
+                 data: [], //required parameter - array with data
+                 };
+ 
+ ```
  
  - For server side pagination/filtering to fetch data by page: assign ```getData``` method to some function with URL params as 1st parameter and data itself as 2d parameter:
  
@@ -96,12 +113,65 @@ To enable sorting, just add attribute ```sortable``` to your table headers. This
 </th>
 ```
 
-### Basic API
-```grid-options``` : Name of object in your controller with start options for grid. You must create this object with at least 1 required parameter - data.
+```javascript
+$scope.gridOptions = {
+                data: [], //required parameter - array with data
+                //optional parameter - start sort options
+                sort: {
+                    predicate: 'companyName',
+                    direction: 'asc'
+                }
+                };
+```
 
-```grid-actions```: Name of object in your controller with functions for updating grid. You can can just pass string or create empty object in controller. Use this object for calling methods of directive: sort, filter, refresh.
+### Pagination
 
-Inside the ```grid-data``` directive you can use grid-pagination directive. You can pass any parameters from pagination directive. Also you can use grid-item-per-page directive and pass into it array of value (e.g. "10, 25, 50"). If you need get size of current displayed items you can use filtered variable.
+You can optionally use ```pagination``` directive to display paging with previous/next and first/last controls. 
+Directive is built on a base of excellent [Angular UI](https://angular-ui.github.io/bootstrap/) component and share extensive API: 
+
+```HTML 
+
+  <pagination max-size="5"
+                                    boundary-links="true"
+                                    ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
+                                    total-items="paginationOptions.totalItems"
+                                    ng-model="paginationOptions.currentPage"
+                                    ng-change="reloadGrid()"
+                                    items-per-page="paginationOptions.itemsPerPage"></pagination>
+```
+
+*Pagination Settings*
+Settings can be provided as attributes in the <pagination> or globally configured through the paginationConfig.
+
+ ```ng-change``` : ng-change can be used together with ng-model to call a function whenever the page changes.
+
+ ```ng-model```  : Current page number. First page is 1.
+
+ ```ng-disabled```  : Used to disable the pagination component
+
+ ```total-items```  : Total number of items in all pages.
+
+ ```items-per-page```  (Defaults: 10) : Maximum number of items per page. A value less than one indicates all items on one page.
+
+ ```max-size```  (Defaults: null) : Limit number for pagination size.
+
+ ```num-pages``` readonly (Defaults: angular.noop) : An optional expression assigned the total number of pages to display.
+
+ ```rotate``` (Defaults: true) : Whether to keep current page in the middle of the visible ones.
+
+ ```direction-links``` (Default: true) : Whether to display Previous / Next buttons.
+
+ ```previous-text``` (Default: 'Previous') : Text for Previous button.
+
+ ```next-text``` (Default: 'Next') : Text for Next button.
+
+ ```boundary-links``` (Default: false) : Whether to display First / Last buttons.
+
+ ```first-text``` (Default: 'First') : Text for First button.
+
+ ```last-text``` (Default: 'Last') : Text for Last button.
+
+ ```template-url``` (Default: 'template/pagination/pagination.html') : Override the template for the component with a custom provided template
 
 ### Filters
 Data Grid supports 4 built-in types of filters: ```text```, ```select```, ```dateFrom``` and ```dateTo```. To use it, add attribute ```filter-by``` to any element and pass property name, which you want filtering. Also you need add attribute ```filter-type``` with type of filter. After that you need call ```filter()``` method in ```ng-change``` for text or select inputs and in ```ng-blur/ng-focus``` for datepickers. Filters synchronize with URL by ```ng-model``` value.
@@ -136,4 +206,5 @@ If you need use some custom filters (f.e. filter by first letter), you must add 
 ```
 
 ### Others
-All filters has parameter disable-url. If you set it as true value - URL-synchronization for this filter will be disabled. If you need use 2 or more grids on page, you must add id to grids, and use grid-id attribute on filters to specify their grid.
+All filters have parameter disable-url. If you set it as ```true```, URL-synchronization for this filter will be disabled. 
+If you need use 2 or more grids on page, you must add id to grids, and use ```grid-id``` attribute on filters to specify their grid.
