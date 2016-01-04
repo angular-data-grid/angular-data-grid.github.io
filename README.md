@@ -67,7 +67,7 @@ JS:
 
 And HTML:
 
-```
+```HTML
 
  <div grid-data id='test' grid-options="gridOptions" grid-actions="gridActions">
  /// grid mark-up goes here
