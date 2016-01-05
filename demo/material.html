@@ -3,20 +3,25 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Angular Data Grid</title>
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <link rel="stylesheet" href="https://cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.1-master-a687bfc/angular-material.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-blue.min.css">
     <link rel="stylesheet" href="material/css/angular-data-grid.material.css">
 </head>
 <body ng-app="myApp" ng-controller="myAppController" ng-cloak>
 <div layout="column" layout-fill>
-    <md-toolbar>
-        <div class="md-toolbar-tools max-width">
+    <md-toolbar layout="row" layout-align="center">
+        <div class="md-toolbar-tools"  flex-lg="60" flex-md="80" flex-sm="100">
             <span>Angular Data Grid &mdash; Material Design</span>
             <span flex></span>
-            <md-menu>
+            <md-menu md-position-mode="target-right target">
                 <md-button ng-click="$mdOpenMenu($event)">
+                    <span layout="row" layout-align="center center">
                     Change theme
+                    <i class="material-icons">arrow_drop_down</i>
+                    </span>
                 </md-button>
                 <md-menu-content>
                     <md-menu-item>
@@ -29,12 +34,17 @@
             </md-menu>
         </div>
     </md-toolbar>
-    <md-content class="layout-padding">
-        <div class="max-width">
-            <div layout-gt-sm="row" class="layout-gt-sm-row">
-                <div class="flex-gt-sm">
-                    <md-input-container class="md-block flex-gt-sm" flex-gt-sm="">
-                        <label for="order">Search By Order #</label>
+    <md-content layout-padding layout="row" layout-align="center">
+        <div flex-lg="60" flex-md="80" flex-xs="100">
+            <div>
+                <h3 class="layout-padding">Angular Data Grid sample using out-of-box Angular Material styling</h3>
+                <p class="layout-padding">Features enabled: sorting, filtering (using both in-grid and external controls), pagination and item-per-page functionality. Angular Material Datepickers used for date controls, although you can use any other framework / plugins.<a href="https://github.com/angular-data-grid/angular-data-grid.github.io" target="_blank">Project GitHub</a></p>
+            </div>
+            <hr class="layout-margin">
+            <div layout-gt-sm="row" layout-sm="column" layout-align="center" class="layout-padding">
+                <div class="controls" flex-gt-sm="33" flex-sm="100" layout="row" layout-align="center start">
+                    <md-input-container class="md-block flex-gt-xs flex-xs">
+                        <label for="order" class="md-no-float">Search By Order #</label>
                         <input ng-model="code"
                                class="md-input"
                                ng-change="gridActions.filter()"
@@ -44,8 +54,10 @@
                                aria-invalid="false">
                     </md-input-container>
                 </div>
-                <div class="flex-gt-sm" style="padding: 18px 0;">
+                <div class="controls" flex-gt-sm="33" flex-sm="100" layout="column" layout-align="start stretch">
+                    <label class="md-datepicker-label">From</label>
                     <md-datepicker ng-model="dateFrom"
+                                   flex="100"
                                    md-placeholder="MM/DD/YYYY"
                                    is-open="dateFromOpened"
                                    ng-click="dateFromOpened = true"
@@ -53,8 +65,10 @@
                                    filter-type="dateFrom"
                                    ng-change="gridActions.filter()"></md-datepicker>
                 </div>
-                <div class="flex-gt-sm" style="padding: 18px 0;">
+                <div class="controls" flex-gt-sm="33" flex-sm="100" layout="column" layout-align="start stretch">
+                    <label class="md-datepicker-label">To</label>
                     <md-datepicker ng-model="dateTo"
+                                   flex="100"
                                    md-placeholder="MM/DD/YYYY"
                                    is-open="dateToOpened"
                                    ng-click="dateToOpened = true"
@@ -63,9 +77,66 @@
                                    ng-change="gridActions.filter()"></md-datepicker>
                 </div>
             </div>
+            <hr class="layout-margin">
             <div grid-data id='test' grid-options="gridOptions" grid-actions="gridActions">
-                <div class="controls-wrap clearfix">
-                    <strong class="items">Found: {{filtered.length}} items</strong>
+                <div layout-gt-xs="row" layout-xs="column" layout-align="center" class="layout-padding">
+                    <div flex-gt-xs="25" flex-xs="100" layout="row" layout-align="start center">
+                        <strong>Found: {{filtered.length}} items</strong>
+                    </div>
+                    <div flex-gt-xs="75" flex-xs="100">
+                        <div layout="row" layout-align="end center">
+                            <grid-pagination max-size="5"
+                                             boundary-links="true"
+                                             class="pagination-sm"
+                                             ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
+                                             total-items="paginationOptions.totalItems"
+                                             ng-model="paginationOptions.currentPage"
+                                             ng-change="reloadGrid()"
+                                             items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                        </div>
+                    </div>
+                </div>
+                <div class="layout-padding">
+                    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+                        <thead>
+                        <tr>
+                            <th sortable="code" class="sortable mdl-data-table__cell--non-numeric" >
+                                Order #
+                            </th>
+                            <th class="st-sort-disable th-dropdown">
+                                <md-select filter-by="statusDisplay"
+                                           filter-type="select"
+                                           ng-model="status"
+                                           placeholder="Status"
+                                           ng-change="filter()">
+                                    <md-option value="">All Statuses</md-option>
+                                    <md-option ng-repeat="option in statusOptions track by option.value"
+                                               value="{{option.value}}">
+                                        {{option.text}}
+                                    </md-option>
+                                </md-select>
+                            </th>
+                            <th sortable="placed" class="sortable">
+                                Date Placed
+                            </th>
+                            <th sortable='total.value' class="sortable">
+                                Total
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr grid-item>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <span ng-bind="item.code"></span>
+                            </td>
+                            <td ng-bind="item.statusDisplay"></td>
+                            <td ng-bind="item.placed | date:'MM/dd/yyyy'"></td>
+                            <td ng-bind="item.total.formattedValue"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div layout="row" layout-align="end center" class="layout-padding">
                     <grid-pagination max-size="5"
                                      boundary-links="true"
                                      class="pagination-sm"
@@ -73,61 +144,14 @@
                                      total-items="paginationOptions.totalItems"
                                      ng-model="paginationOptions.currentPage"
                                      ng-change="reloadGrid()"
+                                     previous-text="‹" next-text="›" first-text="«" last-text="»"
                                      items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
                 </div>
-                <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-                    <thead>
-                    <tr>
-                        <th sortable="code" class="sortable">
-                            Order #
-                        </th>
-                        <th class="st-sort-disable th-dropdown">
-                            <md-select filter-by="statusDisplay"
-                                       filter-type="select"
-                                       ng-model="status"
-                                       placeholder="Status"
-                                       ng-change="filter()">
-                                <md-option value="">All Statuses</md-option>
-                                <md-option ng-repeat="option in statusOptions track by option.value"
-                                           value="{{option.value}}">
-                                    {{option.text}}
-                                </md-option>
-                            </md-select>
-                        </th>
-                        <th sortable="placed" class="sortable">
-                            Date Placed
-                        </th>
-                        <th sortable='total.value' class="sortable">
-                            Total
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr grid-item>
-                        <td>
-                            <span ng-bind="item.code"></span>
-                        </td>
-                        <td ng-bind="item.statusDisplay" class="mdl-data-table__cell--non-numeric"></td>
-                        <td ng-bind="item.placed | date:'MM/dd/yyyy'"></td>
-                        <td ng-bind="item.total.formattedValue"></td>
-                    </tr>
-                    </tbody>
-                </table>
-                <div class="controls-wrap">
-                    <grid-pagination max-size="5"
-                                boundary-links="true"
-                                class="pagination-sm"
-                                ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
-                                total-items="paginationOptions.totalItems"
-                                ng-model="paginationOptions.currentPage"
-                                ng-change="reloadGrid()"
-                                previous-text="‹" next-text="›" first-text="«" last-text="»"
-                                items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
-                </div>
-                <div class="controls-wrap">
+                <div layout="row" layout-align="end center" class="layout-padding">
                     <div grid-item-per-page="10, 25, 50, 75"></div>
                 </div>
             </div>
+            <hr class="layout-margin">
         </div>
     </md-content>
 </div>
