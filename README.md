@@ -3,6 +3,7 @@ Light and flexible Data Grid for AngularJS apps, with built-in sorting, paginati
 seamless synchronization with browser address bar and total freedom in mark-up and styling suitable for your application.
 
 Demo Bootstrap: http://angular-data-grid.github.io/
+
 Demo Material: http://angular-data-grid.github.io/demo/material.html
 
 ### Features
