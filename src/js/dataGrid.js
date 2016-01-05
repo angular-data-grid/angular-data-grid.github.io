@@ -327,32 +327,6 @@
                 }
             }
         }])
-        .directive('gridItemPerPage', ['$compile', function ($compile) {
-            return {
-                replace: true,
-                template: '<ul class="pagination"></ul>',
-                link: function (scope, element, attrs) {
-                    if (attrs.gridItemPerPage) {
-                        var values = attrs.gridItemPerPage.replace(/ /g, '').split(',');
-                        values.forEach(function (value) {
-                            if (Number(value)) {
-                                value = Number(value);
-                            } else {
-                                return;
-                            }
-                            var li = angular.element('<li></li>');
-                            var button = angular.element('<a href>' + value + '</a>');
-                            button.attr('ng-click', 'paginationOptions.itemsPerPage = ' + value + '; reloadGrid()');
-                            li.attr('ng-class', '{"active" : paginationOptions.itemsPerPage == ' + value + '}');
-                            li.append(button);
-                            element.append(li);
-                            element.append(' ');
-                            $compile(li)(scope);
-                        });
-                    }
-                }
-            }
-        }])
         .factory('filtersFactory', function () {
             function selectFilter(items, value, predicate) {
                 return items.filter(function (item) {

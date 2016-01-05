@@ -38,14 +38,11 @@
             $scope.$watch('_gridOptions.data', function (newValue) {
                 if (newValue && newValue.length) {
                     $scope.filtered = angular.copy($scope._gridOptions.data);
-
                     $scope.filters.forEach(function (filter) {
                         if (filter.filterType === 'select') {
-                            //console.dir(filter);
                             $scope[filter.model + 'Options'] = generateOptions($scope.filtered, filter.filterBy);
                         }
                     });
-
 
                     if ($scope.urlSync) {
                         parseUrl($location.path());
@@ -327,32 +324,6 @@
                     $scope.sorting = sorting;
                     $scope.rows = rows;
                     $scope.filters = filters;
-                }
-            }
-        }])
-        .directive('gridItemPerPage', ['$compile', function ($compile) {
-            return {
-                replace: true,
-                template: '<ul class="pagination"></ul>',
-                link: function (scope, element, attrs) {
-                    if (attrs.gridItemPerPage) {
-                        var values = attrs.gridItemPerPage.replace(/ /g, '').split(',');
-                        values.forEach(function (value) {
-                            if (Number(value)) {
-                                value = Number(value);
-                            } else {
-                                return;
-                            }
-                            var li = angular.element('<li></li>');
-                            var button = angular.element('<a href>' + value + '</a>');
-                            button.attr('ng-click', 'paginationOptions.itemsPerPage = ' + value + '; reloadGrid()');
-                            li.attr('ng-class', '{"active" : paginationOptions.itemsPerPage == ' + value + '}');
-                            li.append(button);
-                            element.append(li);
-                            element.append(' ');
-                            $compile(li)(scope);
-                        });
-                    }
                 }
             }
         }])

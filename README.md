@@ -2,9 +2,8 @@
 Light and flexible Data Grid for AngularJS apps, with built-in sorting, pagination and filtering options, unified API for client-side and server-side data fetching, 
 seamless synchronization with browser address bar and total freedom in mark-up and styling suitable for your application.
 
-Demo Material Design: http://angular-data-grid.github.io/demo/material.html
-
 Demo Bootstrap: http://angular-data-grid.github.io/
+Demo Material: http://angular-data-grid.github.io/demo/material.html
 
 ### Features
  - Does not have any hard-coded template so you can choose any mark-up you need, from basic `<table>` layout to any `<div>` structure.
@@ -15,13 +14,9 @@ Demo Bootstrap: http://angular-data-grid.github.io/
 
 ### Installation
 
-Using Bower:
+Using Bower: `bower install angular-data-grid`
 
-```
-bower install angular-data-grid
-```
-
-Using direct download: get ZIP archive [from here](https://github.com/angular-data-grid/angular-data-grid.github.io/archive/master.zip)
+Direct download: get ZIP archive [from here](https://github.com/angular-data-grid/angular-data-grid.github.io/archive/master.zip)
  
 Then use files from *dist* folder (see below).
 
@@ -100,8 +95,7 @@ angular.module('myApp', ['dataGrid', 'pagination'])
 2. `grid-actions`:  object in your controller with functions for updating grid. You can  pass string or create empty object in controller. 
 Use this object for calling methods of directive: `sort()`, `filter()`, `refresh()`.
 3. Inside `grid-data` directive you can use `pagination` directive.
-4. Also you can use `grid-item-per-page` directive and pass into it array of values (e.g. 10, 25, 50). 
-5. If you need get size of current displayed items you can use `{{filtered.length}}` value.
+4. If you need get size of current displayed items you can use `{{filtered.length}}` value.
  
 ### Fetch Data
  - For client-side pagination/filtering to fetch all data at once: just assign `gridOptions.data` to any JSON array object.
