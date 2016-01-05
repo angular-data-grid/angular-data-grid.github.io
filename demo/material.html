@@ -46,34 +46,21 @@
                 </div>
                 <div class="flex-gt-sm" style="padding: 18px 0;">
                     <md-datepicker ng-model="dateFrom"
-                                   md-placeholder="From"
+                                   md-placeholder="MM/DD/YYYY"
                                    is-open="dateFromOpened"
                                    ng-click="dateFromOpened = true"
                                    filter-by="placed"
                                    filter-type="dateFrom"
-                                   md-min-date="minDate"
-                                   id="dateFrom"
-                                   ng-blur="gridActions.filter()"
-                                   ng-focus="gridActions.filter()"
-                                   max-date="dateTo"
-                                   show-weeks="false"
-                                   close-text="Close"></md-datepicker>
+                                   ng-change="gridActions.filter()"></md-datepicker>
                 </div>
                 <div class="flex-gt-sm" style="padding: 18px 0;">
-                    <md-datepicker class="flex-gt-sm"
-                                   ng-model="dateTo"
-                                   md-placeholder="To"
+                    <md-datepicker ng-model="dateTo"
+                                   md-placeholder="MM/DD/YYYY"
                                    is-open="dateToOpened"
                                    ng-click="dateToOpened = true"
                                    filter-by="placed"
                                    filter-type="dateTo"
-                                   min-date="dateFrom"
-                                   md-max-date="maxDate"
-                                   id="dateTo"
-                                   ng-blur="gridActions.filter()"
-                                   ng-focus="gridActions.filter()"
-                                   show-weeks="false"
-                                   close-text="Close"></md-datepicker>
+                                   ng-change="gridActions.filter()"></md-datepicker>
                 </div>
             </div>
             <div grid-data id='test' grid-options="gridOptions" grid-actions="gridActions">
