@@ -7,7 +7,7 @@ angular.module('myApp', ['ui.bootstrap', 'dataGrid', 'pagination', 'ngMaterial']
         };
         myAppFactory.getData().then(function (responseData) {
             $scope.gridOptions.data = responseData.data;
-        })
+        });
 
     }])
     .factory('myAppFactory', function ($http) {
@@ -20,3 +20,4 @@ angular.module('myApp', ['ui.bootstrap', 'dataGrid', 'pagination', 'ngMaterial']
             }
         }
     });
+

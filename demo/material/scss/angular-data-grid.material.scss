@@ -1,36 +1,33 @@
 @import 'angular-data-grid.variables';
 
-th:focus,
 a:focus {
   outline: none;
 }
 .mdl-data-table {
-  margin: 0 auto 20px;
-  min-width: 700px;
+  width: 100%;
+}
+.md-errors-spacer {
+  display: none;
 }
 .mdl-data-table tr {
   transition: none !important;
 }
-.max-width {
-  max-width: 1170px;
-  margin: 0 auto;
-  padding: 0 16px;
-  box-sizing: border-box;
-}
-.controls-wrap {
-  max-width: 700px;
-  margin: 0 auto 20px;
-  text-align: right;
-}
 th md-select {
   margin: 0;
 }
-.items {
-  float: left;
-  line-height: 30px;
+.layout-padding > .controls {
+  padding: 0;
 }
-.md-datepicker-input {
-  width: 300px;
+md-datepicker {
+  margin-bottom: 18px;
+}
+.md-datepicker-label {
+  padding-left: 64px;
+  line-height: 14px;
+  color: rgba(0,0,0,0.26);
+}
+.md-datepicker-input-container {
+  width: calc(100% - 76px);
 }
 .pagination {
   box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
