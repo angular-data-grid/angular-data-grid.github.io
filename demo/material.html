@@ -6,14 +6,13 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
     <link rel="stylesheet" href="https://cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.1-master-a687bfc/angular-material.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-blue.min.css">
     <link rel="stylesheet" href="material/css/angular-data-grid.material.css">
 </head>
 <body ng-app="myApp" ng-controller="myAppController" ng-cloak>
 <div layout="column" layout-fill>
     <md-toolbar layout="row" layout-align="center">
-        <div class="md-toolbar-tools"  flex-lg="60" flex-md="80" flex-sm="100">
+        <div class="md-toolbar-tools"  flex-gt-md="60" flex-md="80" flex-sm="100">
             <span>Angular Data Grid &mdash; Material Design</span>
             <span flex></span>
             <md-menu md-position-mode="target-right target">
@@ -35,7 +34,7 @@
         </div>
     </md-toolbar>
     <md-content layout-padding layout="row" layout-align="center">
-        <div flex-lg="60" flex-md="80" flex-xs="100">
+        <div flex-gt-md="60" flex-md="80" flex-xs="100">
             <div>
                 <h3 class="layout-padding">Angular Data Grid sample using out-of-box Angular Material styling</h3>
                 <p class="layout-padding">Features enabled: sorting, filtering (using both in-grid and external controls), pagination and item-per-page functionality. Angular Material Datepickers used for date controls, although you can use any other framework / plugins.<a href="https://github.com/angular-data-grid/angular-data-grid.github.io" target="_blank">Project GitHub</a></p>
@@ -101,7 +100,7 @@
                         <thead>
                         <tr>
                             <th sortable="code" class="sortable mdl-data-table__cell--non-numeric" >
-                                Order #
+                                <span>Order #</span>
                             </th>
                             <th class="st-sort-disable th-dropdown">
                                 <md-select filter-by="statusDisplay"
@@ -117,10 +116,10 @@
                                 </md-select>
                             </th>
                             <th sortable="placed" class="sortable">
-                                Date Placed
+                                <span>Date Placed</span>
                             </th>
                             <th sortable='total.value' class="sortable">
-                                Total
+                                <span>Total</span>
                             </th>
                         </tr>
                         </thead>

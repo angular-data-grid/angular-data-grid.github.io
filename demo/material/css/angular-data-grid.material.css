@@ -1,11 +1,9 @@
+th:focus,
 a:focus {
   outline: none; }
 
 .mdl-data-table {
   width: 100%; }
-
-.md-errors-spacer {
-  display: none; }
 
 .mdl-data-table tr {
   transition: none !important; }
@@ -55,21 +53,38 @@ md-datepicker {
     border-color: #3f51b5; }
     .pagination .active a {
       color: #fff; }
-  .pagination-page {
-    transition: background .1s ease-out, color .1s ease-out; }
-    .pagination-page.active {
-      background: #3f51b5; }
-      .pagination-page.active a {
-        color: #fff; }
+  .pagination-page.active {
+    background: #3f51b5; }
+    .pagination-page.active a {
+      color: #fff; }
 
-.sortable:after {
-  font: 14px/1 FontAwesome;
-  content: "\f0dc"; }
+.material-icons, .sortable span:before, .sortable span:after {
+  font-family: 'Material Icons';
+  font-size: 18px;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased; }
 
-.sortable.sort-ascent:after {
-  content: '\f0de';
-  vertical-align: bottom; }
+.sortable span {
+  position: relative; }
+  .sortable span:before {
+    content: 'arrow_drop_down';
+    position: absolute;
+    right: -18px;
+    top: -2px; }
+  .sortable span:after {
+    content: 'arrow_drop_up';
+    position: absolute;
+    right: -18px;
+    top: -9px; }
 
-.sortable.sort-descent:after {
-  content: "\f0dd";
-  vertical-align: top; }
+.sortable.sort-ascent span:before {
+  display: none; }
+
+.sortable.sort-ascent span:after {
+  top: -5px; }
+
+.sortable.sort-descent span:before {
+  top: -5px; }
+
+.sortable.sort-descent span:after {
+  display: none; }
