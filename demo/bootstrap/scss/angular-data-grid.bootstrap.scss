@@ -1,16 +1,15 @@
-.nopadding {
-  padding: 0;
-}
-.table>thead>tr>th {
+.table > thead > tr > th {
   vertical-align: middle;
 }
-.items {
-  float: left;
-  line-height: 30px;
+
+.margin-bottom-basic {
+  margin-bottom: 15px;
 }
+
 .pagination {
-  margin: 0 auto 20px;
+  margin: 0 0 15px 0;
 }
+
 .sortable {
   &:after {
     font: 14px/1 FontAwesome;
