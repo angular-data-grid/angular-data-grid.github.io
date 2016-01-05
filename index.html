@@ -3,6 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Angular Data Grid - Bootstrap Design</title>
+    <link rel="icon" href="https://angularjs.org/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="demo/bootstrap/css/angular-data-grid.bootstrap.css">
@@ -177,9 +178,20 @@
                                      ng-change="reloadGrid()"
                                      items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
                 </div>
-                <div class="text-right">
-                    <span grid-item-per-page="10, 25, 50, 75" class="pagination-sm"></span>
-                </div>
+                <form class="form-inline">
+                    <div class="form-group pull-right">
+                        <label for="itemsOnPageSelect">Items per page:</label>
+                        <select id="itemsOnPageSelect" class="form-control input-sm" ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
+                            <option>10</option>
+                            <option>25</option>
+                            <option>50</option>
+                            <option>75</option>
+                        </select>
+                    </div>
+                </form>
+                <!--<div class="text-right">-->
+                <!--<span grid-item-per-page="10, 25, 50, 75" class="pagination-sm"></span>-->
+                <!--</div>-->
             </div>
         </div>
     </div>
@@ -187,7 +199,8 @@
     <div>
         <button class="btn btn-info margin-bottom-basic" ng-click="showCode = !showCode">CodePen</button>
         <div ng-show="showCode">
-            <p data-height="768" data-theme-id="21603" data-slug-hash="YwZXoQ" data-default-tab="html" data-user="alexguardian" class='codepen'>See the Pen <a href='http://codepen.io/alexguardian/pen/YwZXoQ/'>YwZXoQ</a> by AlexZ (<a href='http://codepen.io/alexguardian'>@alexguardian</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+            <p data-height="768" data-theme-id="21603" data-slug-hash="YwZXoQ" data-default-tab="html" data-user="alexguardian" class='codepen'>See the Pen <a
+                    href='http://codepen.io/alexguardian/pen/YwZXoQ/'>YwZXoQ</a> by AlexZ (<a href='http://codepen.io/alexguardian'>@alexguardian</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
             <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
         </div>
     </div>
