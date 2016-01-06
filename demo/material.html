@@ -36,39 +36,37 @@
     <md-content layout-padding layout="row" layout-align="center">
         <div flex-gt-md="60" flex-md="80" flex-xs="100">
             <div>
-                <h3 class="layout-padding">Angular Data Grid sample using out-of-box Angular Material styling</h3>
-                <p class="layout-padding">Features enabled: sorting, filtering (using both in-grid and external controls), pagination and item-per-page functionality. Angular Material Datepickers used for date controls, although you can use any other framework / plugins.<a href="https://github.com/angular-data-grid/angular-data-grid.github.io" target="_blank">Project GitHub</a></p>
+                <h4>Angular Data Grid sample using out-of-box Angular Material styling</h4>
+                <p>Features enabled: sorting, filtering (using both in-grid and external controls), pagination and item-per-page functionality. Angular Material Datepickers used for date controls, although you can use any other framework / plugins. <a href="https://github.com/angular-data-grid/angular-data-grid.github.io" target="_blank">Project GitHub</a></p>
             </div>
-            <hr class="layout-margin">
-            <div layout-gt-sm="row" layout-sm="column" layout-align="center" class="layout-padding">
-                <div class="controls" flex-gt-sm="33" flex-sm="100" layout="row" layout-align="center start">
-                    <md-input-container class="md-block flex-gt-xs flex-xs">
-                        <label for="order" class="md-no-float">Search By Order #</label>
+            <hr>
+            <div layout-gt-sm="row" layout-sm="column" layout-align="stretch center">
+                <div flex-gt-sm="33" flex-sm="100" layout="row" layout-align="center start">
+                    <md-input-container md-no-float md-is-error="false" class="md-block flex-gt-xs flex-xs">
                         <input ng-model="code"
                                class="md-input"
                                ng-change="gridActions.filter()"
                                id="order"
+                               placeholder="Search by Order #"
                                filter-by="code"
                                filter-type="text"
                                aria-invalid="false">
                     </md-input-container>
                 </div>
-                <div class="controls" flex-gt-sm="33" flex-sm="100" layout="column" layout-align="start stretch">
-                    <label class="md-datepicker-label">From</label>
+                <div flex-gt-sm="33" flex-sm="100" layout="row" layout-align="start center">
                     <md-datepicker ng-model="dateFrom"
                                    flex="100"
-                                   md-placeholder="MM/DD/YYYY"
+                                   md-placeholder="From"
                                    is-open="dateFromOpened"
                                    ng-click="dateFromOpened = true"
                                    filter-by="placed"
                                    filter-type="dateFrom"
                                    ng-change="gridActions.filter()"></md-datepicker>
                 </div>
-                <div class="controls" flex-gt-sm="33" flex-sm="100" layout="column" layout-align="start stretch">
-                    <label class="md-datepicker-label">To</label>
+                <div flex-gt-sm="33" flex-sm="100" layout="row" layout-align="start center">
                     <md-datepicker ng-model="dateTo"
                                    flex="100"
-                                   md-placeholder="MM/DD/YYYY"
+                                   md-placeholder="To"
                                    is-open="dateToOpened"
                                    ng-click="dateToOpened = true"
                                    filter-by="placed"
@@ -76,9 +74,8 @@
                                    ng-change="gridActions.filter()"></md-datepicker>
                 </div>
             </div>
-            <hr class="layout-margin">
             <div grid-data id='test' grid-options="gridOptions" grid-actions="gridActions">
-                <div layout-gt-sm="row" layout-sm="column" layout-align="center" class="layout-padding">
+                <div layout-gt-sm="row" layout-sm="column" layout-align="center">
                     <div flex-gt-sm="25" flex-sm="100" layout="row" layout-align="start center">
                         <span>{{filtered.length}} items total</span>
                     </div>
@@ -86,14 +83,13 @@
                         <div layout-xs="column" layout="row" layout-align-xs="end end" layout-align="end center">
                             <grid-pagination max-size="5"
                                              boundary-links="true"
-                                             class="pagination"
+                                             class="pagination mdl-shadow--2dp"
                                              ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
                                              total-items="paginationOptions.totalItems"
                                              ng-model="paginationOptions.currentPage"
                                              ng-change="reloadGrid()"
                                              items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
                             <md-input-container flex-offset-gt-xs="5" class="items-per-page">
-                                <label>Items per page</label>
                                 <md-select ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
                                     <md-option>10</md-option>
                                     <md-option>25</md-option>
@@ -104,7 +100,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="layout-padding">
+                <div>
                     <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
                         <thead>
                         <tr>
@@ -144,7 +140,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div layout-xs="column" layout="row" layout-align-xs="end end" layout-align="end center" class="layout-padding">
+                <div layout-xs="column" layout="row" layout-align-xs="end end" layout-align="end center">
                     <grid-pagination max-size="5"
                                      boundary-links="true"
                                      class="pagination"
@@ -154,7 +150,6 @@
                                      ng-change="reloadGrid()"
                                      items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
                     <md-input-container flex-offset-gt-xs="5" class="items-per-page">
-                        <label>Items per page</label>
                         <md-select ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
                             <md-option>10</md-option>
                             <md-option>25</md-option>
@@ -164,14 +159,12 @@
                     </md-input-container>
                 </div>
             </div>
-            <hr class="layout-margin">
-            <div>
-                <md-button class="md-raised md-primary layout-margin" ng-click="showCode = !showCode">CodePen</md-button>
-                <div ng-show="showCode" class="layout-margin">
-                    <p data-height="768" data-theme-id="21603" data-slug-hash="jWBaOX" data-default-tab="html" data-user="IvanBisultanov" class='codepen'>See the Pen <a
-                            href='http://codepen.io/IvanBisultanov/pen/jWBaOX'>jWBaOX</a> by IvanBisultanov (<a href='http://codepen.io/IvanBisultanov'>@IvanBisultanov</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-                    <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
-                </div>
+            <hr>
+            <md-button class="md-raised md-primary" ng-click="showCode = !showCode">CodePen</md-button>
+            <div ng-show="showCode" class="codepen-wtap">
+                <p data-height="768" data-theme-id="21603" data-slug-hash="jWBaOX" data-default-tab="html" data-user="IvanBisultanov" class='codepen'>See the Pen <a
+                        href='http://codepen.io/IvanBisultanov/pen/jWBaOX'>jWBaOX</a> by IvanBisultanov (<a href='http://codepen.io/IvanBisultanov'>@IvanBisultanov</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+                <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
             </div>
             <hr>
         </div>

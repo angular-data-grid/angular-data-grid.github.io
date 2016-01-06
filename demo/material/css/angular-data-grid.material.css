@@ -2,8 +2,13 @@ th:focus,
 a:focus {
   outline: none; }
 
+.codepen-wtap {
+  margin-top: 15px; }
+
 .mdl-data-table {
   width: 100%; }
+  .mdl-data-table th {
+    cursor: pointer; }
 
 .mdl-data-table tr {
   transition: none !important; }
@@ -11,25 +16,13 @@ a:focus {
 th md-select {
   margin: 0; }
 
-.layout-padding > .controls {
-  padding: 0; }
-
-md-datepicker {
-  margin-bottom: 18px; }
-
-.md-datepicker-label {
-  padding-left: 64px;
-  line-height: 14px;
-  color: rgba(0, 0, 0, 0.26); }
+.md-errors-spacer {
+  display: none; }
 
 .md-datepicker-input-container {
-  width: calc(100% - 76px); }
-
-.items-per-page {
-  width: 120px; }
+  width: 100%; }
 
 .pagination {
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
   padding: 0;
   font-size: 0;
   display: inline-block; }
