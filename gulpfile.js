@@ -11,13 +11,12 @@
 
     function browserSyncInit(baseDir) {
         var server = {
-            baseDir: baseDir
+            baseDir: './'
         };
 
         browserSync.instance = browserSync.init({
-            startPath: '/',
             server: server,
-            open: false
+            open: true
         });
     }
 
