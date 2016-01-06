@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Angular Data Grid</title>
+    <title>Angular Data Grid - Material Design</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
     <link rel="stylesheet" href="https://cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.1-master-a687bfc/angular-material.css">
@@ -78,20 +78,29 @@
             </div>
             <hr class="layout-margin">
             <div grid-data id='test' grid-options="gridOptions" grid-actions="gridActions">
-                <div layout-gt-xs="row" layout-xs="column" layout-align="center" class="layout-padding">
-                    <div flex-gt-xs="25" flex-xs="100" layout="row" layout-align="start center">
-                        <strong>Found: {{filtered.length}} items</strong>
+                <div layout-gt-sm="row" layout-sm="column" layout-align="center" class="layout-padding">
+                    <div flex-gt-sm="25" flex-sm="100" layout="row" layout-align="start center">
+                        <span>{{filtered.length}} items total</span>
                     </div>
-                    <div flex-gt-xs="75" flex-xs="100">
-                        <div layout="row" layout-align="end center">
+                    <div flex-gt-sm="75" flex-xs="100">
+                        <div layout-xs="column" layout="row" layout-align-xs="end end" layout-align="end center">
                             <grid-pagination max-size="5"
                                              boundary-links="true"
-                                             class="pagination-sm"
+                                             class="pagination"
                                              ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
                                              total-items="paginationOptions.totalItems"
                                              ng-model="paginationOptions.currentPage"
                                              ng-change="reloadGrid()"
                                              items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                            <md-input-container flex-offset-gt-xs="5" class="items-per-page">
+                                <label>Items per page</label>
+                                <md-select ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
+                                    <md-option>10</md-option>
+                                    <md-option>25</md-option>
+                                    <md-option>50</md-option>
+                                    <md-option>75</md-option>
+                                </md-select>
+                            </md-input-container>
                         </div>
                     </div>
                 </div>
@@ -135,22 +144,36 @@
                         </tbody>
                     </table>
                 </div>
-                <div layout="row" layout-align="end center" class="layout-padding">
+                <div layout-xs="column" layout="row" layout-align-xs="end end" layout-align="end center" class="layout-padding">
                     <grid-pagination max-size="5"
                                      boundary-links="true"
-                                     class="pagination-sm"
+                                     class="pagination"
                                      ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
                                      total-items="paginationOptions.totalItems"
                                      ng-model="paginationOptions.currentPage"
                                      ng-change="reloadGrid()"
-                                     previous-text="‹" next-text="›" first-text="«" last-text="»"
                                      items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
-                </div>
-                <div layout="row" layout-align="end center" class="layout-padding">
-                    <div grid-item-per-page="10, 25, 50, 75"></div>
+                    <md-input-container flex-offset-gt-xs="5" class="items-per-page">
+                        <label>Items per page</label>
+                        <md-select ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
+                            <md-option>10</md-option>
+                            <md-option>25</md-option>
+                            <md-option>50</md-option>
+                            <md-option>75</md-option>
+                        </md-select>
+                    </md-input-container>
                 </div>
             </div>
             <hr class="layout-margin">
+            <div>
+                <md-button class="md-raised md-primary layout-margin" ng-click="showCode = !showCode">CodePen</md-button>
+                <div ng-show="showCode" class="layout-margin">
+                    <p data-height="768" data-theme-id="21603" data-slug-hash="jWBaOX" data-default-tab="html" data-user="IvanBisultanov" class='codepen'>See the Pen <a
+                            href='http://codepen.io/IvanBisultanov/pen/jWBaOX'>jWBaOX</a> by IvanBisultanov (<a href='http://codepen.io/IvanBisultanov'>@IvanBisultanov</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+                    <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+                </div>
+            </div>
+            <hr>
         </div>
     </md-content>
 </div>
