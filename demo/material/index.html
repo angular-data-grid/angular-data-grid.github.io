@@ -12,7 +12,7 @@
 <body ng-app="myApp" ng-controller="myAppController" ng-cloak>
 <div layout="column" layout-fill>
     <md-toolbar layout="row" layout-align="center">
-        <div class="md-toolbar-tools"  flex-gt-md="60" flex-md="80" flex-sm="100">
+        <div class="md-toolbar-tools" flex-gt-md="60" flex-md="80" flex-sm="100">
             <span>Angular Data Grid &mdash; Material Design</span>
             <span flex></span>
             <md-menu md-position-mode="target-right target">
@@ -24,7 +24,7 @@
                 </md-button>
                 <md-menu-content>
                     <md-menu-item>
-                        <a href="../bootstrap/index.html">Bootstrap</a>
+                        <a href="../bootstrap/index.html">Bootstrap Design</a>
                     </md-menu-item>
                     <md-menu-item>
                         <a href="index.html"><strong>Material Design</strong></a>
@@ -36,8 +36,13 @@
     <md-content layout-padding layout="row" layout-align="center">
         <div flex-gt-md="60" flex-md="80" flex-xs="100">
             <div>
-                <h4>Angular Data Grid sample using out-of-box Angular Material styling</h4>
-                <p>Features enabled: sorting, filtering (using both in-grid and external controls), pagination and item-per-page functionality. Angular Material Datepickers used for date controls, although you can use any other framework / plugins. <a href="https://github.com/angular-data-grid/angular-data-grid.github.io" target="_blank">Project GitHub</a></p>
+                <h4>Angular Data Grid sample using Material Design styling</h4>
+
+                <p>Features enabled: sorting, filtering, sync with browser URLs, pagination and item-per-page functionality.
+                    Out-of-box <a href="https://material.angularjs.org/" target="_blank">Angular Material</a> layout and input controls used,
+                    along with <a href="http://www.getmdl.io/" target="_blank">Material Design Light</a> default CSS for grid styling.
+                    <a href="https://github.com/angular-data-grid/angular-data-grid.github.io"
+                       target="_blank">Project GitHub</a></p>
             </div>
             <hr>
             <div layout-gt-sm="row" layout-sm="column" layout-align="stretch center">
@@ -56,7 +61,7 @@
                 <div flex-gt-sm="33" flex-sm="100" layout="row" layout-align="start center">
                     <md-datepicker ng-model="dateFrom"
                                    flex="100"
-                                   md-placeholder="From"
+                                   md-placeholder="From Date"
                                    is-open="dateFromOpened"
                                    ng-click="dateFromOpened = true"
                                    filter-by="placed"
@@ -66,7 +71,7 @@
                 <div flex-gt-sm="33" flex-sm="100" layout="row" layout-align="start center">
                     <md-datepicker ng-model="dateTo"
                                    flex="100"
-                                   md-placeholder="To"
+                                   md-placeholder="To Date"
                                    is-open="dateToOpened"
                                    ng-click="dateToOpened = true"
                                    filter-by="placed"
@@ -104,7 +109,7 @@
                     <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
                         <thead>
                         <tr>
-                            <th sortable="code" class="sortable mdl-data-table__cell--non-numeric" >
+                            <th sortable="code" class="sortable mdl-data-table__cell--non-numeric">
                                 <span>Order #</span>
                             </th>
                             <th class="st-sort-disable th-dropdown">
@@ -163,7 +168,8 @@
             <md-button class="md-raised md-primary" ng-click="showCode = !showCode">CodePen</md-button>
             <div ng-show="showCode" class="codepen-wtap">
                 <p data-height="768" data-theme-id="21603" data-slug-hash="jWBaOX" data-default-tab="html" data-user="IvanBisultanov" class='codepen'>See the Pen <a
-                        href='http://codepen.io/IvanBisultanov/pen/jWBaOX'>jWBaOX</a> by IvanBisultanov (<a href='http://codepen.io/IvanBisultanov'>@IvanBisultanov</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+                        href='http://codepen.io/IvanBisultanov/pen/jWBaOX'>jWBaOX</a> by IvanBisultanov (<a href='http://codepen.io/IvanBisultanov'>@IvanBisultanov</a>) on <a href='http://codepen.io'>CodePen</a>.
+                </p>
                 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
             </div>
             <hr>
