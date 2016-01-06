@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
     <link rel="stylesheet" href="https://cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.1-master-a687bfc/angular-material.css">
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-blue.min.css">
-    <link rel="stylesheet" href="material/css/angular-data-grid.material.css">
+    <link rel="stylesheet" href="css/angular-data-grid.material.css">
 </head>
 <body ng-app="myApp" ng-controller="myAppController" ng-cloak>
 <div layout="column" layout-fill>
@@ -24,10 +24,10 @@
                 </md-button>
                 <md-menu-content>
                     <md-menu-item>
-                        <a href="../index.html">Bootstrap</a>
+                        <a href="../bootstrap/index.html">Bootstrap</a>
                     </md-menu-item>
                     <md-menu-item>
-                        <a href="material.html">Material Design</a>
+                        <a href="index.html"><strong>Material Design</strong></a>
                     </md-menu-item>
                 </md-menu-content>
             </md-menu>
@@ -41,7 +41,7 @@
             </div>
             <hr>
             <div layout-gt-sm="row" layout-sm="column" layout-align="stretch center">
-                <div flex-gt-sm="30" flex-sm="100" layout="row" layout-align="center start">
+                <div flex-gt-sm="33" flex-sm="100" layout="row" layout-align="center start">
                     <md-input-container md-no-float md-is-error="false" class="md-block flex-gt-xs flex-xs">
                         <input ng-model="code"
                                class="md-input"
@@ -53,7 +53,7 @@
                                aria-invalid="false">
                     </md-input-container>
                 </div>
-                <div flex-gt-sm="30" flex-sm="100" layout="row" layout-align="start center">
+                <div flex-gt-sm="33" flex-sm="100" layout="row" layout-align="start center">
                     <md-datepicker ng-model="dateFrom"
                                    flex="100"
                                    md-placeholder="From"
@@ -63,7 +63,7 @@
                                    filter-type="dateFrom"
                                    ng-change="gridActions.filter()"></md-datepicker>
                 </div>
-                <div flex-gt-sm="30" flex-offset-gt-sm="5" flex-sm="100" layout="row" layout-align="start center">
+                <div flex-gt-sm="33" flex-sm="100" layout="row" layout-align="start center">
                     <md-datepicker ng-model="dateTo"
                                    flex="100"
                                    md-placeholder="To"
@@ -173,13 +173,12 @@
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
-<script src="../dist/pagination.min.js"></script>
-<script src="../dist/dataGrid.min.js"></script>
-<script src="demoApp.js"></script>
+<script src="../../dist/pagination.min.js"></script>
+<script src="../../dist/dataGrid.min.js"></script>
+<script src="js/demoApp.js"></script>
 
 </html>

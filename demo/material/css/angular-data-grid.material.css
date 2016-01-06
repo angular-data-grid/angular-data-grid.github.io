@@ -19,7 +19,8 @@ th md-select {
 .md-errors-spacer {
   display: none; }
 
-.md-datepicker-input-container {
+.md-datepicker-input-container,
+.md-datepicker-input {
   width: 100%; }
 
 .pagination {
