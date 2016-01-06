@@ -46,7 +46,7 @@
             </div>
             <hr>
             <div layout-gt-sm="row" layout-sm="column" layout-align="stretch center">
-                <div flex-gt-sm="33" flex-sm="100" layout="row" layout-align="center start">
+                <div  layout="row" layout-align="center start">
                     <md-input-container md-no-float md-is-error="false" class="md-block flex-gt-xs flex-xs">
                         <input ng-model="code"
                                class="md-input"
@@ -58,7 +58,7 @@
                                aria-invalid="false">
                     </md-input-container>
                 </div>
-                <div flex-gt-sm="33" flex-sm="100" layout="row" layout-align="start center">
+                <div  layout="row" layout-align="start center">
                     <md-datepicker ng-model="dateFrom"
                                    flex="100"
                                    md-placeholder="From Date"
@@ -68,7 +68,7 @@
                                    filter-type="dateFrom"
                                    ng-change="gridActions.filter()"></md-datepicker>
                 </div>
-                <div flex-gt-sm="33" flex-sm="100" layout="row" layout-align="start center">
+                <div  layout="row" layout-align="start center">
                     <md-datepicker ng-model="dateTo"
                                    flex="100"
                                    md-placeholder="To Date"
