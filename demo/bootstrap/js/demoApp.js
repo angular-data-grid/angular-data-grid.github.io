@@ -5,6 +5,7 @@ angular.module('myApp', ['ui.bootstrap', 'dataGrid', 'pagination'])
             data: [],
             urlSync: true
         };
+
         myAppFactory.getData().then(function (responseData) {
             $scope.gridOptions.data = responseData.data;
         });
