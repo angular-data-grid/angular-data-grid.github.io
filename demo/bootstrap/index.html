@@ -12,20 +12,19 @@
 <nav class="navbar navbar-inverse">
     <div class="container">
         <a href="#" class="navbar-brand">Angular Data Grid - Bootstrap Design</a>
-        <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                   aria-expanded="false ">Change Theme <span class="caret"></span></a>
-                <ul class="dropdown-menu dropdown-menu-right">
-                    <li>
-                        <a href="index.html"><strong>Bootstrap Design</strong></a>
-                    </li>
-                    <li>
-                        <a href="../material/index.html">Material Design</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+        <div class="btn-group dropdown pull-right p-t-8" uib-dropdown is-open="status.isopen">
+            <a id="single-button" type="button" class="btn btn-info" uib-dropdown-toggle>
+                Change Theme <span class="caret"></span>
+            </a>
+            <ul class="uib-dropdown-menu" aria-labelledby="simple-dropdown">
+                <li>
+                    <a href="index.html"><strong>Bootstrap Design</strong></a>
+                </li>
+                <li>
+                    <a href="../material/index.html">Material Design</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
 <div class="container">
@@ -216,7 +215,6 @@
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
