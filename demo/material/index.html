@@ -78,6 +78,9 @@
                                    filter-type="dateTo"
                                    ng-change="gridActions.filter()"></md-datepicker>
                 </div>
+                <div  layout="row" layout-align="start center">
+                    <md-button ng-show="dateTo || dateFrom" class="md-raised md-primary" ng-click="dateTo = ''; dateFrom = ''; reloadGrid();">Clear Dates</md-button>
+                </div>
             </div>
             <div grid-data id='test' grid-options="gridOptions" grid-actions="gridActions">
                 <div layout-gt-sm="row" layout-sm="column" layout-align="center">
