@@ -215,12 +215,35 @@
             }
 
             function applyFilters() {
-                $scope.filtered = angular.copy($scope._gridOptions.data);
+                var time = Date.now(), sorted = false;
 
+                //TO REMOVE ?
+                $scope._time = {};
+
+                if ($scope.sortOptions.predicate && $scope.sortCache && $scope.sortCache.predicate === $scope.sortOptions.predicate
+                    && $scope.sortCache.direction === $scope.sortOptions.direction) {
+                    $scope.filtered = $scope.sortCache.data.slice();
+                    sorted = true;
+                } else {
+                    $scope.filtered = $scope._gridOptions.data.slice();
+                }
+
+                $scope._time.copy = Date.now() - time;
+                var time2 = Date.now();
                 applyCustomFilters();
+                $scope._time.filters = Date.now() - time2;
+                var time3 = Date.now();
 
-                //apply orderBy filter
-                $scope.filtered = $filter('orderBy')($scope.filtered, $scope.sortOptions.predicate, $scope.sortOptions.direction === 'desc');
+                if ($scope.sortOptions.predicate && !sorted) {
+                    $scope.filtered = $filter('orderBy')($scope.filtered, $scope.sortOptions.predicate, $scope.sortOptions.direction === 'desc');
+                    $scope.sortCache = {
+                        data: $scope.filtered.slice(),
+                        predicate: $scope.sortOptions.predicate,
+                        direction: $scope.sortOptions.direction
+                    }
+                }
+                $scope._time.sort = Date.now() - time3;
+                $scope._time.all = Date.now() - time;
                 $scope.paginationOptions.totalItems = $scope.filtered.length;
             }
 
@@ -316,7 +339,7 @@
                         if (serverPagination) {
                             element.attr('ng-repeat', "item in filtered");
                         } else {
-                            element.attr('ng-repeat', "item in filtered | startFrom:(paginationOptions.currentPage-1)*paginationOptions.itemsPerPage | limitTo:paginationOptions.itemsPerPage");
+                            element.attr('ng-repeat', "item in filtered | startFrom:(paginationOptions.currentPage-1)*paginationOptions.itemsPerPage | limitTo:paginationOptions.itemsPerPage track by $index");
                         }
                         $compile(element)(childScope);
                     });
@@ -336,7 +359,7 @@
 
             function textFilter(items, value, predicate) {
                 return items.filter(function (item) {
-                    return value && item[predicate] ? ~item[predicate].toLowerCase().indexOf(value.toLowerCase()) : true;
+                    return value && item[predicate] ? ~(item[predicate] + '').toLowerCase().indexOf(value.toLowerCase()) : true;
                 });
             }
 
