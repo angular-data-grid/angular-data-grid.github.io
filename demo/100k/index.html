@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Angular Data Grid - Bootstrap Design</title>
+    <title>Angular Data Grid - 100k example</title>
     <link rel="icon" href="https://angularjs.org/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -11,27 +11,17 @@
 <body ng-app="myApp" ng-controller="myAppController" ng-cloak>
 <nav class="navbar navbar-inverse">
     <div class="container">
-        <a href="#" class="navbar-brand">Angular Data Grid - Bootstrap Design</a>
-        <div class="btn-group dropdown pull-right p-t-8" uib-dropdown is-open="status.isopen">
-            <a id="single-button" type="button" class="btn btn-info" uib-dropdown-toggle>
-                Change Theme <span class="caret"></span>
-            </a>
-            <ul class="uib-dropdown-menu" aria-labelledby="simple-dropdown">
-                <li>
-                    <a href="index.html"><strong>Bootstrap Design</strong></a>
-                </li>
-                <li>
-                    <a href="../material/">Material Design</a>
-                </li>
-            </ul>
-        </div>
+        <a href="#" class="navbar-brand">Angular Data Grid - 100k Example</a>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="../bootstrap/">Basic demo</a></li>
+        </ul>
     </div>
 </nav>
 <div class="container">
     <div>
-        <h3>Angular Data Grid sample using out-of-box Bootstrap styling</h3>
-        Features enabled: sorting, filtering (using both in-grid and external controls), sync with browser URLs, pagination and items-per-page functionality.
-        Angular UI Datepicker used for date controls, although you can use any other framework, plugin or styling.
+        <h3>Angular Data Grid 100k Example</h3>
+        This demonstrates client-side sorting / pagination / filtering performance of the data grid with <strong>100 000 rows</strong> loaded at once.
+        It's not likely that someone will need to operate so huge data at client side in a real life, but for performance testing purposes it definitely works)
         <a href="https://github.com/angular-data-grid/angular-data-grid.github.io" target="_blank">Project GitHub</a>
     </div>
     <hr>
@@ -39,12 +29,12 @@
         <div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="orderIdFilter">Search by Order #</label>
+                    <label for="orderIdFilter">Search by User ID</label>
                     <input id="orderIdFilter" type="text" class="form-control order-search-box"
-                           placeholder="Enter Order #"
+                           placeholder="Enter User ID"
                            ng-change="gridActions.filter()"
-                           ng-model="code"
-                           filter-by="code"
+                           ng-model="id"
+                           filter-by="id"
                            filter-type="text">
                 </div>
             </div>
@@ -58,14 +48,13 @@
                                class="form-control"
                                uib-datepicker-popup="dd/MM/yyyy"
                                placeholder="DD/MM/YYYY"
-                               min-date="dateFrom"
                                max-date="dateTo"
                                close-text="Close"
                                ng-model="dateFrom"
                                show-weeks="true"
                                is-open="dateFromOpened"
                                ng-click="dateFromOpened = true"
-                               filter-by="placed"
+                               filter-by="date"
                                filter-type="dateFrom"
                                ng-blur="gridActions.filter()"
                                ng-focus="gridActions.filter()"
@@ -89,13 +78,12 @@
                                uib-datepicker-popup="dd/MM/yyyy"
                                placeholder="DD/MM/YYYY"
                                min-date="dateFrom"
-                               max-date="dateTo"
                                close-text="Close"
                                ng-model="dateTo"
                                show-weeks="true"
                                is-open="dateToOpened"
                                ng-click="dateToOpened = true"
-                               filter-by="placed"
+                               filter-by="date"
                                filter-type="dateTo"
                                ng-blur="gridActions.filter()"
                                ng-focus="gridActions.filter()"
@@ -118,8 +106,13 @@
         <div class="col-md-12">
             <div grid-data id='test' grid-options="gridOptions" grid-actions="gridActions">
                 <div class="row">
-                    <div class="col-md-3">
-                        <span class="items">{{filtered.length}} items total</span>
+                    <div class="col-md-3" ng-cloak>
+                        <span class="items" ng-bind="filtered.length">{{filtered.length}} users total</span>
+                        <div>Time stats</div>
+                        <div>Copy time: {{_time.copy}}</div>
+                        <div>Filter time: {{_time.filters}}</div>
+                        <div>Sort time: {{_time.sort}}</div>
+                        <div>All time: {{_time.all}}</div>
                     </div>
                     <div class="col-md-9 text-right">
                         <form class="form-inline pull-right margin-bottom-basic">
@@ -134,7 +127,9 @@
                             </div>
                             <div class="form-group items-per-page">
                                 <label for="itemsOnPageSelect1">Items per page:</label>
-                                <select id="itemsOnPageSelect1" class="form-control input-sm" ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
+                                <select id="itemsOnPageSelect1" class="form-control input-sm"
+                                        ng-init="paginationOptions.itemsPerPage = '10'"
+                                        ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
                                     <option>10</option>
                                     <option>25</option>
                                     <option>50</option>
@@ -147,35 +142,27 @@
                 <table class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                        <th sortable="code" class="sortable">
-                            Order #
+                        <th sortable="id" class="sortable">
+                            User Id
                         </th>
-                        <th sortable="placed" class="sortable">
-                            Date Placed
+
+                        <th sortable='name' class="sortable">
+                            Name
                         </th>
-                        <th class="st-sort-disable th-dropdown">
-                            <select class="form-control width-15"
-                                    filter-by="statusDisplay"
-                                    filter-type="select"
-                                    ng-model="status"
-                                    ng-change="filter()">
-                                <option value="">All Statuses</option>
-                                <option ng-repeat="option in statusOptions track by option.value"
-                                        value="{{option.value}}">{{option.text}}
-                                </option>
-                            </select>
+                        <th sortable='phone' class="sortable">
+                            Phone
                         </th>
-                        <th sortable='total.value' class="sortable">
-                            Total
+                        <th sortable="date" class="sortable">
+                            Date Of Birth
                         </th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr grid-item>
-                        <td width="30%" ng-bind="item.code"></td>
-                        <td width="30%" ng-bind="item.placed | date:'MM/dd/yyyy'"></td>
-                        <td ng-bind="item.statusDisplay"></td>
-                        <td ng-bind="item.total.formattedValue"></td>
+                        <td width="30%" ng-bind="item.id"></td>
+                        <td ng-bind="item.name"></td>
+                        <td ng-bind="item.phone"></td>
+                        <td width="30%" ng-bind="item.date | date:'MM/dd/yyyy'"></td>
                     </tr>
                     </tbody>
                 </table>
@@ -191,7 +178,8 @@
                     </div>
                     <div class="form-group items-per-page">
                         <label for="itemsOnPageSelect2">Items per page:</label>
-                        <select id="itemsOnPageSelect2" class="form-control input-sm" ng-init="paginationOptions.itemsPerPage = '10'"
+                        <select id="itemsOnPageSelect2" class="form-control input-sm"
+                                ng-init="paginationOptions.itemsPerPage = '10'"
                                 ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
                             <option>10</option>
                             <option>25</option>
@@ -204,15 +192,18 @@
         </div>
     </div>
     <hr>
-    <div>
-        <button class="btn btn-info margin-bottom-basic" ng-click="showCode = !showCode">CodePen</button>
-        <div ng-show="showCode">
-            <p data-height="768" data-theme-id="21603" data-slug-hash="xZddZm" data-default-tab="html" data-user="AngularDataGrid" class='codepen'>See the Pen <a
-                    href='http://codepen.io/AngularDataGrid/pen/xZddZm/'>xZddZm</a> by AngularDataGrid (<a href='http://codepen.io/AngularDataGrid'>@AngularDataGrid</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-            <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
-        </div>
-    </div>
-    <hr>
+    <!--<div>-->
+        <!--<button class="btn btn-info margin-bottom-basic" ng-click="showCode = !showCode">CodePen</button>-->
+        <!--<div ng-show="showCode">-->
+            <!--<p data-height="768" data-theme-id="21603" data-slug-hash="xZddZm" data-default-tab="html"-->
+               <!--data-user="AngularDataGrid" class='codepen'>See the Pen <a-->
+                    <!--href='http://codepen.io/AngularDataGrid/pen/xZddZm/'>xZddZm</a> by AngularDataGrid (<a-->
+                    <!--href='http://codepen.io/AngularDataGrid'>@AngularDataGrid</a>) on <a href='http://codepen.io'>CodePen</a>.-->
+            <!--</p>-->
+            <!--<script async src="//assets.codepen.io/assets/embed/ei.js"></script>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<hr>-->
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -222,7 +213,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
 <script src="../../dist/pagination.min.js"></script>
-<script src="../../dist/dataGrid.min.js"></script>
+<script src="../../dist/dataGrid.js"></script>
 <script src="js/demoApp.js"></script>
 
 </html>
