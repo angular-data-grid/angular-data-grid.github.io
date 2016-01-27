@@ -6,6 +6,8 @@ Demo Bootstrap: http://angular-data-grid.github.io/demo/bootstrap/
 
 Demo Material: http://angular-data-grid.github.io/demo/material/
 
+Demo 100k: http://angular-data-grid.github.io/demo/100k/
+
 ### Features
  - Does not have any hard-coded template so you can choose any mark-up you need, from basic `<table>` layout to any `<div>` structure.
  - Easily switch between the most popular Bootstrap and Google Material theming, or apply your own CSS theme just by changing several CSS classes.

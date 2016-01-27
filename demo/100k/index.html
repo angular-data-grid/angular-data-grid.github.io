@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Angular Data Grid - Bootstrap Design</title>
+    <title>Angular Data Grid - 100k example</title>
     <link rel="icon" href="https://angularjs.org/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -12,14 +12,16 @@
 <nav class="navbar navbar-inverse">
     <div class="container">
         <a href="#" class="navbar-brand">Angular Data Grid - 100k Example</a>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="../bootstrap/">Basic demo</a></li>
+        </ul>
     </div>
 </nav>
 <div class="container">
     <div>
         <h3>Angular Data Grid 100k Example</h3>
-        Features enabled: sorting, filtering (using both in-grid and external controls), sync with browser URLs,
-        pagination and items-per-page functionality.
-        Angular UI Datepicker used for date controls, although you can use any other framework, plugin or styling.
+        This demonstrates client-side sorting / pagination / filtering performance of the data grid with <strong>100 000 rows</strong> loaded at once.
+        It's not likely that someone will need to operate so huge data at client side in a real life, but for performance testing purposes it definitely works)
         <a href="https://github.com/angular-data-grid/angular-data-grid.github.io" target="_blank">Project GitHub</a>
     </div>
     <hr>
@@ -104,8 +106,8 @@
         <div class="col-md-12">
             <div grid-data id='test' grid-options="gridOptions" grid-actions="gridActions">
                 <div class="row">
-                    <div class="col-md-3">
-                        <span class="items">{{filtered.length}} users total</span>
+                    <div class="col-md-3" ng-cloak>
+                        <span class="items" ng-bind="filtered.length">{{filtered.length}} users total</span>
                         <div>Time stats</div>
                         <div>Copy time: {{_time.copy}}</div>
                         <div>Filter time: {{_time.filters}}</div>
@@ -190,18 +192,18 @@
         </div>
     </div>
     <hr>
-    <div>
-        <button class="btn btn-info margin-bottom-basic" ng-click="showCode = !showCode">CodePen</button>
-        <div ng-show="showCode">
-            <p data-height="768" data-theme-id="21603" data-slug-hash="xZddZm" data-default-tab="html"
-               data-user="AngularDataGrid" class='codepen'>See the Pen <a
-                    href='http://codepen.io/AngularDataGrid/pen/xZddZm/'>xZddZm</a> by AngularDataGrid (<a
-                    href='http://codepen.io/AngularDataGrid'>@AngularDataGrid</a>) on <a href='http://codepen.io'>CodePen</a>.
-            </p>
-            <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
-        </div>
-    </div>
-    <hr>
+    <!--<div>-->
+        <!--<button class="btn btn-info margin-bottom-basic" ng-click="showCode = !showCode">CodePen</button>-->
+        <!--<div ng-show="showCode">-->
+            <!--<p data-height="768" data-theme-id="21603" data-slug-hash="xZddZm" data-default-tab="html"-->
+               <!--data-user="AngularDataGrid" class='codepen'>See the Pen <a-->
+                    <!--href='http://codepen.io/AngularDataGrid/pen/xZddZm/'>xZddZm</a> by AngularDataGrid (<a-->
+                    <!--href='http://codepen.io/AngularDataGrid'>@AngularDataGrid</a>) on <a href='http://codepen.io'>CodePen</a>.-->
+            <!--</p>-->
+            <!--<script async src="//assets.codepen.io/assets/embed/ei.js"></script>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<hr>-->
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
