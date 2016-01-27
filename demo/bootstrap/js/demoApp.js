@@ -16,7 +16,7 @@ angular.module('myApp', ['ui.bootstrap', 'dataGrid', 'pagination'])
             getData: function () {
                 return $http({
                     method: 'GET',
-                    url: 'http://angular-data-grid.github.io/demo/data.json'
+                    url: 'https://angular-data-grid.github.io/demo/data.json'
                 });
             }
         }

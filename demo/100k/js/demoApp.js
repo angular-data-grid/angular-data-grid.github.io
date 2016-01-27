@@ -11,7 +11,7 @@
 
             $http({
                 method: 'GET',
-                url: 'http://angular-data-grid.github.io/demo/100k.json'
+                url: 'https://angular-data-grid.github.io/demo/100k.json'
             }).then(function successCallback(response) {
                 $scope.gridOptions.data = response.data;
             });
