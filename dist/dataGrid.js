@@ -37,7 +37,8 @@
 
             $scope.$watch('_gridOptions.data', function (newValue) {
                 if (newValue && newValue.length) {
-                    $scope.filtered = angular.copy($scope._gridOptions.data);
+                    $scope.sortCache = {};
+                    $scope.filtered = $scope._gridOptions.data.slice();
                     $scope.filters.forEach(function (filter) {
                         if (filter.filterType === 'select') {
                             $scope[filter.model + 'Options'] = generateOptions($scope.filtered, filter.filterBy);
