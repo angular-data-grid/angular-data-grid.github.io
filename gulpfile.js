@@ -38,6 +38,9 @@
         gulp.src('./demo/bootstrap/scss/angular-data-grid.bootstrap.scss')
             .pipe(sass().on('error', sass.logError))
             .pipe(gulp.dest('./demo/bootstrap/css/'));
+        gulp.src('./demo/100k/scss/angular-data-grid.bootstrap.scss')
+            .pipe(sass().on('error', sass.logError))
+            .pipe(gulp.dest('./demo/100k/css/'));
     });
 
     gulp.task('build', ['js', 'sass']);

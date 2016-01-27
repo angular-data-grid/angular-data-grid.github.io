@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('myApp', ['ui.bootstrap', 'dataGrid', 'pagination'])
+    angular.module('myApp', ['ui.bootstrap', 'dataGrid', 'pagination', 'angular-loading-bar', 'ngAnimate'])
         .controller('myAppController', ['$scope', '$http', function ($scope, $http) {
 
             $scope.gridOptions = {

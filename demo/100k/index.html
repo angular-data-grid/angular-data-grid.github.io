@@ -6,6 +6,7 @@
     <link rel="icon" href="https://angularjs.org/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.7.1/loading-bar.min.css' type='text/css' media='all' />
     <link rel="stylesheet" href="css/angular-data-grid.bootstrap.css">
 </head>
 <body ng-app="myApp" ng-controller="myAppController" ng-cloak>
@@ -31,10 +32,10 @@
                 <div class="form-group">
                     <label for="orderIdFilter">Search by User ID</label>
                     <input id="orderIdFilter" type="text" class="form-control order-search-box"
-                           placeholder="Enter User ID"
+                           placeholder="Enter User Name"
                            ng-change="gridActions.filter()"
-                           ng-model="id"
-                           filter-by="id"
+                           ng-model="name"
+                           filter-by="name"
                            filter-type="text">
                 </div>
             </div>
@@ -107,8 +108,7 @@
             <div grid-data id='test' grid-options="gridOptions" grid-actions="gridActions">
                 <div class="row">
                     <div class="col-md-3" ng-cloak>
-                        <span class="items" ng-bind="filtered.length">{{filtered.length}} users total</span>
-                        <div>Time stats</div>
+                        <span class="items" ng-bind="filtered.length + ' items total' "></span>
                         <div>Copy time: {{_time.copy}}</div>
                         <div>Filter time: {{_time.filters}}</div>
                         <div>Sort time: {{_time.sort}}</div>
@@ -212,6 +212,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.7.1/loading-bar.min.js'></script>
 <script src="../../dist/pagination.min.js"></script>
 <script src="../../dist/dataGrid.js"></script>
 <script src="js/demoApp.js"></script>
