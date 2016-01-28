@@ -1,0 +1,219 @@
+<div ng-app="myApp" ng-cloak ng-controller="myAppController">
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <a href="#" class="navbar-brand">Angular Data Grid - Bootstrap Design</a>
+
+            <div class="navbar-form navbar-right" uib-dropdown>
+                <button id="single-button" type="button" class="btn btn-info" uib-dropdown-toggle>
+                    Change Theme <span class="caret"></span>
+                </button>
+                <ul class="uib-dropdown-menu" aria-labelledby="simple-dropdown">
+                    <li>
+                        <a href="index.html"><strong>Bootstrap Design</strong></a>
+                    </li>
+                    <li>
+                        <a href="../material/">Material Design</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="margin-bottom-basic">
+            <h3>Angular Data Grid sample using out-of-box Bootstrap styling</h3>
+            Features enabled: sorting, filtering (using both in-grid and external controls), sync with browser URLs, pagination and items-per-page functionality.
+            Angular UI Datepicker used for date controls, although you can use any other framework, plugin or styling.
+            <a href="https://github.com/angular-data-grid/angular-data-grid.github.io" target="_blank">Project GitHub</a>
+        </div>
+        <h4>Additional Demos</h4>
+        <ul>
+            <li>
+                <a href="../100k/" class="margin-bottom-basic">100k rows</a>
+            </li>
+            <li>
+                <a href="../multiple/">Multiple grids on page</a>
+            </li>
+        </ul>
+        <hr>
+        <div class="row">
+            <div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="orderIdFilter">Search by Order #</label>
+                        <input id="orderIdFilter" type="text" class="form-control order-search-box"
+                               placeholder="Enter Order #"
+                               ng-change="gridActions.filter()"
+                               ng-model="code"
+                               filter-by="code"
+                               filter-type="text">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="dateFromFilter">Date From</label>
+
+                        <div class="input-group">
+                            <input type="text"
+                                   id="dateFromFilter"
+                                   class="form-control"
+                                   uib-datepicker-popup="dd/MM/yyyy"
+                                   placeholder="DD/MM/YYYY"
+                                   min-date="dateFrom"
+                                   max-date="dateTo"
+                                   close-text="Close"
+                                   ng-model="dateFrom"
+                                   show-weeks="true"
+                                   is-open="dateFromOpened"
+                                   ng-click="dateFromOpened = true"
+                                   filter-by="placed"
+                                   filter-type="dateFrom"
+                                   ng-blur="gridActions.filter()"
+                                   ng-focus="gridActions.filter()"
+                                   show-weeks="false"
+                                   close-text="Close"/>
+           <span class="input-group-btn">
+                            <label for="dateFromFilter" class="btn btn-default">
+                                <i class="fa fa-calendar"></i></label>
+                          </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="dateToInput">Date To</label>
+
+                        <div class="input-group">
+                            <input type="text"
+                                   id="dateToInput"
+                                   class="form-control"
+                                   uib-datepicker-popup="dd/MM/yyyy"
+                                   placeholder="DD/MM/YYYY"
+                                   min-date="dateFrom"
+                                   max-date="dateTo"
+                                   close-text="Close"
+                                   ng-model="dateTo"
+                                   show-weeks="true"
+                                   is-open="dateToOpened"
+                                   ng-click="dateToOpened = true"
+                                   filter-by="placed"
+                                   filter-type="dateTo"
+                                   ng-blur="gridActions.filter()"
+                                   ng-focus="gridActions.filter()"
+                                   show-weeks="false"
+                                   close-text="Close">
+                 <span class="input-group-btn">
+                            <label for="dateToInput" class="btn btn-default">
+                                <i class="fa fa-calendar"></i></label>
+                          </span>
+                        </div>
+                    </div>
+                    <div ng-show="dateTo || dateFrom" class="buttons-right">
+                        <a href="" ng-click="dateTo = ''; dateFrom = ''; reloadGrid();">Clear Dates</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <div grid-data id='test' grid-options="gridOptions" grid-actions="gridActions">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <span class="items">{{filtered.length}} items total</span>
+                        </div>
+                        <div class="col-md-9 text-right">
+                            <form class="form-inline pull-right margin-bottom-basic">
+                                <div class="form-group">
+                                    <grid-pagination max-size="5"
+                                                     boundary-links="true"
+                                                     class="pagination-sm"
+                                                     total-items="paginationOptions.totalItems"
+                                                     ng-model="paginationOptions.currentPage"
+                                                     ng-change="reloadGrid()"
+                                                     items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                                </div>
+                                <div class="form-group items-per-page">
+                                    <label for="itemsOnPageSelect1">Items per page:</label>
+                                    <select id="itemsOnPageSelect1" class="form-control input-sm" ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage"
+                                            ng-change="reloadGrid()">
+                                        <option>10</option>
+                                        <option>25</option>
+                                        <option>50</option>
+                                        <option>75</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th sortable="code" class="sortable">
+                                Order #
+                            </th>
+                            <th sortable="placed" class="sortable">
+                                Date Placed
+                            </th>
+                            <th class="st-sort-disable th-dropdown">
+                                <select class="form-control width-15"
+                                        filter-by="statusDisplay"
+                                        filter-type="select"
+                                        ng-model="status"
+                                        ng-change="filter()">
+                                    <option value="">All Statuses</option>
+                                    <option ng-repeat="option in statusOptions track by option.value"
+                                            value="{{option.value}}">{{option.text}}
+                                    </option>
+                                </select>
+                            </th>
+                            <th sortable='total.value' class="sortable">
+                                Total
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr grid-item>
+                            <td width="30%" ng-bind="item.code"></td>
+                            <td width="30%" ng-bind="item.placed | date:'MM/dd/yyyy'"></td>
+                            <td ng-bind="item.statusDisplay"></td>
+                            <td ng-bind="item.total.formattedValue"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <form class="form-inline pull-right margin-bottom-basic">
+                        <div class="form-group">
+                            <grid-pagination max-size="5"
+                                             boundary-links="true"
+                                             class="pagination-sm"
+                                             total-items="paginationOptions.totalItems"
+                                             ng-model="paginationOptions.currentPage"
+                                             ng-change="reloadGrid()"
+                                             items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                        </div>
+                        <div class="form-group items-per-page">
+                            <label for="itemsOnPageSelect2">Items per page:</label>
+                            <select id="itemsOnPageSelect2" class="form-control input-sm" ng-init="paginationOptions.itemsPerPage = '10'"
+                                    ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
+                                <option>10</option>
+                                <option>25</option>
+                                <option>50</option>
+                                <option>75</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <button class="btn btn-info margin-bottom-basic" ng-click="showCode = !showCode">CodePen</button>
+            <div ng-show="showCode">
+                <p data-height="768" data-theme-id="21603" data-slug-hash="xZddZm" data-default-tab="html" data-user="AngularDataGrid" class='codepen'>See the Pen <a
+                        href='http://codepen.io/AngularDataGrid/pen/xZddZm/'>xZddZm</a> by AngularDataGrid (<a href='http://codepen.io/AngularDataGrid'>@AngularDataGrid</a>) on <a
+                        href='http://codepen.io'>CodePen</a>.</p>
+                <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>
