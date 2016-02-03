@@ -14,17 +14,19 @@
         })
         .controller('gridController', ['$scope', '$element', '$filter', '$location', 'filtersFactory', function ($scope, $element, $filter, $location, filtersFactory) {
             // values by default
-            $scope._gridOptions = deepFind($scope, $element.attr('grid-options'));
-            $scope._gridActions = deepFind($scope, $element.attr('grid-actions'));
+            $scope._gridOptions = $scope.$eval($element.attr('grid-options'));
+            $scope._gridActions = $scope.$eval($element.attr('grid-actions'));
             $scope.serverPagination = $element.attr('server-pagination') === 'true';
             $scope.getDataDelay = $element.attr('get-delay') || 350;
 
             if (!$scope._gridActions) {
-                $scope.$parent[$element.attr('grid-actions')] = {};
-                $scope._gridActions = $scope.$parent[$element.attr('grid-actions')];
+                $scope.$parent.$eval($element.attr('grid-actions') + '= {}');
+                $scope._gridActions = $scope.$parent.$eval($element.attr('grid-actions'));
             }
 
-            $scope.filtered = angular.copy($scope._gridOptions.data);
+            $scope._gridOptions.grid = $scope;
+
+            $scope.filtered = $scope._gridOptions.data.slice();
             $scope.paginationOptions = $scope._gridOptions.pagination ? angular.copy($scope._gridOptions.pagination) : {};
             $scope.defaultsPaginationOptions = {
                 itemsPerPage: $scope.paginationOptions.itemsPerPage || '10',
@@ -105,7 +107,7 @@
                 //custom filters
                 $scope.filters.forEach(function (filter) {
                     var urlName = filter.model,
-                        value = $scope[urlName];
+                        value = $scope.$eval(urlName);
 
                     if (filter.disableUrl) {
                         needApplyFilters = true;
@@ -152,28 +154,34 @@
                 //custom filters
                 $scope.filters.forEach(function (filter) {
                     var urlName = filter.model,
-                        value = customParams[urlName],
-                        scope = $scope;
+                        value = customParams[urlName];
 
                     if (filter.disableUrl) {
                         return;
                     }
 
-                    if (~filter.filterType.toLowerCase().indexOf('date') && value) {
-                        scope[urlName] = new Date(value);
+                    //datepicker-specific
+                    if (~filter.filterType.toLowerCase().indexOf('date')) {
+                        $scope.$parent.__evaltmp = value ? new Date(value) : null;
+                        $scope.$parent.$eval(urlName + '=__evaltmp');
                         return;
                     }
 
+
                     if (filter.filterType === 'select' && !value) {
-                        value = "";
+                        value = '';
                     }
 
-                    scope[urlName] = value;
+                    if (value) {
+                        $scope.__evaltmp = value;
+                        $scope.$eval(urlName + '=__evaltmp');
+                    }
                 });
 
                 if (!$scope.serverPagination) {
                     applyCustomFilters();
                 }
+
 
                 //pagination options
                 $scope.paginationOptions.itemsPerPage = $scope.defaultsPaginationOptions.itemsPerPage;
@@ -252,7 +260,7 @@
                 $scope.filters.forEach(function (filter) {
                     var predicate = filter.filterBy,
                         urlName = filter.model,
-                        value = $scope[urlName],
+                        value = $scope.$eval(urlName),
                         type = filter.filterType;
                     if ($scope.customFilters[urlName]) {
                         $scope.filtered = $scope.customFilters[urlName]($scope.filtered, value, predicate);
@@ -265,24 +273,19 @@
                 });
             }
         }])
-        .directive('gridData', ['$compile', '$animate', function ($compile, $animate) {
+        .directive('gridData', ['$compile', '$animate', function ($compile) {
             return {
                 restrict: 'EA',
-                transclude: true,
-                replace: true,
+                scope: true,
                 controller: 'gridController',
-                link: function ($scope, $element, attrs, controller, $transclude) {
+                link: function ($scope, $element, attrs) {
                     var sorting = [],
                         filters = [],
                         rows = [],
-                        childScope = $scope.$new(),
                         directiveElement = $element.parent(),
                         gridId = attrs.id,
                         serverPagination = attrs.serverPagination === 'true';
 
-                    $transclude($scope, function (clone) {
-                        $animate.enter(clone, $element);
-                    });
 
                     angular.forEach(angular.element(directiveElement[0].querySelectorAll('[sortable]')), function (sortable) {
                         var element = angular.element(sortable),
@@ -292,7 +295,7 @@
                             predicate + "' && sortOptions.direction === 'asc', 'sort-descent' : sortOptions.predicate === '" +
                             predicate + "' && sortOptions.direction === 'desc'}");
                         element.attr('ng-click', "sort('" + predicate + "')");
-                        $compile(element)(childScope);
+                        $compile(element)($scope);
                     });
 
                     angular.forEach(angular.element(document.querySelectorAll('[filter-by]')), function (filter) {
@@ -309,20 +312,18 @@
 
                         if (filterType !== 'select') {
                         } else {
-                            $scope[urlName + 'Options'] = generateOptions(deepFind($scope, $element.attr('grid-options') + '.data'), predicate);
+                            $scope[urlName + 'Options'] = generateOptions($scope.$eval($element.attr('grid-options') + '.data'), predicate);
                         }
 
                         if (~filterType.indexOf('date') && !element.attr('ng-focus')
                             && !element.attr('ng-blur')) {
                             element.attr('ng-focus', "filter('{" + urlName + " : " + "this." + urlName + "}')");
                             element.attr('ng-blur', "filter('{" + urlName + " : " + "this." + urlName + "}')");
-                            $compile(element)($scope);
                         }
                         if (!urlName) {
                             urlName = predicate;
                             element.attr('ng-model', predicate);
                             element.attr('ng-change', 'filter()');
-                            $compile(element)($scope);
                         }
 
                         filters.push({
@@ -332,6 +333,8 @@
                             filterType: filterType,
                             disableUrl: disableUrl
                         });
+
+                        $compile(element)($scope);
                     });
 
                     angular.forEach(angular.element(directiveElement[0].querySelectorAll('[grid-item]')), function (row) {
@@ -342,7 +345,7 @@
                         } else {
                             element.attr('ng-repeat', "item in filtered | startFrom:(paginationOptions.currentPage-1)*paginationOptions.itemsPerPage | limitTo:paginationOptions.itemsPerPage track by $index");
                         }
-                        $compile(element)(childScope);
+                        $compile(element)($scope);
                     });
 
                     $scope.sorting = sorting;
@@ -360,7 +363,7 @@
 
             function textFilter(items, value, predicate) {
                 return items.filter(function (item) {
-                    return value && item[predicate] ? ~(item[predicate] + '').toLowerCase().indexOf(value.toLowerCase()) : true;
+                    return value && item[predicate] ? ~(item[predicate] + '').toLowerCase().indexOf((value + '').toLowerCase()) : true;
                 });
             }
 
@@ -405,22 +408,6 @@
                 }
             }
         });
-
-    function deepFind(obj, path) {
-        var paths = path.split('.'),
-            current = obj,
-            i;
-
-        for (i = 0; i < paths.length; ++i) {
-            if (current[paths[i]] == undefined) {
-                return undefined;
-            } else {
-                current = current[paths[i]];
-            }
-        }
-        return current;
-    }
-
 
     function generateOptions(values, predicate) {
         var array = [];

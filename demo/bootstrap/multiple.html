@@ -37,6 +37,7 @@
                                ng-change="gridActions1.filter()"
                                ng-model="name"
                                filter-by="name"
+                               grid-id="grid1"
                                filter-type="text">
                     </div>
                 </div>
@@ -130,7 +131,8 @@
                         <input type="text" class="form-control order-search-box"
                                placeholder="Enter User Name"
                                ng-change="gridActions2.filter()"
-                               ng-model="name"
+                               ng-model="name2"
+                               grid-id="grid2"
                                filter-by="name"
                                filter-type="text">
                     </div>
@@ -224,7 +226,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
 <script src="../../dist/pagination.min.js"></script>
-<script src="../../dist/dataGrid.min.js"></script>
+<script src="../../dist/dataGrid.js"></script>
 <script src="js/multipleApp.js"></script>
 
 </html>

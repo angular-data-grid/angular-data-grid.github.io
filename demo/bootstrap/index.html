@@ -67,7 +67,6 @@
                                class="form-control"
                                uib-datepicker-popup="dd/MM/yyyy"
                                placeholder="DD/MM/YYYY"
-                               min-date="dateFrom"
                                max-date="dateTo"
                                close-text="Close"
                                ng-model="dateFrom"
@@ -117,7 +116,7 @@
                     </div>
                 </div>
                 <div ng-show="dateTo || dateFrom" class="buttons-right">
-                    <a href="" ng-click="dateTo = ''; dateFrom = ''; reloadGrid();">Clear Dates</a>
+                    <a href="" ng-click="dateTo = ''; dateFrom = ''; gridActions.refresh();">Clear Dates</a>
                 </div>
             </div>
         </div>
