@@ -1,6 +1,6 @@
 ##Angular Data Grid
 Light, flexible and performant Data Grid for AngularJS apps, with built-in sorting, pagination and filtering options, unified API for client-side and server-side data fetching, 
-seamless synchronization with browser address bar and total freedom in mark-up and styling suitable for your application.
+seamless synchronization with browser address bar and total freedom in mark-up and styling suitable for your application. Angular 1.3 - 1.5 compliant.
 
 Demo Bootstrap: http://angular-data-grid.github.io/demo/bootstrap/
 
@@ -156,7 +156,7 @@ Directive is built on a base of excellent [Angular UI](https://angular-ui.github
 </pagination>
 ```
 
-Settings can be provided as attributes in the <pagination> or globally configured through the paginationConfig.
+Settings can be provided as attributes in the <pagination> or globally configured through the `paginationConfig`.
 
  ```ng-change``` : ng-change can be used together with ng-model to call a function whenever the page changes.
 
@@ -190,8 +190,8 @@ Settings can be provided as attributes in the <pagination> or globally configure
 
 ### Filters
 Data Grid supports 4 built-in types of filters: `text`, `select`, `dateFrom` and `dateTo`. 
-To use it, add attribute `filter-by` to any element and pass property name, which you want filtering. 
-Also you need add attribute `filter-type` with type of filter. 
+To use it, add attribute `filter-by` to any element and pass property name, which you want to be filtered. 
+Also you need add attribute `filter-type` with type of filter.
 After that you need call `filter()` method in `ng-change` for text or select inputs and in `ng-blur/ng-focus` for datepickers. 
 Filters are synchronized with URL by `ng-model` value.
 
@@ -207,7 +207,7 @@ Filters are synchronized with URL by `ng-model` value.
 ```
 
 ### Custom Filters
-If you need use some custom filters (f.e. filter by first letter), add `filter-by` to specify property name, which you want filtering and add `ng-model` property. 
+If you need to use some custom filters (e.g. filter by first letter), add `filter-by` to specify property name, which you want filtering and add `ng-model` property. 
 Then create in `gridOptions.customFilters` variable named as `ng-model` with filtering function. Filtering function accepts items, value, predicate arguments and returns filtered array.
 
 ```javascript
@@ -228,4 +228,4 @@ Then create in `gridOptions.customFilters` variable named as `ng-model` with fil
 ### Others
 All filters have optional parameter `disable-url`. If you set it to **true**, URL-synchronization for this filter will be disabled. 
 
-If you need to use 2 or more grids on page, please add id to grids, and then use ```grid-id``` attribute on filters to specify their corresponding grid. [example](http://angular-data-grid.github.io/demo/bootstrap/multiple.html)
+If you need to use 2 or more grids on page, please add `id` to grids, and then use `grid-id` attribute on filters to specify their corresponding grid. [Example](http://angular-data-grid.github.io/demo/bootstrap/multiple.html)
