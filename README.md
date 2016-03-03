@@ -84,7 +84,7 @@ angular.module('myApp', ['dataGrid', 'pagination'])
                 };
 ```
 
-NOTE: `grid-item` wrapper used in the code example above, to make code more concise - you can use regular 'ng-repeat' instead if needed.
+NOTE: `grid-item` wrapper directive used in the example above, to make code more concise - you can use regular `ng-repeat` instead if needed.
 
 ### Basic API
 
