@@ -13,7 +13,7 @@ Demo 100k: http://angular-data-grid.github.io/demo/100k/
  - Easily switch between the most popular Bootstrap and Google Material theming, or apply your own CSS theme just by changing several CSS classes.
  - Built-in sync with browser address bar (URL), so you can copy-n-paste sorting/filtering/pagination results URL and open it in other browser / send to anyone - even if pagination / filtering are done on a client-side. 
  - Unlike most part of other Angular DataGrids, we intentionally use non-isolated scope of the directive to maximize flexibility, so it can be easily synchronized with any data changes inside your controller. 
- NOTE! With great power comes great responsibility, so use non-isolated API carefully.
+ NOTE! With great power comes great responsibility, so use non-isolated API wisely.
 
 ### Installation
 
@@ -80,14 +80,6 @@ angular.module('myApp', ['dataGrid', 'pagination'])
                 sort: {
                     predicate: 'companyName',
                     direction: 'asc'
-                },
-                //optional parameter - custom rules for filters (see explanation below)
-                customFilters: {
-                    startFrom: function (items, value, predicate) {
-                        return items.filter(function (item) {
-                            return value && item[predicate] ? !item[predicate].toLowerCase().indexOf(value.toLowerCase()) : true;
-                        });
-                    }
                 }
                 };
 ```
@@ -234,4 +226,4 @@ Then create in `gridOptions.customFilters` variable named as `ng-model` with fil
 ### Others
 All filters have optional parameter `disable-url`. If you set it to **true**, URL-synchronization for this filter will be disabled. 
 
-If you need to use 2 or more grids on page, please add id to grids, and then use ```grid-id``` attribute on filters to specify their corresponding grid.
+If you need to use 2 or more grids on page, please add id to grids, and then use ```grid-id``` attribute on filters to specify their corresponding grid. [example](http://angular-data-grid.github.io/demo/bootstrap/multiple.html)
