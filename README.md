@@ -84,6 +84,8 @@ angular.module('myApp', ['dataGrid', 'pagination'])
                 };
 ```
 
+NOTE: `grid-item` wrapper used in the code example above, to make code more concise - you can use regular 'ng-repeat' instead if needed.
+
 ### Basic API
 
 1. `grid-options`: object in your controller with start options for grid. You must create this object with at least 1 required parameter - data.
