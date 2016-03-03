@@ -19,6 +19,8 @@ Demo 100k: http://angular-data-grid.github.io/demo/100k/
 
 Using Bower: `bower install angular-data-grid`
 
+Using NPM: `npm install angular-data-grid`
+
 Direct download: get ZIP archive [from here](https://github.com/angular-data-grid/angular-data-grid.github.io/archive/master.zip)
  
 Then use files from *dist* folder (see below).
