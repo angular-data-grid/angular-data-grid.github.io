@@ -276,6 +276,8 @@
         .directive('gridData', ['$compile', '$animate', function ($compile) {
             return {
                 restrict: 'EA',
+                //transclude: true,
+                //replace: true,
                 scope: true,
                 controller: 'gridController',
                 link: function ($scope, $element, attrs) {
@@ -319,11 +321,13 @@
                             && !element.attr('ng-blur')) {
                             element.attr('ng-focus', "filter('{" + urlName + " : " + "this." + urlName + "}')");
                             element.attr('ng-blur', "filter('{" + urlName + " : " + "this." + urlName + "}')");
+                            //$compile(element)($scope);
                         }
                         if (!urlName) {
                             urlName = predicate;
                             element.attr('ng-model', predicate);
                             element.attr('ng-change', 'filter()');
+                            //$compile(element)($scope);
                         }
 
                         filters.push({
@@ -333,8 +337,6 @@
                             filterType: filterType,
                             disableUrl: disableUrl
                         });
-
-                        $compile(element)($scope);
                     });
 
                     angular.forEach(angular.element(directiveElement[0].querySelectorAll('[grid-item]')), function (row) {

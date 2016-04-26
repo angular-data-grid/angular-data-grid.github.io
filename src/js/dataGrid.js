@@ -337,8 +337,6 @@
                             filterType: filterType,
                             disableUrl: disableUrl
                         });
-
-                        $compile(element)($scope);
                     });
 
                     angular.forEach(angular.element(directiveElement[0].querySelectorAll('[grid-item]')), function (row) {
