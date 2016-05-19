@@ -365,7 +365,7 @@
 
             function textFilter(items, value, predicate) {
                 return items.filter(function (item) {
-                    return value && item[predicate] ? ~(item[predicate] + '').toLowerCase().indexOf((value + '').toLowerCase()) : true;
+                    return value && item[predicate] ? ~(item[predicate] + '').toLowerCase().indexOf((value + '').toLowerCase()) : !!item[predicate];
                 });
             }
 
