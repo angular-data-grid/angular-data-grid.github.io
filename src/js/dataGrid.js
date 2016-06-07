@@ -329,7 +329,7 @@
                             element.attr('ng-change', 'filter()');
                             //$compile(element)($scope);
                         }
-
+                        $compile(element)($scope);
                         filters.push({
                             model: urlName,
                             isInScope: isInScope,

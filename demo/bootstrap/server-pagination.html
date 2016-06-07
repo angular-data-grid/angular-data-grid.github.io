@@ -1,0 +1,88 @@
+<!-- index.html -->
+<!doctype html>
+
+<html ng-app="myApp">
+<head>
+    <style>
+        .sortable:after {
+            font: 14px/1 FontAwesome;
+            content: "\f0dc";
+        }
+
+        .sortable.sort-ascent:after {
+            content: '\f0de';
+            vertical-align: bottom;
+        }
+
+        .sortable.sort-descent:after {
+            content: "\f0dd";
+            vertical-align: top;
+        }
+    </style>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+</head>
+<body ng-controller="myAppController">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">Filter by Name</label>
+                <input type="text" class="form-control order-search-box"
+                       placeholder="Search By name"
+                       ng-change="gridActions.filter()"
+                       ng-model="name"
+                       filter-by="name"
+                       filter-type="text">
+            </div>
+        </div>
+    </div>
+    <div grid-data grid-options="gridOptions" grid-actions="gridActions" server-pagination="true">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th sortable="name" class="sortable">Name</th>
+                <th sortable="surname" class="sortable">Surname</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr grid-item>
+                <td>{{item.name}}</td>
+                <td>{{item.surname}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <div grid-pagination max-size="5" boundary-links="true"
+             ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
+             total-items="paginationOptions.totalItems"
+             ng-model="paginationOptions.currentPage"
+             ng-change="reloadGrid()"
+             items-per-page="paginationOptions.itemsPerPage">
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group items-per-page">
+                    <label for="itemsOnPageSelect1">Items per page:</label>
+                    <select id="itemsOnPageSelect1" class="form-control input-sm" ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
+                        <option>5</option>
+                        <option>10</option>
+                        <option>50</option>
+                        <option>75</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script><!-- load angular -->
+<script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+<script src="../../dist/pagination.js"></script>
+<script src="../../dist/dataGrid.js"></script>
+<script src="js/serverPaginationApp.js"></script>
+</html>
