@@ -13,25 +13,24 @@
 
         $scope.gridOptions = {
             data: [],
-            getData: myAppFactory.getUsersData,
+            getData: myAppFactory.getOrdersData,
             sort: {
                 predicate: 'name',
                 direction: 'asc'
             }
         };
         $scope.gridActions = {};
-
     }
 
     function MyAppFactory($http) {
         var herokuDomain = 'https://server-pagination.herokuapp.com';
         return {
-            getUsersData: getUsersData
+            getOrdersData: getOrdersData
         };
 
-        function getUsersData(params, callback) {
-            $http.get(herokuDomain + '/users' + params).success(function (response) {
-                callback(response.users, response.usersCount);
+        function getOrdersData(params, callback) {
+            $http.get(herokuDomain + '/orders' + params).success(function (response) {
+                callback(response.orders, response.ordersCount);
             });
         }
     }
