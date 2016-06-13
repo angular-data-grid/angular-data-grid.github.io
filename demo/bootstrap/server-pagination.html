@@ -137,10 +137,21 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th sortable="orderNo" class="sortable">Order #</th>
-                <th sortable="datePlaced" class="sortable">Date Placed</th>
-                <th sortable="status" class="sortable">Statuses</th>
-                <th sortable="amount" class="sortable">Total</th>
+                <th width="30%" sortable="orderNo" class="sortable">Order #</th>
+                <th width="30%" sortable="datePlaced" class="sortable">Date Placed</th>
+                <th class="st-sort-disable th-dropdown">
+                    <select class="form-control width-15"
+                            filter-by="status"
+                            filter-type="select"
+                            ng-model="status"
+                            ng-change="filter()">
+                        <option value="">All Statuses</option>
+                        <option ng-repeat="option in UI.statusOptions track by option.value"
+                                value="{{option.value}}">{{option.text}}
+                        </option>
+                    </select>
+                </th>
+                <th sortable="total" class="sortable">Total</th>
             </tr>
             </thead>
             <tbody>

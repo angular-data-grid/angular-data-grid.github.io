@@ -15,23 +15,32 @@
             data: [],
             getData: myAppFactory.getOrdersData,
             sort: {
-                predicate: 'name',
+                predicate: 'orderNo',
                 direction: 'asc'
             }
         };
+        $scope.UI = {};
         $scope.gridActions = {};
+        myAppFactory.getStatuses().success(function (resp) {
+            $scope.UI.statusOptions = resp;
+        });
     }
 
     function MyAppFactory($http) {
         var herokuDomain = 'https://server-pagination.herokuapp.com';
         return {
-            getOrdersData: getOrdersData
+            getOrdersData: getOrdersData,
+            getStatuses: getStatuses
         };
 
         function getOrdersData(params, callback) {
             $http.get(herokuDomain + '/orders' + params).success(function (response) {
                 callback(response.orders, response.ordersCount);
             });
+        }
+
+        function getStatuses() {
+            return $http.get(herokuDomain + '/orders/statuses');
         }
     }
 })();

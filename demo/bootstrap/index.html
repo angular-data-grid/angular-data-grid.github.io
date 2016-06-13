@@ -168,7 +168,7 @@
                                     ng-model="status"
                                     ng-change="filter()">
                                 <option value="">All Statuses</option>
-                                <option ng-repeat="option in statusOptions track by option.value"
+                                <option ng-repeat="option in UI.statusOptions track by option.value"
                                         value="{{option.value}}">{{option.text}}
                                 </option>
                             </select>
