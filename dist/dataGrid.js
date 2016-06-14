@@ -185,11 +185,6 @@
                     }
                 });
 
-                if (!$scope.serverPagination) {
-                    applyCustomFilters();
-                }
-
-
                 //pagination options
                 $scope.paginationOptions.itemsPerPage = $scope.defaultsPaginationOptions.itemsPerPage;
                 $scope.paginationOptions.currentPage = $scope.defaultsPaginationOptions.currentPage;

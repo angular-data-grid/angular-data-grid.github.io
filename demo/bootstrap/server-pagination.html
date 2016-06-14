@@ -25,7 +25,21 @@
     <link rel="stylesheet" href="css/angular-data-grid.bootstrap.css">
 </head>
 <body ng-controller="myAppController">
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <a href="#" class="navbar-brand">Angular Data Grid - Server Pagination</a>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="index.html">Back to main demo</a></li>
+        </ul>
+    </div>
+</nav>
 <div class="container">
+    <div class="margin-bottom-basic">
+        <h3>Angular Data Grid Server Pagination</h3>
+        Features enabled: sorting, filtering (using both in-grid and external controls), pagination and items-per-page functionality.
+        Angular UI Datepicker used for date controls, although you can use any other framework, plugin or styling.
+        <a href="https://github.com/angular-data-grid/angular-data-grid.github.io" target="_blank">Project GitHub</a>
+    </div>
     <hr>
     <div class="row">
         <div>
@@ -202,7 +216,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
 <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
 
-<script src="../../dist/pagination.js"></script>
-<script src="../../dist/dataGrid.js"></script>
+<script src="../../dist/pagination.min.js"></script>
+<script src="../../dist/dataGrid.min.js"></script>
 <script src="js/serverPaginationApp.js"></script>
 </html>

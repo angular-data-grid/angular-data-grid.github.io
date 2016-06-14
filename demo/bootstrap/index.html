@@ -42,6 +42,9 @@
         <li>
             <a href="multiple.html" target="_blank">Multiple grids on page</a>
         </li>
+        <li>
+            <a href="server-pagination.html" target="_blank">Server pagination</a>
+        </li>
     </ul>
     <hr>
     <div class="row">
@@ -168,7 +171,7 @@
                                     ng-model="status"
                                     ng-change="filter()">
                                 <option value="">All Statuses</option>
-                                <option ng-repeat="option in UI.statusOptions track by option.value"
+                                <option ng-repeat="option in statusOptions track by option.value"
                                         value="{{option.value}}">{{option.text}}
                                 </option>
                             </select>
