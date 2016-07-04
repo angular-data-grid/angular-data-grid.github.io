@@ -55,10 +55,12 @@
                 }
             });
 
-            $scope.sort = function (predicate) {
-                var direction = $scope.sortOptions.predicate === predicate && $scope.sortOptions.direction === 'desc' ? 'asc' : 'desc';
-                $scope.sortOptions.predicate = predicate;
-                $scope.sortOptions.direction = direction;
+            $scope.sort = function (predicate, isDefaultSort) {
+                if (!isDefaultSort) {
+                    var direction = $scope.sortOptions.predicate === predicate && $scope.sortOptions.direction === 'desc' ? 'asc' : 'desc';
+                    $scope.sortOptions.direction = direction;
+                    $scope.sortOptions.predicate = predicate;
+                }
                 $scope.paginationOptions.currentPage = 1;
                 $scope.reloadGrid();
             };
@@ -107,7 +109,7 @@
                 //custom filters
                 $scope.filters.forEach(function (filter) {
                     var urlName = filter.model,
-                        value = $scope.$eval(urlName);
+                        value = filter.isInScope ? $scope.$eval(urlName) : $scope.$parent.$eval(urlName);
 
                     if (filter.disableUrl) {
                         needApplyFilters = true;
@@ -173,15 +175,15 @@
                     }
 
                     if (value) {
-                        $scope.__evaltmp = value;
-                        $scope.$eval(urlName + '=__evaltmp');
+                        if (filter.isInScope) {
+                            $scope.__evaltmp = value;
+                            $scope.$eval(urlName + '=__evaltmp');
+                        } else {
+                            $scope.$parent.__evaltmp = value;
+                            $scope.$parent.$eval(urlName + '=__evaltmp');
+                        }
                     }
                 });
-
-                if (!$scope.serverPagination) {
-                    applyCustomFilters();
-                }
-
 
                 //pagination options
                 $scope.paginationOptions.itemsPerPage = $scope.defaultsPaginationOptions.itemsPerPage;
@@ -212,10 +214,14 @@
 
             function getData() {
                 var url = $location.path().slice(1);
-                $scope._gridOptions.getData('?' + url, function (data, totalItems) {
-                    $scope.filtered = data;
-                    $scope.paginationOptions.totalItems = totalItems;
-                });
+                if (!url && $scope.sortOptions.predicate) {
+                    $scope.sort($scope.sortOptions.predicate, true);
+                } else {
+                    $scope._gridOptions.getData('?' + url, function (data, totalItems) {
+                        $scope.filtered = data;
+                        $scope.paginationOptions.totalItems = totalItems;
+                    });
+                }
                 // -> to promise
                 //$scope._gridOptions.getData('?' + url).then(function (data, totalItems) {
                 //    $scope.filtered = data;
@@ -260,7 +266,7 @@
                 $scope.filters.forEach(function (filter) {
                     var predicate = filter.filterBy,
                         urlName = filter.model,
-                        value = $scope.$eval(urlName),
+                        value = filter.isInScope ? $scope.$eval(urlName) : $scope.$parent.$eval(urlName),
                         type = filter.filterType;
                     if ($scope.customFilters[urlName]) {
                         $scope.filtered = $scope.customFilters[urlName]($scope.filtered, value, predicate);
@@ -302,7 +308,7 @@
 
                     angular.forEach(angular.element(document.querySelectorAll('[filter-by]')), function (filter) {
                         var element = angular.element(filter),
-                            isInScope = directiveElement.find(element).length > 0,
+                            isInScope = $element.find(element).length > 0,
                             predicate = element.attr('filter-by'),
                             filterType = element.attr('filter-type') || '',
                             urlName = element.attr('ng-model'),
@@ -329,7 +335,7 @@
                             element.attr('ng-change', 'filter()');
                             //$compile(element)($scope);
                         }
-
+                        //$compile(element)($scope);
                         filters.push({
                             model: urlName,
                             isInScope: isInScope,

@@ -26,9 +26,10 @@ Direct download: get ZIP archive [from here](https://github.com/angular-data-gri
 Then use files from *dist* folder (see below).
 
 ### Setup
-1. Include scripts in you application: `dataGrid.min.js` and `pagination.min.js` (include the second one only if you need pagination). 
+1. Include scripts in you application: `angular.min.js`, `dataGrid.min.js` and `pagination.min.js` (include the second one only if you need pagination).
  
  ```javascript
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
  <script src="bower_components/angular-data-grid/dist/pagination.min.js"></script>
  <script src="bower_components/angular-data-grid/dist/dataGrid.min.js"></script>
  ```
@@ -105,7 +106,10 @@ Use this object for calling methods of directive: `sort()`, `filter()`, `refresh
                  };
  ```
  
- - For server side pagination/filtering to fetch data by page: assign ```getData``` method to some function with URL params as 1st parameter and data itself as 2d parameter:
+ - For server side pagination/filtering to fetch data by page:
+ 1. add attribute 'server-pagination'=true on element on which you applied directive 'grid-data'
+ 2. assign ```getData``` method to some function with URL params as 1st parameter and data itself as 2d parameter:
+
  
  ```javascript
     $scope.gridOptions = {
@@ -145,7 +149,7 @@ $scope.gridOptions = {
 
 ### Pagination
 
-You can optionally use `pagination` directive to display paging with previous/next and first/last controls. 
+You can optionally use `grid-pagination` directive to display paging with previous/next and first/last controls.
 Directive is built on a base of excellent [Angular UI](https://angular-ui.github.io/bootstrap/) component and shares extensive API: 
 
 ```HTML
