@@ -62,7 +62,7 @@
                     $scope.sortOptions.predicate = predicate;
                 }
                 $scope.paginationOptions.currentPage = 1;
-                $scope.reloadGrid();
+                $scope.reloadGrid(isDefaultSort);
             };
 
             $scope.filter = function () {
@@ -82,9 +82,9 @@
                 }
             });
 
-            $scope.reloadGrid = function () {
+            $scope.reloadGrid = function (isDefaultSort) {
                 if ($scope.urlSync || $scope.serverPagination) {
-                    changePath();
+                    changePath(isDefaultSort);
                 } else {
                     applyFilters();
                 }
@@ -94,7 +94,7 @@
             $scope._gridActions.filter = $scope.filter;
             $scope._gridActions.sort = $scope.sort;
 
-            function changePath() {
+            function changePath(isDefaultSort) {
                 var path, needApplyFilters = false;
 
                 path = 'page=' + $scope.paginationOptions.currentPage;
@@ -135,6 +135,9 @@
                     applyFilters();
                 }
                 $location.path(path);
+                if (isDefaultSort) {
+                    $scope.$apply();
+                }
             }
 
             function parseUrl() {

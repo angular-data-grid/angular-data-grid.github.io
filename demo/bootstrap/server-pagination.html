@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/angular-data-grid.bootstrap.css">
+    <link rel="stylesheet" href="css/loading-bar.min.css">
 </head>
 <body ng-controller="myAppController">
 <nav class="navbar navbar-inverse">
@@ -151,8 +152,8 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th width="30%" sortable="orderNo" class="sortable">Order #</th>
-                <th width="30%" sortable="datePlaced" class="sortable">Date Placed</th>
+                <th width="30%" sortable="orderNo" class="sortable">Order # </th>
+                <th width="30%" sortable="datePlaced" class="sortable">Date Placed </th>
                 <th class="st-sort-disable th-dropdown">
                     <select class="form-control width-15"
                             filter-by="status"
@@ -165,7 +166,7 @@
                         </option>
                     </select>
                 </th>
-                <th sortable="total" class="sortable">Total</th>
+                <th sortable="total" class="sortable">Total </th>
             </tr>
             </thead>
             <tbody>
@@ -218,5 +219,6 @@
 
 <script src="../../dist/pagination.min.js"></script>
 <script src="../../dist/dataGrid.min.js"></script>
+<script src="../../dist/loading-bar.min.js"></script>
 <script src="js/serverPaginationApp.js"></script>
 </html>

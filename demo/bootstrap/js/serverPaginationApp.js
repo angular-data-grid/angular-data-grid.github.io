@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('myApp', ['ui.bootstrap', 'dataGrid', 'pagination'])
+        .module('myApp', ['ui.bootstrap', 'dataGrid', 'pagination', 'angular-loading-bar'])
         .controller('myAppController', MyAppController)
         .factory('myAppFactory', MyAppFactory);
 
