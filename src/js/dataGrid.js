@@ -282,6 +282,23 @@
                 });
             }
         }])
+        .directive('gridItem', ['$compile', function ($compile) {
+            return {
+                restrict: 'EA',
+                terminal:true,
+                scope: false,
+                link: function ($scope, element, attrs, ctrl, transclude) {
+                    if ($scope.serverPagination) {
+                        element.attr('ng-repeat', "item in filtered");
+                    } else {
+                        element.attr('ng-repeat', "item in filtered | startFrom:(paginationOptions.currentPage-1)*paginationOptions.itemsPerPage | limitTo:paginationOptions.itemsPerPage track by $index");
+                    }
+                    element.removeAttr('grid-item');
+                    var html = element[0].outerHTML;
+                    element.replaceWith($compile(html)($scope));
+                }
+            }
+        }])
         .directive('gridData', ['$compile', '$animate', function ($compile) {
             return {
                 restrict: 'EA',
@@ -290,18 +307,16 @@
                 scope: true,
                 controller: 'gridController',
                 link: function ($scope, $element, attrs) {
-                    var sorting = [],
-                        filters = [],
-                        rows = [],
+                    var filters = [],
                         directiveElement = $element.parent(),
                         gridId = attrs.id,
                         serverPagination = attrs.serverPagination === 'true';
+                    $scope.serverPagination = serverPagination;
 
 
                     angular.forEach(angular.element(directiveElement[0].querySelectorAll('[sortable]')), function (sortable) {
                         var element = angular.element(sortable),
                             predicate = element.attr('sortable');
-                        sorting.push(element);
                         element.attr('ng-class', "{'sort-ascent' : sortOptions.predicate ==='" +
                             predicate + "' && sortOptions.direction === 'asc', 'sort-descent' : sortOptions.predicate === '" +
                             predicate + "' && sortOptions.direction === 'desc'}");
@@ -348,19 +363,6 @@
                         });
                     });
 
-                    angular.forEach(angular.element(directiveElement[0].querySelectorAll('[grid-item]')), function (row) {
-                        var element = angular.element(row);
-                        rows.push(element);
-                        if (serverPagination) {
-                            element.attr('ng-repeat', "item in filtered");
-                        } else {
-                            element.attr('ng-repeat', "item in filtered | startFrom:(paginationOptions.currentPage-1)*paginationOptions.itemsPerPage | limitTo:paginationOptions.itemsPerPage track by $index");
-                        }
-                        $compile(element)($scope);
-                    });
-
-                    $scope.sorting = sorting;
-                    $scope.rows = rows;
                     $scope.filters = filters;
                 }
             }

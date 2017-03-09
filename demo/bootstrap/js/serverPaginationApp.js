@@ -21,8 +21,8 @@
         };
         $scope.UI = {};
         $scope.gridActions = {};
-        myAppFactory.getStatuses().success(function (resp) {
-            $scope.UI.statusOptions = resp;
+        myAppFactory.getStatuses().then(function (resp) {
+            $scope.UI.statusOptions = resp.data;
         });
     }
 
@@ -34,8 +34,8 @@
         };
 
         function getOrdersData(params, callback) {
-            $http.get(herokuDomain + '/orders' + params).success(function (response) {
-                callback(response.orders, response.ordersCount);
+            $http.get(herokuDomain + '/orders' + params).then(function (response) {
+                callback(response.data.orders, response.data.ordersCount);
             });
         }
 
