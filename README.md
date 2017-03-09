@@ -87,7 +87,7 @@ angular.module('myApp', ['dataGrid', 'pagination'])
                 };
 ```
 
-NOTE: `grid-item` wrapper directive used in the example above, to make code more concise - you can use regular `ng-repeat` instead if needed, like: `ng-repeat="item in filtered | startFrom:(paginationOptions.currentPage-1)*paginationOptions.itemsPerPage | limitTo:paginationOptions.itemsPerPage track by $index")"`
+NOTE: `grid-item` wrapper directive used in the example above, to make code more concise, but you can always use regular `ng-repeat` instead if needed, like: `ng-repeat="item in filtered | startFrom:(paginationOptions.currentPage-1)*paginationOptions.itemsPerPage | limitTo:paginationOptions.itemsPerPage track by $index")"`
 
 ### Basic API
 
