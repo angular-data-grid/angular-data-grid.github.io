@@ -323,11 +323,11 @@
                         element.attr('ng-click', "sort('" + predicate + "')");
                         $compile(element)($scope);
                     });
-
-                    angular.forEach(angular.element(document.querySelectorAll('[filter-by]')), function (filter) {
+                    angular.forEach(document.querySelectorAll('[filter-by]'), function (filter) {
                         var element = angular.element(filter),
-                            isInScope = $element.find(element).length > 0,
                             predicate = element.attr('filter-by'),
+                            dataGridElement = document.querySelectorAll('[grid-data]')[0],
+                            isInScope = dataGridElement.querySelectorAll('[filter-by="'+ predicate+'"]').length > 0,
                             filterType = element.attr('filter-type') || '',
                             urlName = element.attr('ng-model'),
                             disableUrl = element.attr('disable-url');
