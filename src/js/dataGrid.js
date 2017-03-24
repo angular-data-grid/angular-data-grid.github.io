@@ -38,7 +38,7 @@
             $scope.urlSync = $scope._gridOptions.urlSync;
 
             $scope.$watch('_gridOptions.data', function (newValue) {
-                if (newValue && newValue.length) {
+                if (newValue && newValue.length > -1) {
                     $scope.sortCache = {};
                     $scope.filtered = $scope._gridOptions.data.slice();
                     $scope.filters.forEach(function (filter) {
