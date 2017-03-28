@@ -1,4 +1,4 @@
-##Angular Data Grid
+## Angular Data Grid
 
 Light, flexible and performant Data Grid for AngularJS apps, with built-in sorting, pagination and filtering options, unified API for client-side and server-side data fetching, 
 seamless synchronization with browser address bar and total freedom in mark-up and styling suitable for your application. Angular 1.3 - 1.6 compliant.
