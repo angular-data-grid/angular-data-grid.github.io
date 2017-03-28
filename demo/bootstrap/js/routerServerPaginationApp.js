@@ -22,6 +22,11 @@
                 templateUrl: 'views/router-server-pagination.html',
                 controller: MyAppController
             })
+            .state('anotherView', {
+                url: '/anotherView',
+                templateUrl: 'views/anotherView.html',
+                controller: MyAppController
+            })
     }
 
     function MyAppController($scope, myAppFactory, $state) {
@@ -34,7 +39,14 @@
                 direction: 'asc'
             }
         };
+        $scope.UI = {};
         $scope.gridActions = {};
+        $scope.goToAnotherState = function() {
+            $state.go('anotherView');
+        };
+        $scope.back = function() {
+            $state.go('orders');
+        };
         myAppFactory.getStatuses().then(function (resp) {
             $scope.UI.statusOptions = resp.data;
         })

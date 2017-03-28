@@ -1,12 +1,7 @@
 <div class="container">
-    <div class="margin-bottom-basic">
-        <h3>Angular Data Grid - UI Router Server Pagination.</h3>
-        UI Router plus all features for server pagination<br/>
-        Features enabled: sorting, filtering (using both in-grid and external controls), pagination and items-per-page functionality.
-        Angular UI Datepicker used for date controls, although you can use any other framework, plugin or styling.
-        <a href="https://github.com/angular-data-grid/angular-data-grid.github.io" target="_blank">Project GitHub</a>
+    <div class="form-group">
+        <button class="btn btn-primary" ng-click="goToAnotherState()">Go to another state</button>
     </div>
-    <hr>
     <div class="row">
         <div>
             <div class="col-md-4">
@@ -117,8 +112,8 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th width="30%" sortable="orderNo" class="sortable">Order #</th>
-                <th width="30%" sortable="datePlaced" class="sortable">Date Placed</th>
+                <th width="30%" sortable="orderNo" class="sortable">Order # </th>
+                <th width="30%" sortable="datePlaced" class="sortable">Date Placed </th>
                 <th class="st-sort-disable th-dropdown">
                     <select class="form-control width-15"
                             filter-by="status"
@@ -131,7 +126,7 @@
                         </option>
                     </select>
                 </th>
-                <th sortable="total" class="sortable">Total</th>
+                <th sortable="total" class="sortable">Total </th>
             </tr>
             </thead>
             <tbody>
