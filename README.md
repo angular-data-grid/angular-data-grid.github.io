@@ -238,7 +238,7 @@ Then create in `gridOptions.customFilters` variable named as `ng-model` with fil
 ### URL Synchronization
 You can disable/enable URL synchronization for the whole grid or on a level of particular filter. 
 
-Global parameter `gridOptions.urlSync` (boolean) works for the whole grid.
+Global parameter `gridOptions.urlSync` (boolean, default is 'false') works for the whole grid.
 
 Each filter has optional parameter `disable-url` (boolean, default is 'false'). If you set it to **true**, URL-synchronization for this particular filter will be disabled.
 
