@@ -14,7 +14,7 @@ Demo Angular UI Router: http://angular-data-grid.github.io/demo/bootstrap/ui-rou
 ### Features
  - Does not have any hard-coded template so you can choose any mark-up you need, from basic `<table>` layout to any `<div>` structure.
  - Easily switch between the most popular Bootstrap and Google Material theming, or apply your own CSS theme just by changing several CSS classes.
- - Built-in sync with browser address bar (URL), so you can copy-n-paste sorting/filtering/pagination results URL and open it in other browser / send to anyone - even if pagination / filtering are done on a client-side. 
+ - Built-in sync with browser address bar (URL), so you can copy-n-paste sorting/filtering/pagination results URL and open it in other browser / send to anyone - even if pagination / filtering are done on a client-side. [See details](#url-synchronization)
  - Support of [Angular UI Router](https://github.com/angular-ui/ui-router) navigation. 
  - Unlike most part of other Angular DataGrids, we intentionally use non-isolated scope of the directive to maximize flexibility, so it can be easily synchronized with any data changes inside your controller. 
  NOTE! With great power comes great responsibility, so use non-isolated API wisely.
@@ -235,9 +235,12 @@ Then create in `gridOptions.customFilters` variable named as `ng-model` with fil
 
 ```
 
-### Others
-All filters have optional parameter `disable-url`. If you set it to **true**, URL-synchronization for this filter will be disabled. 
+### Url Synchronization
+You can disable/enable URL-synchronization for whole grid. Just set `gridOptions.urlSync` to **false**/**true**
+All filters have optional parameter `disable-url`. If you set it to **true**, URL-synchronization for this filter will be disabled.
 
+
+### Others
 If you need to use 2 or more grids on page, please add `id` to grids, and then use `grid-id` attribute on filters to specify their corresponding grid. [Example](http://angular-data-grid.github.io/demo/bootstrap/multiple.html)
 
 ### Next / Future
