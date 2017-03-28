@@ -8,10 +8,13 @@ Demo Material: http://angular-data-grid.github.io/demo/material/
 
 Demo 100k: http://angular-data-grid.github.io/demo/100k/
 
+Demo Angular UI Router: http://angular-data-grid.github.io/demo/bootstrap/ui-router.html
+
 ### Features
  - Does not have any hard-coded template so you can choose any mark-up you need, from basic `<table>` layout to any `<div>` structure.
  - Easily switch between the most popular Bootstrap and Google Material theming, or apply your own CSS theme just by changing several CSS classes.
  - Built-in sync with browser address bar (URL), so you can copy-n-paste sorting/filtering/pagination results URL and open it in other browser / send to anyone - even if pagination / filtering are done on a client-side. 
+ - Support of [Angular UI Router](https://github.com/angular-ui/ui-router) navigation. 
  - Unlike most part of other Angular DataGrids, we intentionally use non-isolated scope of the directive to maximize flexibility, so it can be easily synchronized with any data changes inside your controller. 
  NOTE! With great power comes great responsibility, so use non-isolated API wisely.
 
