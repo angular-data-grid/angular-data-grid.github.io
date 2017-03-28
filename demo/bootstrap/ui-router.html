@@ -1,0 +1,63 @@
+<!-- index.html -->
+<!doctype html>
+
+<html ng-app="myApp">
+<head>
+    <style>
+        .sortable:after {
+            font: 14px/1 FontAwesome;
+            content: "\f0dc";
+        }
+
+        .sortable.sort-ascent:after {
+            content: '\f0de';
+            vertical-align: bottom;
+        }
+
+        .sortable.sort-descent:after {
+            content: "\f0dd";
+            vertical-align: top;
+        }
+    </style>
+    <!--<base href="/angular-data-grid/demo/bootstrap/"/>-->
+    <link rel="icon" href="https://angularjs.org/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/angular-data-grid.bootstrap.css">
+    <link rel="stylesheet" href="css/loading-bar.min.css">
+</head>
+
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <a href="#" class="navbar-brand">Angular Data Grid - UI Router Server Pagination Example</a>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="../bootstrap/">Back to main demo</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="margin-bottom-basic">
+        <h3>Angular Data Grid - UI Router Server Pagination.</h3>
+        <a href="https://github.com/angular-ui/ui-router">UI Router</a> plus all features for server pagination.<br/>
+        <a href="https://github.com/angular-ui/ui-router">UI Router</a> can be used in both modes (hash and html5).
+        <a href="https://github.com/angular-data-grid/angular-data-grid.github.io" target="_blank">Project GitHub</a>
+    </div>
+    <hr>
+    <div ui-view></div>
+</div>
+</body>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-messages.min.js"></script>
+<script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+<script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+<script src="../../dist/pagination.min.js"></script>
+<script src="../../dist/dataGrid.min.js"></script>
+<script src="../../dist/loading-bar.min.js"></script>
+<script src="js/routerServerPaginationApp.js"></script>
+</html>

@@ -48,7 +48,7 @@
                     });
 
                     if ($scope.urlSync) {
-                        parseUrl($location.path());
+                        parseUrl();
                     } else {
                         applyFilters();
                     }
@@ -71,15 +71,11 @@
             };
 
             $scope.$on('$locationChangeSuccess', function () {
-                if ($scope.urlSync || $scope.serverPagination) {
-                    if ($scope.serverPagination) {
-                        clearTimeout($scope.getDataTimeout);
-                        $scope.getDataTimeout = setTimeout(getData, $scope.getDataDelay);
-                    }
-                    if ($scope.filtered) {
-                        parseUrl($location.path());
-                    }
-                }
+                onChangeStateOrLocation()
+            });
+
+            $scope.$on("$stateChangeSuccess", function (event, toState) {
+                onChangeStateOrLocation()
             });
 
             $scope.reloadGrid = function (isDefaultSort) {
@@ -93,6 +89,18 @@
             $scope._gridActions.refresh = $scope.reloadGrid;
             $scope._gridActions.filter = $scope.filter;
             $scope._gridActions.sort = $scope.sort;
+
+            function onChangeStateOrLocation(){
+                if ($scope.urlSync || $scope.serverPagination) {
+                    if ($scope.serverPagination) {
+                        clearTimeout($scope.getDataTimeout);
+                        $scope.getDataTimeout = setTimeout(getData, $scope.getDataDelay);
+                    }
+                    if ($scope.filtered) {
+                        parseUrl();
+                    }
+                }
+            }
 
             function changePath(isDefaultSort) {
                 var path, needApplyFilters = false;
@@ -134,27 +142,21 @@
                 if (needApplyFilters) {
                     applyFilters();
                 }
-                $location.path(path);
+                $location.search(path);
                 if (isDefaultSort) {
                     $scope.$apply();
                 }
             }
 
             function parseUrl() {
-                var url = $location.path().slice(1),
-                    params = {},
+                var params = $location.search(),
                     customParams = {};
 
-                $scope.params = params;
-
-                url.split('&').forEach(function (urlParam) {
-                        var param = urlParam.split('=');
-                        params[param[0]] = param[1];
-                        if (param[0] !== 'page' && param[0] !== 'sort' && param[0] !== 'itemsPerPage') {
-                            customParams[decodeURIComponent(param[0])] = decodeURIComponent(param[1]);
-                        }
+                Object.keys(params).forEach(function(key) {
+                    if (key !== 'page' && key !== 'sort' && key !== 'itemsPerPage') {
+                        customParams[key] = params[key];
                     }
-                );
+                });
 
                 //custom filters
                 $scope.filters.forEach(function (filter) {
@@ -216,7 +218,12 @@
             }
 
             function getData() {
-                var url = $location.path().slice(1);
+                var url = '';
+                var params = $location.search();
+                Object.keys(params).forEach(function(key) {
+                    url += key + '=' + params[key] + '&';
+                });
+                url = url.slice(0, -1);
                 if (!url && $scope.sortOptions.predicate) {
                     $scope.sort($scope.sortOptions.predicate, true);
                 } else {
