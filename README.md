@@ -235,13 +235,16 @@ Then create in `gridOptions.customFilters` variable named as `ng-model` with fil
 
 ```
 
-### Url Synchronization
-You can disable/enable URL-synchronization for whole grid. Just set `gridOptions.urlSync` to **false**/**true**
-All filters have optional parameter `disable-url`. If you set it to **true**, URL-synchronization for this filter will be disabled.
+### URL Synchronization
+You can disable/enable URL synchronization for the whole grid or on a level of particular filter. 
+
+Global parameter `gridOptions.urlSync` (boolean) works for the whole grid.
+
+Each filter has optional parameter `disable-url` (boolean). If you set it to **true**, URL-synchronization for this particular filter will be disabled.
 
 
-### Others
+### Multiple grids on page
 If you need to use 2 or more grids on page, please add `id` to grids, and then use `grid-id` attribute on filters to specify their corresponding grid. [Example](http://angular-data-grid.github.io/demo/bootstrap/multiple.html)
 
 ### Next / Future
- - Port data grid to Angular2?
+ - Port to Angular2?
