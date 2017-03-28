@@ -240,7 +240,7 @@ You can disable/enable URL synchronization for the whole grid or on a level of p
 
 Global parameter `gridOptions.urlSync` (boolean) works for the whole grid.
 
-Each filter has optional parameter `disable-url` (boolean). If you set it to **true**, URL-synchronization for this particular filter will be disabled.
+Each filter has optional parameter `disable-url` (boolean, default is 'false'). If you set it to **true**, URL-synchronization for this particular filter will be disabled.
 
 
 ### Multiple grids on page
