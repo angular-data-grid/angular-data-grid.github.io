@@ -14,9 +14,9 @@
         };
 
         function link(scope, element, attrs) {
-            var elementOffsetFrom = attrs.offsetFromElementId ?
-                                    angular.element(document.querySelector('#' + attrs.offsetFromElementId))[0] :
-                                    window;
+            var elementOffsetFrom = attrs.offsetFromElement ?
+                document.querySelector(attrs.offsetFromElement) :
+                window;
 
             function resizeFixed() {
                 var thElements = element.find("th");
@@ -26,53 +26,53 @@
                         return;
                     }
                     var tdElementWidth = tdElement.offsetWidth;
-                    angular.element(thElements[i]).css({ 'width': tdElementWidth + 'px' });
+                    angular.element(thElements[i]).css({'width': tdElementWidth + 'px'});
                 }
             }
 
             function bindFixedToHeader() {
-                var thead = angular.element(element.find("thead")),
+                var thead = element.find("thead"),
                     tbody = element.find("tbody"),
                     tbodyLeftPos = tbody[0].getBoundingClientRect().left;
-                thead.addClass('fixed');
-                if (attrs.offsetFromElementId) {
-                    var topElement = angular.element(document.querySelector(attrs.offsetFromElementId))[0];
+                thead.addClass('fixed-header');
+                if (attrs.offsetFromElement) {
+                    var topElement = document.querySelector(attrs.offsetFromElement);
                     var offset = topElement.getBoundingClientRect().top + topElement.offsetHeight;
-                    angular.element(thead[0]).css({ "top": offset });
+                    thead.css({"top": offset});
                 }
-                angular.element(thead[0]).css({"left": tbodyLeftPos});
+                thead.css({"left": tbodyLeftPos});
                 tbody.addClass("tbody-offset");
             }
 
             function unBindFixedToHeader() {
-                var thead = angular.element(element.find("thead")),
+                var thead = element.find("thead"),
                     tbody = element.find("tbody");
-                thead.removeClass('fixed');
-                angular.element(thead[0]).css({"left": ""});
-                angular.element(thead[0]).css({"top": ""});
+                thead.removeClass('fixed-header');
+                thead.css({"left": ""});
+                thead.css({"top": ""});
                 tbody.removeClass("tbody-offset");
             }
 
             function scrollFixed() {
-                var offset = attrs.offsetFromElementId ?
+                var offset = attrs.offsetFromElement ?
                         elementOffsetFrom.getBoundingClientRect().top + elementOffsetFrom.offsetHeight :
                         $window.pageYOffset,
-                    tableOffsetTop = attrs.offsetFromElementId ?
+                    tableOffsetTop = attrs.offsetFromElement ?
                         element[0].getBoundingClientRect().top :
                         element[0].getBoundingClientRect().top + offset,
                     tableOffsetBottom = tableOffsetTop + element[0].offsetHeight - element.find("thead")[0].offsetHeight;
 
-                if(offset < tableOffsetTop || offset > tableOffsetBottom) {
+                if (offset < tableOffsetTop || offset > tableOffsetBottom) {
                     unBindFixedToHeader();
                 }
-                else if(offset >= tableOffsetTop && offset <= tableOffsetBottom) {
+                else if (offset >= tableOffsetTop && offset <= tableOffsetBottom) {
                     bindFixedToHeader();
                 }
                 resizeFixed();
             }
 
-            scope.$on('gridReloaded', function() {
-                $timeout(function(){
+            scope.$on('gridReloaded', function () {
+                $timeout(function () {
                     resizeFixed();
                     scrollFixed();
                 }, 0);

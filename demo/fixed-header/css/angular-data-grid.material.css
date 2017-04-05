@@ -82,5 +82,5 @@ th md-select {
 .sortable.sort-descent span:after {
   display: none; }
 
-.fixed {
+.fixed-header {
   border: 1px solid rgba(0, 0, 0, 0.12); }
