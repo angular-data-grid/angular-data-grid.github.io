@@ -1,0 +1,14 @@
+.fixed {
+  top: 0;
+  position: fixed;
+  width: auto;
+  display: table;
+  z-index: 99; }
+  .fixed tr {
+    background-color: #fff; }
+
+.tbody-offset:before {
+  height: 60px;
+  content: " ";
+  color: white;
+  display: block; }

@@ -41,6 +41,15 @@
         gulp.src('./demo/100k/scss/angular-data-grid.bootstrap.scss')
             .pipe(sass().on('error', sass.logError))
             .pipe(gulp.dest('./demo/100k/css/'));
+        gulp.src('./demo/fixed-header/scss/bootstrap/angular-data-grid.bootstrap.scss')
+            .pipe(sass().on('error', sass.logError))
+            .pipe(gulp.dest('./demo/fixed-header/css/'));
+        gulp.src('./demo/fixed-header/scss/material-design/angular-data-grid.material.scss')
+            .pipe(sass().on('error', sass.logError))
+            .pipe(gulp.dest('./demo/fixed-header/css/'));
+        gulp.src('./demo/fixed-header/scss/fixed-header.scss')
+            .pipe(sass().on('error', sass.logError))
+            .pipe(gulp.dest('./demo/fixed-header/css/'));
     });
 
     gulp.task('build', ['js', 'sass']);
