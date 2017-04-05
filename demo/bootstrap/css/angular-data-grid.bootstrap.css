@@ -21,3 +21,20 @@
 .sortable.sort-descent:after {
   content: "\f0dd";
   vertical-align: top; }
+
+.fixed {
+  top: 0;
+  position: fixed;
+  width: auto;
+  border: none;
+  display: table;
+  z-index: 99; }
+  .fixed tr {
+    background-color: #fff; }
+
+.tbody-offset:before {
+  height: 60px;
+  content: " ";
+  color: white;
+  /* bacground color */
+  display: block; }

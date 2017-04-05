@@ -1,0 +1,43 @@
+/*bootstrap*/
+
+.fixed {
+  top: 0;
+  position: fixed;
+  width: auto;
+  border: none; 
+  display: table;
+  z-index: 99;
+  tr {
+    background-color: #fff;
+  }    
+}
+
+
+.tbody-offset:before {
+    height: 60px;
+    content:" ";
+    color:white; /* bacground color */
+    display:block;
+}
+
+
+/*material*/
+.fixed {
+  top: 0;
+  position: fixed;
+  width: auto;
+  border: 1px solid rgba(0,0,0,.12); 
+  display: table;
+  z-index: 99;
+  tr {
+    background-color: #fff;
+  }    
+}
+
+
+.tbody-offset:before {
+    height: 60px;
+    content:" ";
+    color:white; /* bacground color */
+    display:block;
+}

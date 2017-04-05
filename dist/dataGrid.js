@@ -12,7 +12,7 @@
                 return [];
             }
         })
-        .controller('gridController', ['$scope', '$element', '$filter', '$location', 'filtersFactory', function ($scope, $element, $filter, $location, filtersFactory) {
+        .controller('gridController', ['$scope', '$rootScope', '$element', '$filter', '$location', 'filtersFactory', function ($scope, $rootScope, $element, $filter, $location, filtersFactory) {
             // values by default
             $scope._gridOptions = $scope.$eval($element.attr('grid-options'));
             $scope._gridActions = $scope.$eval($element.attr('grid-actions'));
@@ -84,6 +84,7 @@
                 } else {
                     applyFilters();
                 }
+                $rootScope.$broadcast('gridReloaded');
             };
 
             $scope._gridActions.refresh = $scope.reloadGrid;
