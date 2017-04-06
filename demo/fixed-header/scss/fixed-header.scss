@@ -4,16 +4,11 @@
   width: auto;
   display: table;
   z-index: 99;
-  tr {
-    background-color: #fff;
-  }
 }
 
 .tbody-offset {
   &:before {
-    height: 60px;
     content: " ";
-    color: white;
     display: block;
   }
 }

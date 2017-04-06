@@ -24,3 +24,9 @@
 
 .fixed-header {
   border: none; }
+  .fixed-header tr {
+    background-color: #fff; }
+
+.tbody-offset:before {
+  color: white;
+  height: 60px; }

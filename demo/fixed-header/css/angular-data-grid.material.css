@@ -84,3 +84,9 @@ th md-select {
 
 .fixed-header {
   border: 1px solid rgba(0, 0, 0, 0.12); }
+  .fixed-header tr {
+    background-color: #fff; }
+
+.tbody-offset:before {
+  color: white;
+  height: 60px; }

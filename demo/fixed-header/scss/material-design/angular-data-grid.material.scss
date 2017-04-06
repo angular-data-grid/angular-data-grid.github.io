@@ -108,4 +108,14 @@ th md-select {
 
 .fixed-header {
   border: 1px solid $borderColor;
+  tr {
+    background-color: #fff;
+  }
+}
+
+.tbody-offset {
+  &:before {
+    color: white;
+    height: 60px;
+  }
 }

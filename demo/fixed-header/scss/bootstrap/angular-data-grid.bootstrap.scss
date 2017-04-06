@@ -31,4 +31,14 @@
 
 .fixed-header {
   border: none;
+  tr {
+    background-color: #fff;
+  }
+}
+
+.tbody-offset {
+  &:before {
+    color: white;
+    height: 60px;
+  }
 }
