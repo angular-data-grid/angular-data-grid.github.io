@@ -94,9 +94,8 @@
                         =”=”#the-id-on-above-fixed-element”&gt;</code>
                 </p>
                 <br>
-                <p>To make it work for material design it is needed to not use md-content because of the fact that scroll event doesn't work in this case. <br>
-                   More Information could be found <a href="https://github.com/angular/material/issues/6657">here</a>. The issue in closed status but seems to be
-                   it's not fixed yet.
+                <p>The directive subscribes on scroll event, but the event is not fired when directive is used inside <code>&lt;md-content&gt;</code>, so to make it work please use the directive outside the <code>&lt;md-content&gt;</code> container.
+                    For more information about this problem please review this <a href="https://github.com/angular/material/issues/6657">issue</a>.
                 </p>
             </div>
             <hr>
