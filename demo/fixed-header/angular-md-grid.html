@@ -47,6 +47,59 @@
                 grid styling.
                 <a href="https://github.com/angular-data-grid/angular-data-grid.github.io"
                    target="_blank">Project GitHub</a></p>
+
+            <hr>
+            <h3>How To Freeze Table Header</h3>
+            <h4>Using HTML Layout</h4>
+            <div>
+                <p>The first option is to split table header and table body between two tables
+                    And apply some css styles to these parts to sync table column's widths like in the steps below:</p>
+                <ul>
+                    <li>Use the next styles applied to table body container to make it scrollable: <br>
+                        <code>.div-table-body { height: 600px; overflow-x: auto; overflow-y: scroll; } </code>
+                    </li>
+                    <li>Make sure that <code>th</code> elements have the same padding as <code>td</code> elements have.</li>
+                    <li>Use <code>padding-right</code> with the value of scroll bar width to make an offset for the table</li>
+                    <li>Use <code>width</code> attribute for columns to sync widths.</li>
+                </ul>
+            </div>
+            <h4>Using Stand-alone Directive</h4>
+            <div>
+                <p>Another option is to use the built-in directive <code>fixed-header</code> that is included to the Data Grid like a separate module <code>dataGridUtils</code>.</p>
+                <p>To make it work it is needed to perform next steps:</p>
+                <ul>
+                    <li>Include script to your application: <br>
+                        <code>&lt;script src="bower_components/angular-data-grid/dist/dataGridUtils.min.js"&gt;&lt;/script&gt;</code>
+                    </li>
+                    <li>Include css stylesheets to your application: <br>
+                        <code>&lt;link rel="stylesheet" href="bower_components/angular-data-grid/css/fixedHeader/fixed-header.css"&gt;</code>
+                    </li>
+                    <li>Inject dataGridUtils dependency in your module: <br>
+                        <code>angular.module('myApp', ['dataGrid', ‘dataGridUtils.fixedHeader’])</code>
+                    </li>
+                    <li>Apply the directive <code>fixed-header</code> to the grid table: <br>
+                        <code>&lt;table class="table" fixed-header&gt;</code>
+                    </li>
+                </ul>
+                <p>The directive also has additional attribute called offset-from-element.
+                    It is needed if you already have some other elements that have fixed position above the table.
+                    In this case you need to pass a class or id of the very last element (if you have several) to this attribute
+                    to make the directive take
+                    into consideration that header needs to be fixed with offset from above elements.</p>
+                <p>Example: <br>
+                    <code>&lt;table class="table" fixed-header offset-from-element
+                        =”.the-class-on-above-fixed-element”&gt;</code> <br>
+                    or <br>
+                    <code>&lt;table class="table" fixed-header offset-from-element
+                        =”=”#the-id-on-above-fixed-element”&gt;</code>
+                </p>
+                <br>
+                <p>To make it work for material design it is needed to not use md-content because of the fact that scroll event doesn't work in this case. <br>
+                   More Information could be found <a href="https://github.com/angular/material/issues/6657">here</a>. The issue in closed status but seems to be
+                   it's not fixed yet.
+                </p>
+            </div>
+            <hr>
         </div>
         <hr>
         <div layout-gt-xs="row" layout-xs="column" layout-align="stretch center">
