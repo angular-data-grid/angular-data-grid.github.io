@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/fixed-header.bootstrap.css">
 </head>
 <body ng-app="myApp" ng-controller="myAppController" ng-cloak>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse fixed-nav">
     <div class="container">
         <a href="#" class="navbar-brand">Angular Data Grid - Bootstrap Design</a>
         <div class="navbar-form navbar-right" uib-dropdown>
@@ -30,12 +30,59 @@
     </div>
 </nav>
 <div class="container">
-    <div class="margin-bottom-basic">
-        <h3>Angular Data Grid sample using out-of-box Bootstrap styling</h3>
+    <div class="margin-bottom-basic padding-top-50">
+        <h2>Angular Data Grid sample using out-of-box Bootstrap styling</h2>
         Features enabled: sorting, filtering (using both in-grid and external controls), sync with browser URLs, pagination and items-per-page functionality.
         Angular UI Datepicker used for date controls, although you can use any other framework, plugin or styling.
         <a href="https://github.com/angular-data-grid/angular-data-grid.github.io" target="_blank">Project GitHub</a>
     </div>
+    <hr>
+    <h3>How To Freeze Table Header</h3>
+    <h4>Using HTML Layout</h4>
+    <div>
+        <p>The first option is to split table header and table body between two tables
+            And apply some css styles to these parts to sync table column's widths like in the steps below:</p>
+        <ul>
+            <li>Use the next styles applied to table body container to make it scrollable: <br>
+                <code>.div-table-body { height: 600px; overflow-x: auto; overflow-y: scroll; } </code>
+            </li>
+            <li>Make sure that <code>th</code> elements have the same padding as <code>td</code> elements have.</li>
+            <li>Use <code>padding-right</code> with the value of scroll bar width to make an offset for the table</li>
+            <li>Use <code>width</code> attribute for columns to sync widths.</li>
+        </ul>
+    </div>
+    <h4>Using Stand-alone Directive</h4>
+    <div>
+        <p>Another option is to use the built-in directive <code>fixed-header</code> that is included to the Data Grid like a separate module <code>dataGridUtils</code>.</p>
+        <p>To make it work it is needed to perform next steps:</p>
+        <ul>
+            <li>Include script to your application: <br>
+                <code>&lt;script src="bower_components/angular-data-grid/dist/dataGridUtils.min.js"&gt;&lt;/script&gt;</code>
+            </li>
+            <li>Include css stylesheets to your application: <br>
+                <code>&lt;link rel="stylesheet" href="bower_components/angular-data-grid/css/fixedHeader/fixed-header.css"&gt;</code>
+            </li>
+            <li>Inject dataGridUtils dependency in your module: <br>
+                <code>angular.module('myApp', ['dataGrid', ‘dataGridUtils.fixedHeader’])</code>
+            </li>
+            <li>Apply the directive <code>fixed-header</code> to the grid table: <br>
+                <code>&lt;table class="table" fixed-header&gt;</code>
+            </li>
+        </ul>
+        <p>The directive also has additional attribute called offset-from-element.
+           It is needed if you already have some other elements that have fixed position above the table.
+           In this case you need to pass a class or id of the very last element (if you have several) to this attribute
+           to make the directive take
+           into consideration that header needs to be fixed with offset from above elements.</p>
+        <p>Example: <br>
+            <code>&lt;table class="table" fixed-header offset-from-element
+                =”.the-class-on-above-fixed-element”&gt;</code> <br>
+            or <br>
+            <code>&lt;table class="table" fixed-header offset-from-element
+                =”=”#the-id-on-above-fixed-element”&gt;</code>
+        </p>
+    </div>
+    <hr>
     <h4>Additional Demos</h4>
     <ul>
         <li>
@@ -160,7 +207,7 @@
                         </form>
                     </div>
                 </div>
-                <table class="table table-bordered table-striped" fixed-header>
+                <table class="table table-bordered table-striped" fixed-header offset-from-element=".fixed-nav">
                     <thead>
                     <tr>
                         <th sortable="code" class="sortable">

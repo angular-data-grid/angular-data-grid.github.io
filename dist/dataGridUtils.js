@@ -4,7 +4,7 @@
 })();
 (function () {
     'use strict';
-    angular.module('dataGridUtils')
+    angular.module('dataGridUtils.fixedHeader', [])
         .directive('fixedHeader', FixedHeader);
 
     FixedHeader.$inject = ['$window', '$timeout'];

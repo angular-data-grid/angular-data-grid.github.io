@@ -1,4 +1,4 @@
-angular.module('myApp', ['ui.bootstrap', 'dataGrid', 'pagination', 'dataGridUtils'])
+angular.module('myApp', ['ui.bootstrap', 'dataGrid', 'pagination', 'dataGridUtils.fixedHeader'])
     .controller('myAppController', ['$scope', 'myAppFactory', function ($scope, myAppFactory) {
 
         $scope.gridOptions = {
