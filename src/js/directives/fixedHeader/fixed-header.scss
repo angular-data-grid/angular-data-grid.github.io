@@ -1,0 +1,15 @@
+//Here are described styles that are used bu fixed-header directive
+.fixed-header {
+  top: 0;
+  position: fixed;
+  width: auto;
+  display: table;
+  z-index: 99;
+}
+
+.tbody-offset {
+  &:before {
+    content: " ";
+    display: block;
+  }
+}

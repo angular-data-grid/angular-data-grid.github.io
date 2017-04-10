@@ -21,8 +21,17 @@
     }
 
     gulp.task('js', function () {
-        gulp.src(['./src/**/*.js'])
+        gulp.src(['./src/js/vendors/*.js', './src/js/*.js'])
             .pipe(rename({dirname: ''}))
+            .pipe(gulp.dest('./dist'))
+            .pipe(uglify())
+            .pipe(rename({
+                suffix: ".min"
+            }))
+            .pipe(gulp.dest('./dist'));
+
+        gulp.src(['./src/js/directives/**/*.js'])
+            .pipe(concat('dataGridUtils.js'))
             .pipe(gulp.dest('./dist'))
             .pipe(uglify())
             .pipe(rename({
@@ -41,6 +50,15 @@
         gulp.src('./demo/100k/scss/angular-data-grid.bootstrap.scss')
             .pipe(sass().on('error', sass.logError))
             .pipe(gulp.dest('./demo/100k/css/'));
+        gulp.src('./demo/fixed-header/scss/fixed-header.bootstrap.scss')
+            .pipe(sass().on('error', sass.logError))
+            .pipe(gulp.dest('./demo/fixed-header/css/'));
+        gulp.src('./demo/fixed-header/scss/fixed-header.material.scss')
+            .pipe(sass().on('error', sass.logError))
+            .pipe(gulp.dest('./demo/fixed-header/css/'));
+        gulp.src('./src/js/directives/fixedHeader/fixed-header.scss')
+            .pipe(sass().on('error', sass.logError))
+            .pipe(gulp.dest('./dist/css/fixedHeader/'));
     });
 
     gulp.task('build', ['js', 'sass']);

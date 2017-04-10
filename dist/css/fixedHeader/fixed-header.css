@@ -1,0 +1,10 @@
+.fixed-header {
+  top: 0;
+  position: fixed;
+  width: auto;
+  display: table;
+  z-index: 99; }
+
+.tbody-offset:before {
+  content: " ";
+  display: block; }

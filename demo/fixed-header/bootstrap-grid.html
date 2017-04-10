@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Angular Data Grid - Bootstrap Design</title>
+    <link rel="icon" href="https://angularjs.org/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../demo/bootstrap/css/angular-data-grid.bootstrap.css">
+    <link rel="stylesheet" href="../../dist/css/fixedHeader/fixed-header.css">
+    <link rel="stylesheet" href="css/fixed-header.bootstrap.css">
+</head>
+<body ng-app="myApp" ng-controller="myAppController" ng-cloak>
+<nav class="navbar navbar-inverse fixed-nav">
+    <div class="container">
+        <a href="#" class="navbar-brand">Angular Data Grid - Bootstrap Design</a>
+        <div class="navbar-form navbar-right" uib-dropdown>
+            <button id="single-button" type="button" class="btn btn-info" uib-dropdown-toggle>
+                Change Theme <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="simple-dropdown">
+                <li>
+                    <a href="index.html"><strong>Bootstrap Design</strong></a>
+                </li>
+                <li>
+                    <a href="../material/">Material Design</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="margin-bottom-basic padding-top-50">
+        <h2>Angular Data Grid sample using out-of-box Bootstrap styling</h2>
+        Features enabled: sorting, filtering (using both in-grid and external controls), sync with browser URLs, pagination and items-per-page functionality.
+        Angular UI Datepicker used for date controls, although you can use any other framework, plugin or styling.
+        <a href="https://github.com/angular-data-grid/angular-data-grid.github.io" target="_blank">Project GitHub</a>
+    </div>
+    <hr>
+    <h3>How To Freeze Table Header</h3>
+    <h4>Using HTML Layout</h4>
+    <div>
+        <p>The first option is to split table header and table body in two tables.
+            One way to do this is to follow the next steps:</p>
+        <ul>
+            <li>Use the next styles (with any fixed height) applied to table body container to make it scrollable: <br>
+                <code>.div-table-body { height: 600px; overflow-x: auto; overflow-y: scroll; } </code>
+            </li>
+            <li>Make sure that <code>th</code> elements have the same padding as <code>td</code> elements have.</li>
+            <li>Use <code>padding-right</code> with the value of scroll bar width to make an offset for the table contains header.</li>
+            <li>Use <code>width</code> attribute for columns to sync widths.</li>
+        </ul>
+        <p>Code Sample:
+        <pre>
+&lt;table&gt;
+    &lt;thead&gt;
+        ...
+    &lt;/thead&gt;
+&lt;/table&gt;
+&lt;table&gt;
+    &lt;tbody class="div-table-body"&gt;
+        ...
+    &lt;/tbody&gt;
+&lt;/table&gt;
+        </pre>
+        </p>
+    </div>
+    <h4>Using Stand-alone Directive</h4>
+    <div>
+        <p>Another option is to use the directive <code>fixed-header</code> that can be injected to the Data Grid like a separate module <code>dataGridUtils</code>.</p>
+        <p>To make it work it is needed to perform next steps:</p>
+        <ul>
+            <li>Include script to your application: <br>
+                <code>&lt;script src="bower_components/angular-data-grid/dist/dataGridUtils.min.js"&gt;&lt;/script&gt;</code>
+            </li>
+            <li>Include css stylesheets to your application: <br>
+                <code>&lt;link rel="stylesheet" href="bower_components/angular-data-grid/css/fixedHeader/fixed-header.css"&gt;</code>
+            </li>
+            <li>Inject dataGridUtils dependency in your module: <br>
+                <code>angular.module('myApp', ['dataGrid', ‘dataGridUtils.fixedHeader’])</code>
+            </li>
+            <li>Apply the directive <code>fixed-header</code> to the grid table: <br>
+                <code>&lt;table class="table" fixed-header&gt;</code>
+            </li>
+        </ul>
+        <p>The directive uses <code>z-index: 99</code> if your page uses the same value or higher please make appropriate changes to <b>fixed-header.scss</b> file. </p>
+        <p>The directive also has additional attribute <code>offset-from-element</code>.
+           It is needed if you already have some other elements with fixed position above the table.
+           In this case you need to pass a class or id of the very last element (if there are several) to this attribute
+           to make the directive take
+           into consideration that header needs to be fixed with offset from above elements.</p>
+        <p>Example: <br>
+            <code>&lt;table class="table" fixed-header offset-from-element
+                =”.the-class-on-above-fixed-element”&gt;</code> <br>
+            or <br>
+            <code>&lt;table class="table" fixed-header offset-from-element
+                =”=”#the-id-on-above-fixed-element”&gt;</code>
+        </p>
+    </div>
+    <hr>
+    <h4>Additional Demos</h4>
+    <ul>
+        <li>
+            <a href="../100k/" class="margin-bottom-basic" target="_blank">100k rows</a>
+        </li>
+        <li>
+            <a href="multiple.html" target="_blank">Multiple grids on page</a>
+        </li>
+        <li>
+            <a href="server-pagination.html" target="_blank">Server pagination</a>
+        </li>
+        <li>
+            <a href="ui-router.html" target="_blank">UI Router plus server pagination</a>
+        </li>
+    </ul>
+    <hr>
+    <div class="row">
+        <div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="orderIdFilter">Search by Order #</label>
+                    <input id="orderIdFilter" type="text" class="form-control order-search-box"
+                           placeholder="Enter Order #"
+                           ng-change="gridActions.filter()"
+                           ng-model="code"
+                           filter-by="code"
+                           filter-type="text">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="dateFromFilter">Date From</label>
+
+                    <div class="input-group">
+                        <input type="text"
+                               id="dateFromFilter"
+                               class="form-control"
+                               uib-datepicker-popup="dd/MM/yyyy"
+                               placeholder="DD/MM/YYYY"
+                               max-date="dateTo"
+                               close-text="Close"
+                               ng-model="dateFrom"
+                               show-weeks="true"
+                               is-open="dateFromOpened"
+                               ng-click="dateFromOpened = true"
+                               filter-by="placed"
+                               filter-type="dateFrom"
+                               ng-blur="gridActions.filter()"
+                               ng-focus="gridActions.filter()"
+                               show-weeks="false"
+                               close-text="Close"/>
+                        <span class="input-group-btn">
+                            <label for="dateFromFilter" class="btn btn-default">
+                                <i class="fa fa-calendar"></i></label>
+                          </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="dateToInput">Date To</label>
+
+                    <div class="input-group">
+                        <input type="text"
+                               id="dateToInput"
+                               class="form-control"
+                               uib-datepicker-popup="dd/MM/yyyy"
+                               placeholder="DD/MM/YYYY"
+                               min-date="dateFrom"
+                               max-date="dateTo"
+                               close-text="Close"
+                               ng-model="dateTo"
+                               show-weeks="true"
+                               is-open="dateToOpened"
+                               ng-click="dateToOpened = true"
+                               filter-by="placed"
+                               filter-type="dateTo"
+                               ng-blur="gridActions.filter()"
+                               ng-focus="gridActions.filter()"
+                               show-weeks="false"
+                               close-text="Close">
+                        <span class="input-group-btn">
+                            <label for="dateToInput" class="btn btn-default">
+                                <i class="fa fa-calendar"></i></label>
+                          </span>
+                    </div>
+                </div>
+                <div ng-show="dateTo || dateFrom" class="buttons-right">
+                    <a href="" ng-click="dateTo = ''; dateFrom = ''; gridActions.refresh();">Clear Dates</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <div grid-data id='test' grid-options="gridOptions" grid-actions="gridActions">
+                <div class="row">
+                    <div class="col-md-3">
+                        <span class="items">{{filtered.length}} items total</span>
+                    </div>
+                    <div class="col-md-9 text-right">
+                        <form class="form-inline pull-right margin-bottom-basic">
+                            <div class="form-group">
+                                <grid-pagination max-size="5"
+                                                 boundary-links="true"
+                                                 class="pagination-sm"
+                                                 total-items="paginationOptions.totalItems"
+                                                 ng-model="paginationOptions.currentPage"
+                                                 ng-change="reloadGrid()"
+                                                 items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                            </div>
+                            <div class="form-group items-per-page">
+                                <label for="itemsOnPageSelect1">Items per page:</label>
+                                <select id="itemsOnPageSelect1" class="form-control input-sm" ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
+                                    <option>10</option>
+                                    <option>25</option>
+                                    <option>50</option>
+                                    <option>75</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <table class="table table-bordered table-striped" fixed-header offset-from-element=".fixed-nav">
+                    <thead>
+                    <tr>
+                        <th sortable="code" class="sortable">
+                            Order #
+                        </th>
+                        <th sortable="placed" class="sortable">
+                            Date Placed
+                        </th>
+                        <th class="st-sort-disable th-dropdown">
+                            <select class="form-control width-15"
+                                    filter-by="statusDisplay"
+                                    filter-type="select"
+                                    ng-model="status"
+                                    ng-change="filter()">
+                                <option value="">All Statuses</option>
+                                <option ng-repeat="option in statusOptions track by option.value"
+                                        value="{{option.value}}">{{option.text}}
+                                </option>
+                            </select>
+                        </th>
+                        <th sortable='total.value' class="sortable">
+                            Total
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr grid-item>
+                        <td width="30%" ng-bind="item.code"></td>
+                        <td width="30%" ng-bind="item.placed | date:'MM/dd/yyyy'"></td>
+                        <td ng-bind="item.statusDisplay"></td>
+                        <td ng-bind="item.total.formattedValue"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <form class="form-inline pull-right margin-bottom-basic">
+                    <div class="form-group">
+                        <grid-pagination max-size="5"
+                                         boundary-links="true"
+                                         class="pagination-sm"
+                                         total-items="paginationOptions.totalItems"
+                                         ng-model="paginationOptions.currentPage"
+                                         ng-change="reloadGrid()"
+                                         items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                    </div>
+                    <div class="form-group items-per-page">
+                        <label for="itemsOnPageSelect2">Items per page:</label>
+                        <select id="itemsOnPageSelect2" class="form-control input-sm" ng-init="paginationOptions.itemsPerPage = '10'"
+                                ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
+                            <option>10</option>
+                            <option>25</option>
+                            <option>50</option>
+                            <option>75</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div>
+        <button class="btn btn-info margin-bottom-basic" ng-click="showCode = !showCode">CodePen</button>
+        <div ng-show="showCode">
+            <p data-height="768" data-theme-id="21603" data-slug-hash="xZddZm" data-default-tab="html" data-user="AngularDataGrid" class='codepen'>See the Pen <a
+                    href='http://codepen.io/AngularDataGrid/pen/xZddZm/'>xZddZm</a> by AngularDataGrid (<a href='http://codepen.io/AngularDataGrid'>@AngularDataGrid</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+            <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+        </div>
+    </div>
+    <hr>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+<script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-messages.min.js"></script>
+<script src="../../dist/pagination.min.js"></script>
+<script src="../../dist/dataGrid.min.js"></script>
+<script src="../../dist/dataGridUtils.min.js"></script>
+<script src="js/bootstrap/demoApp.js"></script>
+
+</html>

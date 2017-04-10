@@ -1,0 +1,16 @@
+.fixed-header {
+  border: none; }
+  .fixed-header tr {
+    background-color: #fff; }
+
+.tbody-offset:before {
+  color: white;
+  height: 60px; }
+
+.fixed-nav {
+  position: fixed;
+  width: 100%;
+  z-index: 5; }
+
+.padding-top-50 {
+  padding-top: 50px; }

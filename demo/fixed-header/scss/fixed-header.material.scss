@@ -1,0 +1,14 @@
+//styles specific to material design sample (not required)
+.fixed-header {
+  border: 1px solid rgba(0,0,0,.12);
+  tr {
+    background-color: #fff;
+  }
+}
+
+.tbody-offset {
+  &:before {
+    color: white;
+    height: 60px;
+  }
+}
