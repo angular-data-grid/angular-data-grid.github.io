@@ -40,20 +40,34 @@
     <h3>How To Freeze Table Header</h3>
     <h4>Using HTML Layout</h4>
     <div>
-        <p>The first option is to split table header and table body between two tables
-            And apply some css styles to these parts to sync table column's widths like in the steps below:</p>
+        <p>The first option is to split table header and table body in two tables.
+            One way to do this is to follow the next steps:</p>
         <ul>
-            <li>Use the next styles applied to table body container to make it scrollable: <br>
+            <li>Use the next styles (with any fixed height) applied to table body container to make it scrollable: <br>
                 <code>.div-table-body { height: 600px; overflow-x: auto; overflow-y: scroll; } </code>
             </li>
             <li>Make sure that <code>th</code> elements have the same padding as <code>td</code> elements have.</li>
-            <li>Use <code>padding-right</code> with the value of scroll bar width to make an offset for the table</li>
+            <li>Use <code>padding-right</code> with the value of scroll bar width to make an offset for the table contains header.</li>
             <li>Use <code>width</code> attribute for columns to sync widths.</li>
         </ul>
+        <p>Code Sample:
+        <pre>
+&lt;table&gt;
+    &lt;thead&gt;
+        ...
+    &lt;/thead&gt;
+&lt;/table&gt;
+&lt;table&gt;
+    &lt;tbody class="div-table-body"&gt;
+        ...
+    &lt;/tbody&gt;
+&lt;/table&gt;
+        </pre>
+        </p>
     </div>
     <h4>Using Stand-alone Directive</h4>
     <div>
-        <p>Another option is to use the built-in directive <code>fixed-header</code> that is included to the Data Grid like a separate module <code>dataGridUtils</code>.</p>
+        <p>Another option is to use the directive <code>fixed-header</code> that can be injected to the Data Grid like a separate module <code>dataGridUtils</code>.</p>
         <p>To make it work it is needed to perform next steps:</p>
         <ul>
             <li>Include script to your application: <br>
@@ -69,9 +83,10 @@
                 <code>&lt;table class="table" fixed-header&gt;</code>
             </li>
         </ul>
-        <p>The directive also has additional attribute called offset-from-element.
-           It is needed if you already have some other elements that have fixed position above the table.
-           In this case you need to pass a class or id of the very last element (if you have several) to this attribute
+        <p>The directive uses <code>z-index: 99</code> if your page uses the same value or higher please make appropriate changes to <b>fixed-header.scss</b> file. </p>
+        <p>The directive also has additional attribute <code>offset-from-element</code>.
+           It is needed if you already have some other elements with fixed position above the table.
+           In this case you need to pass a class or id of the very last element (if there are several) to this attribute
            to make the directive take
            into consideration that header needs to be fixed with offset from above elements.</p>
         <p>Example: <br>

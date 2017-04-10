@@ -18,7 +18,7 @@
                 document.querySelector(attrs.offsetFromElement) :
                 window;
 
-            function resizeFixed() {
+            function onResize() {
                 var thElements = element.find("th");
                 for (var i = 0; i < thElements.length; i++) {
                     var tdElement = element.find("td").eq(i)[0];
@@ -53,7 +53,7 @@
                 tbody.removeClass("tbody-offset");
             }
 
-            function scrollFixed() {
+            function onScroll() {
                 var offset = attrs.offsetFromElement ?
                         elementOffsetFrom.getBoundingClientRect().top + elementOffsetFrom.offsetHeight :
                         $window.pageYOffset,
@@ -68,17 +68,17 @@
                 else if (offset >= tableOffsetTop && offset <= tableOffsetBottom) {
                     bindFixedToHeader();
                 }
-                resizeFixed();
+                onResize();
             }
 
             scope.$on('gridReloaded', function () {
                 $timeout(function () {
-                    resizeFixed();
-                    scrollFixed();
+                    onResize();
+                    onScroll();
                 }, 0);
             });
-            window.on('resize', resizeFixed);
-            window.on('scroll', scrollFixed);
+            window.on('resize', onResize);
+            window.on('scroll', onScroll);
         }
     }
 
