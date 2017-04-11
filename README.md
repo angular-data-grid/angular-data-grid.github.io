@@ -248,4 +248,6 @@ Each filter has optional parameter `disable-url` (boolean, default is 'false'). 
 If you need to use 2 or more grids on page, please add `id` to grids, and then use `grid-id` attribute on filters to specify their corresponding grid. [Example](http://angular-data-grid.github.io/demo/bootstrap/multiple.html)
 
 ### Next / Future
+ - Migrate to Heroku
+ - Cover with unit / e2e tests
  - Port to Angular2?
