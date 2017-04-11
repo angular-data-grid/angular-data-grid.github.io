@@ -37,7 +37,7 @@
             $scope.customFilters = $scope._gridOptions.customFilters ? angular.copy($scope._gridOptions.customFilters) : {};
             $scope.urlSync = $scope._gridOptions.urlSync;
 
-            $scope.$watch('_gridOptions.data', function (newValue) {
+            $scope.$watchCollection('_gridOptions.data', function (newValue) {
                 if (newValue && newValue.length > -1) {
                     $scope.sortCache = {};
                     $scope.filtered = $scope._gridOptions.data.slice();
