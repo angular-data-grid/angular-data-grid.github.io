@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Angular Data Grid - Material Design</title>
+    <title>Angular Data Grid - Fix Header Table</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
@@ -15,7 +15,7 @@
 <div layout="column" layout-fill>
     <md-toolbar layout="row" layout-align="center">
         <div class="md-toolbar-tools" flex-gt-md="60" flex-md="80" flex-sm="100">
-            <span>Angular Data Grid &mdash; Material Design</span>
+            <span>Angular Data Grid &mdash; Fix Header Table</span>
             <span flex></span>
             <ul><a href="../material/">Back to main demo</a></ul>
         </div>
@@ -74,7 +74,7 @@
                         <code>&lt;link rel="stylesheet" href="bower_components/angular-data-grid/css/fixedHeader/fixed-header.css"&gt;</code>
                     </li>
                     <li>Inject dataGridUtils dependency in your module: <br>
-                        <code>angular.module('myApp', ['dataGrid', ‘dataGridUtils.fixedHeader’])</code>
+                        <code>angular.module('myApp', ['dataGrid', 'dataGridUtils.fixedHeader'])</code>
                     </li>
                     <li>Apply the directive <code>fixed-header</code> to the grid table: <br>
                         <code>&lt;table class="table" fixed-header&gt;</code>
@@ -87,11 +87,9 @@
                     to make the directive take
                     into consideration that header needs to be fixed with offset from above elements.</p>
                 <p>Example: <br>
-                    <code>&lt;table class="table" fixed-header offset-from-element
-                        =”.the-class-on-above-fixed-element”&gt;</code> <br>
-                    or <br>
-                    <code>&lt;table class="table" fixed-header offset-from-element
-                        =”=”#the-id-on-above-fixed-element”&gt;</code>
+                    <pre>&lt;table class="table" fixed-header offset-from-element=".the-class-on-above-fixed-element"&gt;</pre>
+                    or
+                    <pre>&lt;table class="table" fixed-header offset-from-element="#the-id-on-above-fixed-element”&gt;</pre>
                 </p>
                 <br>
                 <p>The directive subscribes on scroll event, but the event is not fired when directive is used inside <code>&lt;md-content&gt;</code>, so to make it work please use the directive outside the <code>&lt;md-content&gt;</code> container.

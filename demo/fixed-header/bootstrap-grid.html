@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Angular Data Grid - Bootstrap Design</title>
+    <title>Angular Data Grid - Fix Header Table</title>
     <link rel="icon" href="https://angularjs.org/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -13,7 +13,7 @@
 <body ng-app="myApp" ng-controller="myAppController" ng-cloak>
 <nav class="navbar navbar-inverse fixed-nav">
     <div class="container">
-        <a href="#" class="navbar-brand">Angular Data Grid - Bootstrap Design</a>
+        <a href="#" class="navbar-brand">Angular Data Grid - Fix Header Table</a>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="../bootstrap/">Back to main demo</a></li>
         </ul>
@@ -67,7 +67,7 @@
                 <code>&lt;link rel="stylesheet" href="bower_components/angular-data-grid/css/fixedHeader/fixed-header.css"&gt;</code>
             </li>
             <li>Inject dataGridUtils dependency in your module: <br>
-                <code>angular.module('myApp', ['dataGrid', ‘dataGridUtils.fixedHeader’])</code>
+                <code>angular.module('myApp', ['dataGrid', 'dataGridUtils.fixedHeader'])</code>
             </li>
             <li>Apply the directive <code>fixed-header</code> to the grid table: <br>
                 <code>&lt;table class="table" fixed-header&gt;</code>
@@ -80,11 +80,9 @@
            to make the directive take
            into consideration that header needs to be fixed with offset from above elements.</p>
         <p>Example: <br>
-            <code>&lt;table class="table" fixed-header offset-from-element
-                =”.the-class-on-above-fixed-element”&gt;</code> <br>
-            or <br>
-            <code>&lt;table class="table" fixed-header offset-from-element
-                =”=”#the-id-on-above-fixed-element”&gt;</code>
+            <pre>&lt;table class="table" fixed-header offset-from-element=".the-class-on-above-fixed-element"&gt;</pre>
+            or
+            <pre>&lt;table class="table" fixed-header offset-from-element="#the-id-on-above-fixed-element"&gt;</pre>
         </p>
     </div>
     <hr>
