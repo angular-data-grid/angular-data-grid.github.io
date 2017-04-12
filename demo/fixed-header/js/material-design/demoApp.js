@@ -3,7 +3,11 @@ angular.module('myApp', ['dataGrid', 'pagination', 'ngMaterial', 'dataGridUtils.
 
         $scope.gridOptions = {
             data: [],
-            urlSync: true
+            urlSync: true,
+            pagination: {
+                itemsPerPage: '75',
+                currentPage: 1
+            }
         };
         myAppFactory.getData().then(function (responseData) {
             $scope.gridOptions.data = responseData.data;

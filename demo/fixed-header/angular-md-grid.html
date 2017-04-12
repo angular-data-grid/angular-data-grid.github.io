@@ -156,7 +156,7 @@
                                          ng-change="reloadGrid()"
                                          items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
                         <md-input-container flex-offset-gt-xs="5" class="items-per-page">
-                            <md-select ng-init="paginationOptions.itemsPerPage = '10'"
+                            <md-select
                                        ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
                                 <md-option>10</md-option>
                                 <md-option>25</md-option>
@@ -217,7 +217,7 @@
                                  ng-change="reloadGrid()"
                                  items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
                 <md-input-container flex-offset-gt-xs="5" class="items-per-page">
-                    <md-select ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage"
+                    <md-select ng-model="paginationOptions.itemsPerPage"
                                ng-change="reloadGrid()">
                         <md-option>10</md-option>
                         <md-option>25</md-option>
