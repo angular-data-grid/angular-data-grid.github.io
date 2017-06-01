@@ -384,6 +384,16 @@
 
             function textFilter(items, value, predicate) {
                 return items.filter(function (item) {
+
+                    var splitPredicate = predicate.split('.');
+                    if (splitPredicate.length > 1) {
+                        var itemValue = item[splitPredicate[0]];
+                        for (var i = 1; i < splitPredicate.length; i++) {
+                            itemValue = itemValue[splitPredicate[i]];
+                        }
+
+                        return value && itemValue ? ~(itemValue + '').toLowerCase().indexOf((value + '').toLowerCase()) : !!itemValue;
+                    }
                     return value && item[predicate] ? ~(item[predicate] + '').toLowerCase().indexOf((value + '').toLowerCase()) : !!item[predicate];
                 });
             }
