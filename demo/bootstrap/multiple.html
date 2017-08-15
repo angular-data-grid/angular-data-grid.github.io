@@ -86,6 +86,18 @@
                         <th sortable="date" class="sortable">
                             Date Of Birth
                         </th>
+                        <th class="st-sort-disable th-dropdown">
+                            <select class="form-control width-15"
+                                    filter-by="status"
+                                    filter-type="select"
+                                    ng-model="status"
+                                    ng-change="filter()">
+                                <option value="">All Statuses</option>
+                                <option ng-repeat="option in statuses track by $index"
+                                        value="{{option}}">{{option}}
+                                </option>
+                            </select>
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
@@ -94,6 +106,7 @@
                         <td ng-bind="item.name"></td>
                         <td ng-bind="item.phone"></td>
                         <td width="30%" ng-bind="item.date | date:'MM/dd/yyyy'"></td>
+                        <td ng-bind="item.status"></td>
                     </tr>
                     </tbody>
                 </table>
@@ -182,6 +195,18 @@
                         <th sortable="date" class="sortable">
                             Date Of Birth
                         </th>
+                        <th class="st-sort-disable th-dropdown">
+                            <select class="form-control width-15"
+                                    filter-by="status"
+                                    filter-type="select"
+                                    ng-model="status"
+                                    ng-change="filter()">
+                                <option value="">All Statuses</option>
+                                <option ng-repeat="option in statuses track by $index"
+                                        value="{{option}}">{{option}}
+                                </option>
+                            </select>
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
@@ -190,6 +215,7 @@
                         <td ng-bind="item.name"></td>
                         <td ng-bind="item.phone"></td>
                         <td width="30%" ng-bind="item.date | date:'MM/dd/yyyy'"></td>
+                        <td ng-bind="item.status"></td>
                     </tr>
                     </tbody>
                 </table>
