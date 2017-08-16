@@ -51,33 +51,19 @@ th md-select {
     .pagination-page.active a {
       color: #fff; }
 
-.material-icons, .sortable span:before, .sortable span:after {
-  font-family: 'Material Icons';
-  font-size: 18px;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased; }
+.sortable .arrow {
+  position: relative;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent; }
 
-.sortable span {
-  position: relative; }
-  .sortable span:before {
-    content: 'arrow_drop_down';
-    position: absolute;
-    right: -18px;
-    top: -2px; }
-  .sortable span:after {
-    content: 'arrow_drop_up';
-    position: absolute;
-    right: -18px;
-    top: -9px; }
+.sortable.sort-ascent .arrow {
+  top: -10px;
+  left: 5px;
+  border-bottom: 4px solid #757575; }
 
-.sortable.sort-ascent span:before {
-  display: none; }
-
-.sortable.sort-ascent span:after {
-  top: -5px; }
-
-.sortable.sort-descent span:before {
-  top: -5px; }
-
-.sortable.sort-descent span:after {
-  display: none; }
+.sortable.sort-descent .arrow {
+  top: 10px;
+  left: 5px;
+  border-top: 4px solid #757575; }

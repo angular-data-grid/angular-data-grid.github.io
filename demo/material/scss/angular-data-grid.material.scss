@@ -64,44 +64,26 @@ th md-select {
     }
   }
 }
-.material-icons {
-  font-family: 'Material Icons';
-  font-size: 18px;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
-}
 .sortable {
-  span {
+  .arrow {
     position: relative;
-    &:before {
-      @extend .material-icons;
-      content: 'arrow_drop_down';
-      position: absolute;
-      right: -18px;
-      top: -2px;
-    }
-    &:after {
-      @extend .material-icons;
-      content: 'arrow_drop_up';
-      position: absolute;
-      right: -18px;
-      top: -9px;
-    }
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
   }
   &.sort-ascent {
-    span:before {
-      display: none;
-    }
-    span:after {
-      top: -5px
+    .arrow {
+      top: -10px;
+      left: 5px;
+      border-bottom: 4px solid $backgroundArrows;
     }
   }
   &.sort-descent {
-    span:before {
-      top: -5px
-    }
-    span:after {
-      display: none;
+    .arrow {
+      top: 10px;
+      left: 5px;
+      border-top: 4px solid $backgroundArrows;
     }
   }
 }

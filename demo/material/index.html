@@ -14,7 +14,6 @@
     <md-toolbar layout="row" layout-align="center">
         <div class="md-toolbar-tools" flex-gt-md="60" flex-md="80" flex-sm="100">
             <span>Angular Data Grid &mdash; Material Design</span>
-            <span flex></span>
             <md-menu md-position-mode="target-right target">
                 <md-button ng-click="$mdOpenMenu($event)">
                     <span layout="row" layout-align="center center">
@@ -33,17 +32,15 @@
             </md-menu>
         </div>
     </md-toolbar>
-    <md-content layout-padding layout="row" layout-align="center">
+    <div layout-padding layout="row" layout-align="center">
         <div flex-gt-md="60" flex-md="80" flex-xs="100">
-            <div>
-                <h4>Angular Data Grid sample using Material Design styling</h4>
+            <h4>Angular Data Grid sample using Material Design styling</h4>
 
-                <p>Features enabled: sorting, filtering, sync with browser URLs, pagination and item-per-page functionality.
-                    Out-of-box <a href="https://material.angularjs.org/" target="_blank">Angular Material</a> layout and input controls used,
-                    along with <a href="http://www.getmdl.io/" target="_blank">Material Design Light</a> default CSS for grid styling.
-                    <a href="https://github.com/angular-data-grid/angular-data-grid.github.io"
-                       target="_blank">Project GitHub</a></p>
-            </div>
+            <p>Features enabled: sorting, filtering, sync with browser URLs, pagination and item-per-page functionality.
+                Out-of-box <a href="https://material.angularjs.org/" target="_blank">Angular Material</a> layout and input controls used,
+                along with <a href="http://www.getmdl.io/" target="_blank">Material Design Light</a> default CSS for grid styling.
+                <a href="https://github.com/angular-data-grid/angular-data-grid.github.io"
+                   target="_blank">Project GitHub</a></p>
             <h4>Additional Demos</h4>
             <ul>
                 <li>
@@ -51,9 +48,10 @@
                 </li>
             </ul>
             <hr>
+
             <div layout-gt-xs="row" layout-xs="column" layout-align="stretch center">
-                <div  layout="row" layout-align="center start">
-                    <md-input-container md-no-float md-is-error="false" class="md-block flex-gt-xs flex-xs">
+                <div layout="row" layout-align="start center">
+                    <md-input-container md-no-float md-is-error="false" class="md-block">
                         <input ng-model="code"
                                class="md-input"
                                ng-change="gridActions.filter()"
@@ -64,28 +62,31 @@
                                aria-invalid="false">
                     </md-input-container>
                 </div>
-                <div  layout="row" layout-align="start center">
+                <div layout="row" layout-align="start center">
                     <md-datepicker ng-model="dateFrom"
-                                   flex="100"
                                    md-placeholder="From Date"
                                    is-open="dateFromOpened"
                                    ng-click="dateFromOpened = true"
                                    filter-by="placed"
                                    filter-type="dateFrom"
-                                   ng-change="gridActions.filter()"></md-datepicker>
+                                   ng-change="gridActions.filter()">
+                    </md-datepicker>
                 </div>
-                <div  layout="row" layout-align="start center">
+                <div layout="row" layout-align="start center">
                     <md-datepicker ng-model="dateTo"
-                                   flex="100"
                                    md-placeholder="To Date"
                                    is-open="dateToOpened"
                                    ng-click="dateToOpened = true"
                                    filter-by="placed"
                                    filter-type="dateTo"
-                                   ng-change="gridActions.filter()"></md-datepicker>
+                                   ng-change="gridActions.filter()">
+                    </md-datepicker>
                 </div>
-                <div  layout="row" layout-align="start center">
-                    <md-button ng-show="dateTo || dateFrom" class="md-raised md-primary" ng-click="dateTo = ''; dateFrom = ''; gridActions.refresh();">Clear Dates</md-button>
+                <div layout="row" layout-align="start center">
+                    <md-button ng-show="dateTo || dateFrom"
+                               class="md-raised md-primary"
+                               ng-click="dateTo = ''; dateFrom = ''; gridActions.refresh();">Clear Dates
+                    </md-button>
                 </div>
             </div>
             <div grid-data id='test' grid-options="gridOptions" grid-actions="gridActions">
@@ -120,6 +121,7 @@
                         <tr>
                             <th sortable="code" class="sortable mdl-data-table__cell--non-numeric">
                                 <span>Order #</span>
+                                <span class="arrow"></span>
                             </th>
                             <th class="st-sort-disable th-dropdown">
                                 <md-select filter-by="statusDisplay"
@@ -136,9 +138,11 @@
                             </th>
                             <th sortable="placed" class="sortable">
                                 <span>Date Placed</span>
+                                <span class="arrow"></span>
                             </th>
                             <th sortable='total.value' class="sortable">
                                 <span>Total</span>
+                                <span class="arrow"></span>
                             </th>
                         </tr>
                         </thead>
@@ -183,7 +187,7 @@
             </div>
             <hr>
         </div>
-    </md-content>
+    </div>
 </div>
 </body>
 
