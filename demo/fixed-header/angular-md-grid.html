@@ -5,8 +5,8 @@
     <title>Angular Data Grid - Fix Header Table</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
-    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-blue.min.css">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.css">
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.3.0/material.indigo-blue.min.css">
     <link rel="stylesheet" href="../../demo/material/css/angular-data-grid.material.css">
     <link rel="stylesheet" href="../../dist/css/fixedHeader/fixed-header.css">
     <link rel="stylesheet" href="css/fixed-header.material.css">
@@ -21,34 +21,35 @@
         </div>
     </md-toolbar>
 
-    <div flex-gt-md="60" flex-md="80" flex-xs="100">
-        <div>
-            <h4>Fix Header Table</h4>
-
-            <p>Features enabled: sorting, filtering, sync with browser URLs, pagination, item-per-page and fixed-header functionality.
-                Out-of-box <a href="https://material.angularjs.org/" target="_blank">Angular Material</a> layout and
-                input controls used,
-                along with <a href="http://www.getmdl.io/" target="_blank">Material Design Light</a> default CSS for
-                grid styling.
-                <a href="https://github.com/angular-data-grid/angular-data-grid.github.io"
-                   target="_blank">Project GitHub</a></p>
-
-            <hr>
-            <h3>How To Freeze Table Header</h3>
-            <h4>Using HTML Layout</h4>
+    <div layout-padding layout="row" layout-align="center">
+        <div flex-gt-md="60" flex-md="80" flex-xs="100">
             <div>
-                <p>The first option is to split table header and table body in two tables.
-                    One way to do this is to follow the next steps:</p>
-                <ul>
-                    <li>Use the next styles (with any fixed height) applied to table body container to make it scrollable: <br>
-                        <code>.div-table-body { height: 600px; overflow-x: auto; overflow-y: scroll; } </code> <br>
-                    </li>
-                    <li>Make sure that <code>th</code> elements have the same padding as <code>td</code> elements have.</li>
-                    <li>Use <code>padding-right</code> with the value of scroll bar width to make an offset for the table contains header.</li>
-                    <li>Use <code>width</code> attribute for columns to sync widths.</li>
-                </ul>
-                <p>Code Sample:
-                <pre>
+                <h4>Fix Header Table</h4>
+
+                <p>Features enabled: sorting, filtering, sync with browser URLs, pagination, item-per-page and fixed-header functionality.
+                    Out-of-box <a href="https://material.angularjs.org/" target="_blank">Angular Material</a> layout and
+                    input controls used,
+                    along with <a href="http://www.getmdl.io/" target="_blank">Material Design Light</a> default CSS for
+                    grid styling.
+                    <a href="https://github.com/angular-data-grid/angular-data-grid.github.io"
+                       target="_blank">Project GitHub</a></p>
+
+                <hr>
+                <h3>How To Freeze Table Header</h3>
+                <h4>Using HTML Layout</h4>
+                <div>
+                    <p>The first option is to split table header and table body in two tables.
+                        One way to do this is to follow the next steps:</p>
+                    <ul>
+                        <li>Use the next styles (with any fixed height) applied to table body container to make it scrollable: <br>
+                            <code>.div-table-body { height: 600px; overflow-x: auto; overflow-y: scroll; } </code> <br>
+                        </li>
+                        <li>Make sure that <code>th</code> elements have the same padding as <code>td</code> elements have.</li>
+                        <li>Use <code>padding-right</code> with the value of scroll bar width to make an offset for the table contains header.</li>
+                        <li>Use <code>width</code> attribute for columns to sync widths.</li>
+                    </ul>
+                    <p>Code Sample:
+                    <pre>
 &lt;table&gt;
     &lt;thead&gt;
         ...
@@ -60,182 +61,187 @@
     &lt;/tbody&gt;
 &lt;/table&gt;
         </pre>
-                </p>
-            </div>
-            <h4>Using Stand-alone Directive</h4>
-            <div>
-                <p>Another option is to use the directive <code>fixed-header</code> that can be injected to the Data Grid like a separate module <code>dataGridUtils</code>.</p>
-                <p>To make it work it is needed to perform next steps:</p>
-                <ul>
-                    <li>Include script to your application: <br>
-                        <code>&lt;script src="bower_components/angular-data-grid/dist/dataGridUtils.min.js"&gt;&lt;/script&gt;</code>
-                    </li>
-                    <li>Include css stylesheets to your application: <br>
-                        <code>&lt;link rel="stylesheet" href="bower_components/angular-data-grid/css/fixedHeader/fixed-header.css"&gt;</code>
-                    </li>
-                    <li>Inject dataGridUtils dependency in your module: <br>
-                        <code>angular.module('myApp', ['dataGrid', 'dataGridUtils.fixedHeader'])</code>
-                    </li>
-                    <li>Apply the directive <code>fixed-header</code> to the grid table: <br>
-                        <code>&lt;table class="table" fixed-header&gt;</code>
-                    </li>
-                </ul>
-                <p>The directive uses <code>z-index: 99</code> if your page uses the same value or higher please make appropriate changes to <b>fixed-header.scss</b> file. </p>
-                <p>The directive also has additional attribute <code>offset-from-element</code>.
-                    It is needed if you already have some other elements with fixed position above the table.
-                    In this case you need to pass a class or id of the very last element (if there are several) to this attribute
-                    to make the directive take
-                    into consideration that header needs to be fixed with offset from above elements.</p>
-                <p>Example: <br>
+                    </p>
+                </div>
+                <h4>Using Stand-alone Directive</h4>
+                <div>
+                    <p>Another option is to use the directive <code>fixed-header</code> that can be injected to the Data Grid like a separate module <code>dataGridUtils</code>.</p>
+                    <p>To make it work it is needed to perform next steps:</p>
+                    <ul>
+                        <li>Include script to your application: <br>
+                            <code>&lt;script src="bower_components/angular-data-grid/dist/dataGridUtils.min.js"&gt;&lt;/script&gt;</code>
+                        </li>
+                        <li>Include css stylesheets to your application: <br>
+                            <code>&lt;link rel="stylesheet" href="bower_components/angular-data-grid/css/fixedHeader/fixed-header.css"&gt;</code>
+                        </li>
+                        <li>Inject dataGridUtils dependency in your module: <br>
+                            <code>angular.module('myApp', ['dataGrid', 'dataGridUtils.fixedHeader'])</code>
+                        </li>
+                        <li>Apply the directive <code>fixed-header</code> to the grid table: <br>
+                            <code>&lt;table class="table" fixed-header&gt;</code>
+                        </li>
+                    </ul>
+                    <p>The directive uses <code>z-index: 99</code> if your page uses the same value or higher please make appropriate changes to <b>fixed-header.scss</b> file. </p>
+                    <p>The directive also has additional attribute <code>offset-from-element</code>.
+                        It is needed if you already have some other elements with fixed position above the table.
+                        In this case you need to pass a class or id of the very last element (if there are several) to this attribute
+                        to make the directive take
+                        into consideration that header needs to be fixed with offset from above elements.</p>
+                    <p>Example: <br>
                     <pre>&lt;table class="table" fixed-header offset-from-element=".the-class-on-above-fixed-element"&gt;</pre>
                     or
                     <pre>&lt;table class="table" fixed-header offset-from-element="#the-id-on-above-fixed-element”&gt;</pre>
+                    </p>
+                    <br>
+                    <p>The directive subscribes on scroll event, but the event is not fired when directive is used inside <code>&lt;md-content&gt;</code>, so to make it work please use the directive
+                        outside the <code>&lt;md-content&gt;</code> container.
+                        For more information about this problem please review this <a href="https://github.com/angular/material/issues/6657">issue</a>.
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <div layout-gt-xs="row" layout-xs="column" layout-align="stretch center">
+                <div layout="row" layout-align="start center">
+                    <md-input-container md-no-float md-is-error="false" class="md-block">
+                        <input ng-model="code"
+                               class="md-input"
+                               ng-change="gridActions.filter()"
+                               id="order"
+                               placeholder="Search by Order #"
+                               filter-by="code"
+                               filter-type="text"
+                               aria-invalid="false">
+                    </md-input-container>
+                </div>
+                <div layout="row" layout-align="start center">
+                    <md-datepicker ng-model="dateFrom"
+                                   md-placeholder="From Date"
+                                   is-open="dateFromOpened"
+                                   ng-click="dateFromOpened = true"
+                                   filter-by="placed"
+                                   filter-type="dateFrom"
+                                   ng-change="gridActions.filter()">
+                    </md-datepicker>
+                </div>
+                <div layout="row" layout-align="start center">
+                    <md-datepicker ng-model="dateTo"
+                                   md-placeholder="To Date"
+                                   is-open="dateToOpened"
+                                   ng-click="dateToOpened = true"
+                                   filter-by="placed"
+                                   filter-type="dateTo"
+                                   ng-change="gridActions.filter()">
+                    </md-datepicker>
+                </div>
+                <div layout="row" layout-align="start center">
+                    <md-button ng-show="dateTo || dateFrom"
+                               class="md-raised md-primary"
+                               ng-click="dateTo = ''; dateFrom = ''; gridActions.refresh();">Clear Dates
+                    </md-button>
+                </div>
+            </div>
+            <div grid-data id='test' grid-options="gridOptions" grid-actions="gridActions">
+                <div layout-gt-sm="row" layout-sm="column" layout-align="center">
+                    <div flex-gt-sm="25" flex-sm="100" layout="row" layout-align="start center">
+                        <span>{{filtered.length}} items total</span>
+                    </div>
+                    <div flex-gt-sm="75" flex-xs="100">
+                        <div layout-xs="column" layout="row" layout-align-xs="end end" layout-align="end center">
+                            <grid-pagination max-size="5"
+                                             boundary-links="true"
+                                             class="pagination mdl-shadow--2dp"
+                                             ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
+                                             total-items="paginationOptions.totalItems"
+                                             ng-model="paginationOptions.currentPage"
+                                             ng-change="reloadGrid()"
+                                             items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                            <md-input-container flex-offset-gt-xs="5" class="items-per-page">
+                                <md-select
+                                        ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
+                                    <md-option ng-value="10">10</md-option>
+                                    <md-option ng-value="25">25</md-option>
+                                    <md-option ng-value="50">50</md-option>
+                                    <md-option ng-value="75">75</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" fixed-header>
+                        <thead>
+                        <tr>
+                            <th sortable="code" class="sortable mdl-data-table__cell--non-numeric">
+                                <span>Order #</span>
+                                <span class="arrow"></span>
+                            </th>
+                            <th class="st-sort-disable th-dropdown">
+                                <md-select filter-by="statusDisplay"
+                                           filter-type="select"
+                                           ng-model="status"
+                                           placeholder="Status"
+                                           ng-change="filter()">
+                                    <md-option value="">All Statuses</md-option>
+                                    <md-option ng-repeat="option in statusOptions track by option.value"
+                                               value="{{option.value}}">
+                                        {{option.text}}
+                                    </md-option>
+                                </md-select>
+                            </th>
+                            <th sortable="placed" class="sortable">
+                                <span>Date Placed</span>
+                                <span class="arrow"></span>
+                            </th>
+                            <th sortable='total.value' class="sortable">
+                                <span>Total</span>
+                                <span class="arrow"></span>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr grid-item>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <span ng-bind="item.code"></span>
+                            </td>
+                            <td ng-bind="item.statusDisplay"></td>
+                            <td ng-bind="item.placed | date:'MM/dd/yyyy'"></td>
+                            <td ng-bind="item.total.formattedValue"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div layout-xs="column" layout="row" layout-align-xs="end end" layout-align="end center">
+                    <grid-pagination max-size="5"
+                                     boundary-links="true"
+                                     class="pagination"
+                                     ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
+                                     total-items="paginationOptions.totalItems"
+                                     ng-model="paginationOptions.currentPage"
+                                     ng-change="reloadGrid()"
+                                     items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                    <md-input-container flex-offset-gt-xs="5" class="items-per-page">
+                        <md-select ng-model="paginationOptions.itemsPerPage"
+                                   ng-change="reloadGrid()">
+                            <md-option ng-value="10">10</md-option>
+                            <md-option ng-value="25">25</md-option>
+                            <md-option ng-value="50">50</md-option>
+                            <md-option ng-value="75">75</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+            </div>
+            <hr>
+            <md-button class="md-raised md-primary" ng-click="showCode = !showCode">CodePen</md-button>
+            <div ng-show="showCode" class="codepen-wrap">
+                <p data-height="768" data-theme-id="21603" data-slug-hash="bqXarG" data-default-tab="html"
+                   data-user="AngularDataGrid" class='codepen'>See the Pen <a
+                        href='http://codepen.io/AngularDataGrid/pen/bqXarG'>eJWWpM</a> by AngularDataGrid (<a
+                        href='http://codepen.io/AngularDataGrid'>@AngularDataGrid</a>) on <a href='http://codepen.io'>CodePen</a>.
                 </p>
-                <br>
-                <p>The directive subscribes on scroll event, but the event is not fired when directive is used inside <code>&lt;md-content&gt;</code>, so to make it work please use the directive outside the <code>&lt;md-content&gt;</code> container.
-                    For more information about this problem please review this <a href="https://github.com/angular/material/issues/6657">issue</a>.
-                </p>
+                <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
             </div>
             <hr>
         </div>
-        <hr>
-        <div layout-gt-xs="row" layout-xs="column" layout-align="stretch center">
-            <div layout="row" layout-align="center start">
-                <md-input-container md-no-float md-is-error="false" class="md-block flex-gt-xs flex-xs">
-                    <input ng-model="code"
-                           class="md-input"
-                           ng-change="gridActions.filter()"
-                           id="order"
-                           placeholder="Search by Order #"
-                           filter-by="code"
-                           filter-type="text"
-                           aria-invalid="false">
-                </md-input-container>
-            </div>
-            <div layout="row" layout-align="start center">
-                <md-datepicker ng-model="dateFrom"
-                               flex="100"
-                               md-placeholder="From Date"
-                               is-open="dateFromOpened"
-                               ng-click="dateFromOpened = true"
-                               filter-by="placed"
-                               filter-type="dateFrom"
-                               ng-change="gridActions.filter()"></md-datepicker>
-            </div>
-            <div layout="row" layout-align="start center">
-                <md-datepicker ng-model="dateTo"
-                               flex="100"
-                               md-placeholder="To Date"
-                               is-open="dateToOpened"
-                               ng-click="dateToOpened = true"
-                               filter-by="placed"
-                               filter-type="dateTo"
-                               ng-change="gridActions.filter()"></md-datepicker>
-            </div>
-            <div layout="row" layout-align="start center">
-                <md-button ng-show="dateTo || dateFrom" class="md-raised md-primary"
-                           ng-click="dateTo = ''; dateFrom = ''; gridActions.refresh();">Clear Dates
-                </md-button>
-            </div>
-        </div>
-        <div grid-data id='test' grid-options="gridOptions" grid-actions="gridActions">
-            <div layout-gt-sm="row" layout-sm="column" layout-align="center">
-                <div flex-gt-sm="25" flex-sm="100" layout="row" layout-align="start center">
-                    <span>{{filtered.length}} items total</span>
-                </div>
-                <div flex-gt-sm="75" flex-xs="100">
-                    <div layout-xs="column" layout="row" layout-align-xs="end end" layout-align="end center">
-                        <grid-pagination max-size="5"
-                                         boundary-links="true"
-                                         class="pagination mdl-shadow--2dp"
-                                         ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
-                                         total-items="paginationOptions.totalItems"
-                                         ng-model="paginationOptions.currentPage"
-                                         ng-change="reloadGrid()"
-                                         items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
-                        <md-input-container flex-offset-gt-xs="5" class="items-per-page">
-                            <md-select
-                                       ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
-                                <md-option>10</md-option>
-                                <md-option>25</md-option>
-                                <md-option>50</md-option>
-                                <md-option>75</md-option>
-                            </md-select>
-                        </md-input-container>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" fixed-header>
-                    <thead>
-                    <tr>
-                        <th sortable="code" class="sortable mdl-data-table__cell--non-numeric">
-                            <span>Order #</span>
-                        </th>
-                        <th class="st-sort-disable th-dropdown">
-                            <md-select filter-by="statusDisplay"
-                                       filter-type="select"
-                                       ng-model="status"
-                                       placeholder="Status"
-                                       ng-change="filter()">
-                                <md-option value="">All Statuses</md-option>
-                                <md-option ng-repeat="option in statusOptions track by option.value"
-                                           value="{{option.value}}">
-                                    {{option.text}}
-                                </md-option>
-                            </md-select>
-                        </th>
-                        <th sortable="placed" class="sortable">
-                            <span>Date Placed</span>
-                        </th>
-                        <th sortable='total.value' class="sortable">
-                            <span>Total</span>
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr grid-item>
-                        <td class="mdl-data-table__cell--non-numeric">
-                            <span ng-bind="item.code"></span>
-                        </td>
-                        <td ng-bind="item.statusDisplay"></td>
-                        <td ng-bind="item.placed | date:'MM/dd/yyyy'"></td>
-                        <td ng-bind="item.total.formattedValue"></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div layout-xs="column" layout="row" layout-align-xs="end end" layout-align="end center">
-                <grid-pagination max-size="5"
-                                 boundary-links="true"
-                                 class="pagination"
-                                 ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
-                                 total-items="paginationOptions.totalItems"
-                                 ng-model="paginationOptions.currentPage"
-                                 ng-change="reloadGrid()"
-                                 items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
-                <md-input-container flex-offset-gt-xs="5" class="items-per-page">
-                    <md-select ng-model="paginationOptions.itemsPerPage"
-                               ng-change="reloadGrid()">
-                        <md-option>10</md-option>
-                        <md-option>25</md-option>
-                        <md-option>50</md-option>
-                        <md-option>75</md-option>
-                    </md-select>
-                </md-input-container>
-            </div>
-        </div>
-        <hr>
-        <md-button class="md-raised md-primary" ng-click="showCode = !showCode">CodePen</md-button>
-        <div ng-show="showCode" class="codepen-wrap">
-            <p data-height="768" data-theme-id="21603" data-slug-hash="bqXarG" data-default-tab="html"
-               data-user="AngularDataGrid" class='codepen'>See the Pen <a
-                    href='http://codepen.io/AngularDataGrid/pen/bqXarG'>eJWWpM</a> by AngularDataGrid (<a
-                    href='http://codepen.io/AngularDataGrid'>@AngularDataGrid</a>) on <a href='http://codepen.io'>CodePen</a>.
-            </p>
-            <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
-        </div>
-        <hr>
     </div>
 </div>
 </body>
@@ -244,7 +250,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-aria.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-messages.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.js"></script>
 <script src="../../dist/pagination.min.js"></script>
 <script src="../../dist/dataGrid.min.js"></script>
 <script src="../../dist/dataGridUtils.min.js"></script>
