@@ -29,7 +29,7 @@
             $scope.filtered = $scope._gridOptions.data.slice();
             $scope.paginationOptions = $scope._gridOptions.pagination ? angular.copy($scope._gridOptions.pagination) : {};
             $scope.defaultsPaginationOptions = {
-                itemsPerPage: $scope.paginationOptions.itemsPerPage || '10',
+                itemsPerPage: $scope.paginationOptions.itemsPerPage,
                 currentPage: $scope.paginationOptions.currentPage || 1
             };
             $scope.paginationOptions = angular.copy($scope.defaultsPaginationOptions);
