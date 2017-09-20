@@ -29,18 +29,20 @@
             $scope.filtered = $scope._gridOptions.data.slice();
             $scope.paginationOptions = $scope._gridOptions.pagination ? angular.copy($scope._gridOptions.pagination) : {};
             $scope.defaultsPaginationOptions = {
-                itemsPerPage: $scope.paginationOptions.itemsPerPage,
+                itemsPerPage: $scope.paginationOptions.itemsPerPage || '10',
                 currentPage: $scope.paginationOptions.currentPage || 1
             };
             $scope.paginationOptions = angular.copy($scope.defaultsPaginationOptions);
             $scope.sortOptions = $scope._gridOptions.sort ? angular.copy($scope._gridOptions.sort) : {};
             $scope.customFilters = $scope._gridOptions.customFilters ? angular.copy($scope._gridOptions.customFilters) : {};
             $scope.urlSync = $scope._gridOptions.urlSync;
-
+            
             $scope.$watchCollection('_gridOptions.data', function (newValue) {
                 if (newValue && newValue.length > -1) {
                     $scope.sortCache = {};
                     $scope.filtered = $scope._gridOptions.data.slice();
+                    $scope.filtered.resultSize = $scope._gridOptions.data.resultSize;
+                    $scope.paginationOptions.totalItems = $scope.filtered.resultSize;
                     $scope.filters.forEach(function (filter) {
                         if (filter.filterType === 'select') {
                             $scope[filter.model + 'Options'] = generateOptions($scope.filtered, filter.filterBy);
@@ -270,7 +272,8 @@
                 }
                 $scope._time.sort = Date.now() - time3;
                 $scope._time.all = Date.now() - time;
-                $scope.paginationOptions.totalItems = $scope.filtered.length;
+
+                $scope.paginationOptions.totalItems = $scope.filtered.resultSize || $scope.filtered.length;
             }
 
             function applyCustomFilters() {
@@ -378,6 +381,9 @@
         .factory('filtersFactory', function () {
             function selectFilter(items, value, predicate) {
                 return items.filter(function (item) {
+                    if(value == ("true" || "false")){
+                        return value && item[predicate] ? item[predicate] === (value == 'true') : false;
+                    }
                     return value && item[predicate] ? item[predicate] === value : true;
                 });
             }
@@ -391,6 +397,10 @@
             function dateToFilter(items, value, predicate) {
                 value = new Date(value).getTime();
                 return items.filter(function (item) {
+                    if(item[predicate] instanceof Date == false){
+                        var itemDate = new Date(item[predicate]);
+                        return value && itemDate ? itemDate <= value + 86399999 : true;
+                    }
                     return value && item[predicate] ? item[predicate] <= value + 86399999 : true;
                 });
             }
@@ -398,7 +408,23 @@
             function dateFromFilter(items, value, predicate) {
                 value = new Date(value).getTime();
                 return items.filter(function (item) {
+                    if(item[predicate] instanceof Date == false){
+                        var itemDate = new Date(item[predicate]);
+                        return value && itemDate ? itemDate >=  value : true;
+                    }
                     return value && item[predicate] ? item[predicate] >= value : true;
+                });
+            }
+            
+            function numberToFilter (items, value, predicate){
+                return items.filter(function (item) {
+                   return isNaN(value) || isNaN(item[predicate]) || item[predicate] <= value;
+                });
+            }
+
+            function numberFromFilter(items, value, predicate){
+                return items.filter(function (item) {
+                   return isNaN(value) || (!isNaN(item[predicate]) && item[predicate] >= value);
                 });
             }
 
@@ -420,6 +446,12 @@
                         case 'dateFrom':
                         {
                             return dateFromFilter;
+                        }
+                        case 'numberTo': {
+                            return numberToFilter;
+                        }
+                        case 'numberFrom' : {
+                            return numberFromFilter;
                         }
                         default :
                         {
