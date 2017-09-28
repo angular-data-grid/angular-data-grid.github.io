@@ -279,9 +279,6 @@
                         urlName = filter.model,
                         value = filter.isInScope ? $scope.$eval(urlName) : $scope.$parent.$eval(urlName),
                         type = filter.filterType;
-                    if(type === 'select') {
-                        $scope.filtered = $scope._gridOptions.data.slice();
-                    }
                     if ($scope.customFilters[urlName]) {
                         $scope.filtered = $scope.customFilters[urlName]($scope.filtered, value, predicate);
                     } else if (value && type) {
