@@ -36,15 +36,16 @@
             $scope.sortOptions = $scope._gridOptions.sort ? angular.copy($scope._gridOptions.sort) : {};
             $scope.customFilters = $scope._gridOptions.customFilters ? angular.copy($scope._gridOptions.customFilters) : {};
             $scope.urlSync = $scope._gridOptions.urlSync;
+            $scope.allFilters = [];
+            $scope.dropDownFilters = [];
+
 
             $scope.$watchCollection('_gridOptions.data', function (newValue) {
                 if (newValue && newValue.length > -1) {
                     $scope.sortCache = {};
                     $scope.filtered = $scope._gridOptions.data.slice();
-                    $scope.filters.forEach(function (filter) {
-                        if (filter.filterType === 'select') {
-                            $scope[filter.model + 'Options'] = generateOptions($scope.filtered, filter.filterBy);
-                        }
+                    $scope.dropDownFilters.forEach(function (filter) {
+                        $scope[filter.model + 'Options'] = generateOptions($scope.filtered, filter.filterBy);
                     });
 
                     if ($scope.urlSync) {
@@ -116,7 +117,7 @@
                 }
 
                 //custom filters
-                $scope.filters.forEach(function (filter) {
+                $scope.allFilters.forEach(function (filter) {
                     var urlName = filter.model,
                         value = filter.isInScope ? $scope.$eval(urlName) : $scope.$parent.$eval(urlName);
 
@@ -160,7 +161,7 @@
                 });
 
                 //custom filters
-                $scope.filters.forEach(function (filter) {
+                $scope.allFilters.forEach(function (filter) {
                     var urlName = filter.model,
                         value = customParams[urlName];
 
@@ -246,35 +247,41 @@
                 //TO REMOVE ?
                 $scope._time = {};
 
-                if ($scope.sortOptions.predicate && $scope.sortCache && $scope.sortCache.predicate === $scope.sortOptions.predicate
-                    && $scope.sortCache.direction === $scope.sortOptions.direction) {
+                applyDropDownFilters();
+
+                /* if grid already sorted we need to use sort cache instead of the whole data array */
+                if (isGridSorted()) {
                     $scope.filtered = $scope.sortCache.data.slice();
                     sorted = true;
-                } else {
-                    $scope.filtered = $scope._gridOptions.data.slice();
                 }
 
                 $scope._time.copy = Date.now() - time;
                 var time2 = Date.now();
-                applyCustomFilters();
+                filterData($scope.textAndDateFilters);
                 $scope._time.filters = Date.now() - time2;
                 var time3 = Date.now();
 
                 if ($scope.sortOptions.predicate && !sorted) {
                     $scope.filtered = $filter('orderBy')($scope.filtered, $scope.sortOptions.predicate, $scope.sortOptions.direction === 'desc');
-                    $scope.sortCache = {
-                        data: $scope.filtered.slice(),
-                        predicate: $scope.sortOptions.predicate,
-                        direction: $scope.sortOptions.direction
-                    }
+                    generateSortCache();
                 }
                 $scope._time.sort = Date.now() - time3;
                 $scope._time.all = Date.now() - time;
                 $scope.paginationOptions.totalItems = $scope.filtered.length;
             }
 
-            function applyCustomFilters() {
-                $scope.filters.forEach(function (filter) {
+            function applyDropDownFilters() {
+                $scope.filtered = $scope._gridOptions.data.slice();
+                filterData($scope.dropDownFilters);
+                /* needed to check if grid already sorted, restore sort and update sortCache */
+                if (isGridSorted()) {
+                    $scope.filtered = $filter('orderBy')($scope.filtered, $scope.sortOptions.predicate, $scope.sortOptions.direction === 'desc');
+                    generateSortCache();
+                }
+            }
+
+            function filterData(filters) {
+                filters.forEach(function (filter) {
                     var predicate = filter.filterBy,
                         urlName = filter.model,
                         value = filter.isInScope ? $scope.$eval(urlName) : $scope.$parent.$eval(urlName),
@@ -288,6 +295,19 @@
                         }
                     }
                 });
+            }
+
+            function isGridSorted() {
+                return $scope.sortOptions.predicate && $scope.sortCache && $scope.sortCache.predicate === $scope.sortOptions.predicate
+                    && $scope.sortCache.direction === $scope.sortOptions.direction;
+            }
+
+            function generateSortCache() {
+                $scope.sortCache = {
+                    data: $scope.filtered.slice(),
+                    predicate: $scope.sortOptions.predicate,
+                    direction: $scope.sortOptions.direction
+                }
             }
         }])
         .directive('gridItem', ['$compile', function ($compile) {
@@ -315,7 +335,9 @@
                 scope: true,
                 controller: 'gridController',
                 link: function ($scope, $element, attrs) {
-                    var filters = [],
+                    var allFilters = [],
+                        textAndDateFilters = [],
+                        dropDownFilters = [],
                         directiveElement = $element.parent(),
                         gridId = attrs.id,
                         serverPagination = attrs.serverPagination === 'true';
@@ -362,16 +384,37 @@
                             //$compile(element)($scope);
                         }
                         //$compile(element)($scope);
-                        filters.push({
+
+                        allFilters.push({
                             model: urlName,
                             isInScope: isInScope,
                             filterBy: predicate,
                             filterType: filterType,
                             disableUrl: disableUrl
                         });
+
+                        if (filterType === 'select') {
+                            dropDownFilters.push({
+                                model: urlName,
+                                isInScope: isInScope,
+                                filterBy: predicate,
+                                filterType: filterType,
+                                disableUrl: disableUrl
+                            });
+                        } else {
+                            textAndDateFilters.push({
+                                model: urlName,
+                                isInScope: isInScope,
+                                filterBy: predicate,
+                                filterType: filterType,
+                                disableUrl: disableUrl
+                            });
+                        }
                     });
 
-                    $scope.filters = filters;
+                    $scope.allFilters = allFilters;
+                    $scope.textAndDateFilters = textAndDateFilters;
+                    $scope.dropDownFilters = dropDownFilters;
                 }
             }
         }])
