@@ -6,7 +6,10 @@
 
             $scope.gridOptions = {
                 data: [],
-                urlSync: true
+                urlSync: true,
+                pagination: {
+                    itemsPerPage: '10'
+                }
             };
 
             $http({
