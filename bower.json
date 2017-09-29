@@ -7,7 +7,7 @@
     "Alexander <alexander.zhuk83@gmail.com>"
   ],
   "description": "Light and flexible Data Grid for AngularJS, with built-in sorting, pagination and filtering options, unified API for client-side and server-side data fetching, seamless synchronization with browser address bar and total freedom in choosing mark-up and styling suitable for your application.",
-  "main": "dist/dataGrid.js",
+  "main": ["dist/dataGrid.js","dist/pagination.js"],
   "keywords": [
     "DataGrid",
     "Angular",
