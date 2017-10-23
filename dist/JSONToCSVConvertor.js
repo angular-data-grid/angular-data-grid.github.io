@@ -53,8 +53,8 @@ function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
     //this will remove the blank-spaces from the title and replace it with an underscore
     fileName += ReportTitle.replace(/ /g, "_") + ".csv";
     
-        //Initialize file format you want csv or xls
-        // Set UTF-8 formatting
+    //Initialize file format you want csv or xls
+    // Set UTF-8 formatting
     var uri = "\uFEFF" + CSV;
     
     // Now the little tricky part.
