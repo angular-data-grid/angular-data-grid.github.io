@@ -54,6 +54,11 @@
                     }
                 }
             });
+            
+            $scope.$watchCollection('[_gridOptions.reloaddata,_gridOptions.reloaddatacount]', function (newValue) {	
+                    $scope.filtered = newValue[0];
+                    $scope.paginationOptions.totalItems = newValue[1];
+            });
 
             $scope.sort = function (predicate, isDefaultSort) {
                 if (!isDefaultSort) {
