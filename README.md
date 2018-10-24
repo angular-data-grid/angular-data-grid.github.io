@@ -159,13 +159,13 @@ You can optionally use `grid-pagination` directive to display paging with previo
 Directive is built on a base of excellent [Angular UI](https://angular-ui.github.io/bootstrap/) component and shares extensive API: 
 
 ```HTML
-<pagination max-size="5" boundary-links="true" 
+<grid-pagination max-size="5" boundary-links="true" 
     ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage" 
     total-items="paginationOptions.totalItems"
     ng-model="paginationOptions.currentPage" 
     ng-change="reloadGrid()" 
     items-per-page="paginationOptions.itemsPerPage">
-</pagination>
+</grid-pagination>
 ```
 
 Settings can be provided as attributes in the <pagination> or globally configured through the `paginationConfig`.
