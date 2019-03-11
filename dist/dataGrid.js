@@ -35,6 +35,7 @@
             $scope.paginationOptions = angular.copy($scope.defaultsPaginationOptions);
             $scope.sortOptions = $scope._gridOptions.sort ? angular.copy($scope._gridOptions.sort) : {};
             $scope.customFilters = $scope._gridOptions.customFilters ? angular.copy($scope._gridOptions.customFilters) : {};
+            $scope.customStyle = $scope._gridOptions.customStyle ? angular.copy($scope._gridOptions.customStyle) : false; //Implement css class to change row style
             $scope.urlSync = $scope._gridOptions.urlSync;
 
             $scope.$watchCollection('_gridOptions.data', function (newValue) {
@@ -300,6 +301,9 @@
                         element.attr('ng-repeat', "item in filtered");
                     } else {
                         element.attr('ng-repeat', "item in filtered | startFrom:(paginationOptions.currentPage-1)*paginationOptions.itemsPerPage | limitTo:paginationOptions.itemsPerPage track by $index");
+                    }
+                    if ($scope.customStyle) {
+                        element.attr('ng-class', $scope.customStyle);
                     }
                     element.removeAttr('grid-item');
                     var html = element[0].outerHTML;

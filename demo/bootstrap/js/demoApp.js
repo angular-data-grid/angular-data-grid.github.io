@@ -3,7 +3,8 @@ angular.module('myApp', ['ui.bootstrap', 'dataGrid', 'pagination'])
 
         $scope.gridOptions = {
             data: [],
-            urlSync: true
+            urlSync: true,
+            customStyle: "item.total.value>1000 ? '' : 'trBack'"
         };
 
         myAppFactory.getData().then(function (responseData) {
