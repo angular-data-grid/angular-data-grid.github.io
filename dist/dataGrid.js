@@ -35,7 +35,7 @@
             $scope.paginationOptions = angular.copy($scope.defaultsPaginationOptions);
             $scope.sortOptions = $scope._gridOptions.sort ? angular.copy($scope._gridOptions.sort) : {};
             $scope.customFilters = $scope._gridOptions.customFilters ? angular.copy($scope._gridOptions.customFilters) : {};
-            $scope.customStyle = $scope._gridOptions.customStyle ? angular.copy($scope._gridOptions.customStyle) : {}; //Implement css class to change row style
+            $scope.customStyle = $scope._gridOptions.customStyle ? angular.copy($scope._gridOptions.customStyle) : false; //Implement css class to change row style
             $scope.urlSync = $scope._gridOptions.urlSync;
 
             $scope.$watchCollection('_gridOptions.data', function (newValue) {
